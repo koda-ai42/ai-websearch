@@ -1,0 +1,1448 @@
+{
+  "corpus": {
+    "path": "benchmarks/fixtures/stage2_v1/search_corpus.json",
+    "version": "2026-07-14.stage2.v1"
+  },
+  "evaluation_protocol": {
+    "latency": "Deterministic fixture durations and operation counts, not live wall-clock measurements.",
+    "peak_rss_bytes": "Not measured during offline replay; reported as null.",
+    "scope": "Search planning and result merging only; no crawl or downstream retrieval execution."
+  },
+  "live_integrations_executed": [],
+  "policies": {
+    "canonical_dedup": {
+      "accuracy": {
+        "canonical_duplicate_rate": 0.0,
+        "mrr": 0.45,
+        "ndcg": 0.5967132018086354,
+        "search_precision": 0.3527777777777778,
+        "search_recall": 1.0,
+        "unique_canonical_sources": 3.5,
+        "unique_domains": 2.8333333333333335
+      },
+      "cases": [
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "exact_factual",
+          "id": "raw-score-scale",
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "queries": [
+            "shortest planetary day",
+            "shortest planetary day official source",
+            "shortest planetary day technical documentation"
+          ],
+          "ranked_canonical_urls": [
+            "https://agency.example/about",
+            "https://software.example/planet-api",
+            "https://science.example/jupiter",
+            "https://blog.example/planet-days"
+          ],
+          "search_precision": 0.25,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 4,
+          "unique_domains": 4
+        },
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "technical_documentation",
+          "id": "technical-docs",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "queries": [
+            "widget retry setting",
+            "widget retry setting official source",
+            "widget retry setting technical documentation"
+          ],
+          "ranked_canonical_urls": [
+            "https://docs.example/widget/retries",
+            "https://forum.example/widget"
+          ],
+          "search_precision": 0.5,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 2,
+          "unique_domains": 2
+        },
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "current_events",
+          "id": "current-event-aware",
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "queries": [
+            "city transit opening date",
+            "city transit opening date official source",
+            "city transit opening date technical documentation"
+          ],
+          "ranked_canonical_urls": [
+            "https://engineering.example/transit",
+            "https://city.example/transit",
+            "https://news.example/transit-opening"
+          ],
+          "search_precision": 0.3333333333333333,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 3,
+          "unique_domains": 3
+        },
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "comparative_consumer",
+          "id": "consumer-analysis-aware",
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "queries": [
+            "quietest compact kettle",
+            "quietest compact kettle official source",
+            "quietest compact kettle technical documentation"
+          ],
+          "ranked_canonical_urls": [
+            "https://maker.example/kettle",
+            "https://maker.example/kettle/manual",
+            "https://reviews.example/quiet-kettles"
+          ],
+          "search_precision": 0.3333333333333333,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 3,
+          "unique_domains": 2
+        },
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "ambiguous",
+          "id": "canonical-domain-crowding",
+          "mrr": 0.2,
+          "ndcg": 0.38685280723454163,
+          "queries": [
+            "example protocol overview",
+            "example protocol overview official source",
+            "example protocol overview technical documentation"
+          ],
+          "ranked_canonical_urls": [
+            "https://crowded.example/about",
+            "https://crowded.example/news",
+            "https://crowded.example/contact",
+            "https://crowded.example/docs",
+            "https://reference.example/protocol"
+          ],
+          "search_precision": 0.2,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 5,
+          "unique_domains": 2
+        },
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "multi_hop",
+          "id": "multi-hop-primary",
+          "mrr": 0.5,
+          "ndcg": 0.6934264036172708,
+          "queries": [
+            "river source and downstream reservoir",
+            "river source and downstream reservoir official source",
+            "river source and downstream reservoir technical documentation"
+          ],
+          "ranked_canonical_urls": [
+            "https://engineering.example/dam",
+            "https://water.example/reservoir",
+            "https://geo.example/river",
+            "https://blog.example/river"
+          ],
+          "search_precision": 0.5,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 4,
+          "unique_domains": 4
+        }
+      ],
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "query_planning": 6,
+          "search_merge_dedup": 6,
+          "search_request": 18,
+          "total": 6
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 6,
+            "p50_ms": 0.05,
+            "p95_ms": 0.05
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 6,
+            "p50_ms": 0.08,
+            "p95_ms": 0.08
+          },
+          "search_request": {
+            "count": 18,
+            "p50_ms": 4.0,
+            "p95_ms": 4.0
+          },
+          "total": {
+            "count": 6,
+            "p50_ms": 12.13,
+            "p95_ms": 12.13
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "failed_queries": 0,
+        "planned_queries": 18,
+        "query_failure_rate": 0.0,
+        "zero_result_case_rate": 0.0
+      }
+    },
+    "canonical_dedup_domain_cap": {
+      "accuracy": {
+        "canonical_duplicate_rate": 0.0,
+        "mrr": 0.47222222222222215,
+        "ndcg": 0.6155710672695451,
+        "search_precision": 0.375,
+        "search_recall": 1.0,
+        "unique_canonical_sources": 3.1666666666666665,
+        "unique_domains": 2.8333333333333335
+      },
+      "cases": [
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "exact_factual",
+          "id": "raw-score-scale",
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "queries": [
+            "shortest planetary day",
+            "shortest planetary day official source",
+            "shortest planetary day technical documentation"
+          ],
+          "ranked_canonical_urls": [
+            "https://agency.example/about",
+            "https://software.example/planet-api",
+            "https://science.example/jupiter",
+            "https://blog.example/planet-days"
+          ],
+          "search_precision": 0.25,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 4,
+          "unique_domains": 4
+        },
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "technical_documentation",
+          "id": "technical-docs",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "queries": [
+            "widget retry setting",
+            "widget retry setting official source",
+            "widget retry setting technical documentation"
+          ],
+          "ranked_canonical_urls": [
+            "https://docs.example/widget/retries",
+            "https://forum.example/widget"
+          ],
+          "search_precision": 0.5,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 2,
+          "unique_domains": 2
+        },
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "current_events",
+          "id": "current-event-aware",
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "queries": [
+            "city transit opening date",
+            "city transit opening date official source",
+            "city transit opening date technical documentation"
+          ],
+          "ranked_canonical_urls": [
+            "https://engineering.example/transit",
+            "https://city.example/transit",
+            "https://news.example/transit-opening"
+          ],
+          "search_precision": 0.3333333333333333,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 3,
+          "unique_domains": 3
+        },
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "comparative_consumer",
+          "id": "consumer-analysis-aware",
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "queries": [
+            "quietest compact kettle",
+            "quietest compact kettle official source",
+            "quietest compact kettle technical documentation"
+          ],
+          "ranked_canonical_urls": [
+            "https://maker.example/kettle",
+            "https://maker.example/kettle/manual",
+            "https://reviews.example/quiet-kettles"
+          ],
+          "search_precision": 0.3333333333333333,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 3,
+          "unique_domains": 2
+        },
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "ambiguous",
+          "id": "canonical-domain-crowding",
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "queries": [
+            "example protocol overview",
+            "example protocol overview official source",
+            "example protocol overview technical documentation"
+          ],
+          "ranked_canonical_urls": [
+            "https://crowded.example/about",
+            "https://crowded.example/news",
+            "https://reference.example/protocol"
+          ],
+          "search_precision": 0.3333333333333333,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 3,
+          "unique_domains": 2
+        },
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "multi_hop",
+          "id": "multi-hop-primary",
+          "mrr": 0.5,
+          "ndcg": 0.6934264036172708,
+          "queries": [
+            "river source and downstream reservoir",
+            "river source and downstream reservoir official source",
+            "river source and downstream reservoir technical documentation"
+          ],
+          "ranked_canonical_urls": [
+            "https://engineering.example/dam",
+            "https://water.example/reservoir",
+            "https://geo.example/river",
+            "https://blog.example/river"
+          ],
+          "search_precision": 0.5,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 4,
+          "unique_domains": 4
+        }
+      ],
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "query_planning": 6,
+          "search_merge_dedup": 6,
+          "search_request": 18,
+          "total": 6
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 6,
+            "p50_ms": 0.05,
+            "p95_ms": 0.05
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 6,
+            "p50_ms": 0.08,
+            "p95_ms": 0.08
+          },
+          "search_request": {
+            "count": 18,
+            "p50_ms": 4.0,
+            "p95_ms": 4.0
+          },
+          "total": {
+            "count": 6,
+            "p50_ms": 12.13,
+            "p95_ms": 12.13
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "failed_queries": 0,
+        "planned_queries": 18,
+        "query_failure_rate": 0.0,
+        "zero_result_case_rate": 0.0
+      }
+    },
+    "existing_suffix_expansion": {
+      "accuracy": {
+        "canonical_duplicate_rate": 0.027777777777777776,
+        "mrr": 0.45,
+        "ndcg": 0.5967132018086354,
+        "search_precision": 0.34722222222222227,
+        "search_recall": 1.0,
+        "unique_canonical_sources": 3.5,
+        "unique_domains": 2.8333333333333335
+      },
+      "cases": [
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "exact_factual",
+          "id": "raw-score-scale",
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "queries": [
+            "shortest planetary day",
+            "shortest planetary day official source",
+            "shortest planetary day technical documentation"
+          ],
+          "ranked_canonical_urls": [
+            "https://agency.example/about",
+            "https://software.example/planet-api",
+            "https://science.example/jupiter",
+            "https://blog.example/planet-days"
+          ],
+          "search_precision": 0.25,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 4,
+          "unique_domains": 4
+        },
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "technical_documentation",
+          "id": "technical-docs",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "queries": [
+            "widget retry setting",
+            "widget retry setting official source",
+            "widget retry setting technical documentation"
+          ],
+          "ranked_canonical_urls": [
+            "https://docs.example/widget/retries",
+            "https://forum.example/widget"
+          ],
+          "search_precision": 0.5,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 2,
+          "unique_domains": 2
+        },
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "current_events",
+          "id": "current-event-aware",
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "queries": [
+            "city transit opening date",
+            "city transit opening date official source",
+            "city transit opening date technical documentation"
+          ],
+          "ranked_canonical_urls": [
+            "https://engineering.example/transit",
+            "https://city.example/transit",
+            "https://news.example/transit-opening"
+          ],
+          "search_precision": 0.3333333333333333,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 3,
+          "unique_domains": 3
+        },
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "comparative_consumer",
+          "id": "consumer-analysis-aware",
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "queries": [
+            "quietest compact kettle",
+            "quietest compact kettle official source",
+            "quietest compact kettle technical documentation"
+          ],
+          "ranked_canonical_urls": [
+            "https://maker.example/kettle",
+            "https://maker.example/kettle/manual",
+            "https://reviews.example/quiet-kettles"
+          ],
+          "search_precision": 0.3333333333333333,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 3,
+          "unique_domains": 2
+        },
+        {
+          "canonical_duplicate_rate": 0.16666666666666666,
+          "category": "ambiguous",
+          "id": "canonical-domain-crowding",
+          "mrr": 0.2,
+          "ndcg": 0.38685280723454163,
+          "queries": [
+            "example protocol overview",
+            "example protocol overview official source",
+            "example protocol overview technical documentation"
+          ],
+          "ranked_canonical_urls": [
+            "https://crowded.example/about",
+            "https://crowded.example/news",
+            "https://crowded.example/contact",
+            "https://crowded.example/docs",
+            "https://reference.example/protocol",
+            "https://reference.example/protocol"
+          ],
+          "search_precision": 0.16666666666666666,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 5,
+          "unique_domains": 2
+        },
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "multi_hop",
+          "id": "multi-hop-primary",
+          "mrr": 0.5,
+          "ndcg": 0.6934264036172708,
+          "queries": [
+            "river source and downstream reservoir",
+            "river source and downstream reservoir official source",
+            "river source and downstream reservoir technical documentation"
+          ],
+          "ranked_canonical_urls": [
+            "https://engineering.example/dam",
+            "https://water.example/reservoir",
+            "https://geo.example/river",
+            "https://blog.example/river"
+          ],
+          "search_precision": 0.5,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 4,
+          "unique_domains": 4
+        }
+      ],
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "query_planning": 6,
+          "search_merge_dedup": 6,
+          "search_request": 18,
+          "total": 6
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 6,
+            "p50_ms": 0.05,
+            "p95_ms": 0.05
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 6,
+            "p50_ms": 0.08,
+            "p95_ms": 0.08
+          },
+          "search_request": {
+            "count": 18,
+            "p50_ms": 4.0,
+            "p95_ms": 4.0
+          },
+          "total": {
+            "count": 6,
+            "p50_ms": 12.13,
+            "p95_ms": 12.13
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "failed_queries": 0,
+        "planned_queries": 18,
+        "query_failure_rate": 0.0,
+        "zero_result_case_rate": 0.0
+      }
+    },
+    "original_only": {
+      "accuracy": {
+        "canonical_duplicate_rate": 0.08333333333333333,
+        "mrr": 1.0,
+        "ndcg": 0.9355245321275764,
+        "search_precision": 0.6666666666666666,
+        "search_recall": 0.9166666666666666,
+        "unique_canonical_sources": 1.5,
+        "unique_domains": 1.5
+      },
+      "cases": [
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "exact_factual",
+          "id": "raw-score-scale",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "queries": [
+            "shortest planetary day"
+          ],
+          "ranked_canonical_urls": [
+            "https://science.example/jupiter",
+            "https://blog.example/planet-days"
+          ],
+          "search_precision": 0.5,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 2,
+          "unique_domains": 2
+        },
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "technical_documentation",
+          "id": "technical-docs",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "queries": [
+            "widget retry setting"
+          ],
+          "ranked_canonical_urls": [
+            "https://docs.example/widget/retries",
+            "https://forum.example/widget"
+          ],
+          "search_precision": 0.5,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 2,
+          "unique_domains": 2
+        },
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "current_events",
+          "id": "current-event-aware",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "queries": [
+            "city transit opening date"
+          ],
+          "ranked_canonical_urls": [
+            "https://news.example/transit-opening"
+          ],
+          "search_precision": 1.0,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 1,
+          "unique_domains": 1
+        },
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "comparative_consumer",
+          "id": "consumer-analysis-aware",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "queries": [
+            "quietest compact kettle"
+          ],
+          "ranked_canonical_urls": [
+            "https://reviews.example/quiet-kettles"
+          ],
+          "search_precision": 1.0,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 1,
+          "unique_domains": 1
+        },
+        {
+          "canonical_duplicate_rate": 0.5,
+          "category": "ambiguous",
+          "id": "canonical-domain-crowding",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "queries": [
+            "example protocol overview"
+          ],
+          "ranked_canonical_urls": [
+            "https://reference.example/protocol",
+            "https://reference.example/protocol"
+          ],
+          "search_precision": 0.5,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 1,
+          "unique_domains": 1
+        },
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "multi_hop",
+          "id": "multi-hop-primary",
+          "mrr": 1.0,
+          "ndcg": 0.6131471927654584,
+          "queries": [
+            "river source and downstream reservoir"
+          ],
+          "ranked_canonical_urls": [
+            "https://geo.example/river",
+            "https://blog.example/river"
+          ],
+          "search_precision": 0.5,
+          "search_recall": 0.5,
+          "unique_canonical_sources": 2,
+          "unique_domains": 2
+        }
+      ],
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "query_planning": 6,
+          "search_merge_dedup": 6,
+          "search_request": 6,
+          "total": 6
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 6,
+            "p50_ms": 0.05,
+            "p95_ms": 0.05
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 6,
+            "p50_ms": 0.08,
+            "p95_ms": 0.08
+          },
+          "search_request": {
+            "count": 6,
+            "p50_ms": 4.0,
+            "p95_ms": 4.0
+          },
+          "total": {
+            "count": 6,
+            "p50_ms": 4.13,
+            "p95_ms": 4.13
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "failed_queries": 0,
+        "planned_queries": 6,
+        "query_failure_rate": 0.0,
+        "zero_result_case_rate": 0.0
+      }
+    },
+    "per_query_rrf": {
+      "accuracy": {
+        "canonical_duplicate_rate": 0.027777777777777776,
+        "mrr": 1.0,
+        "ndcg": 1.0,
+        "search_precision": 0.34722222222222227,
+        "search_recall": 1.0,
+        "unique_canonical_sources": 3.5,
+        "unique_domains": 2.8333333333333335
+      },
+      "cases": [
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "exact_factual",
+          "id": "raw-score-scale",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "queries": [
+            "shortest planetary day",
+            "shortest planetary day official source",
+            "shortest planetary day technical documentation"
+          ],
+          "ranked_canonical_urls": [
+            "https://science.example/jupiter",
+            "https://software.example/planet-api",
+            "https://agency.example/about",
+            "https://blog.example/planet-days"
+          ],
+          "search_precision": 0.25,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 4,
+          "unique_domains": 4
+        },
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "technical_documentation",
+          "id": "technical-docs",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "queries": [
+            "widget retry setting",
+            "widget retry setting official source",
+            "widget retry setting technical documentation"
+          ],
+          "ranked_canonical_urls": [
+            "https://docs.example/widget/retries",
+            "https://forum.example/widget"
+          ],
+          "search_precision": 0.5,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 2,
+          "unique_domains": 2
+        },
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "current_events",
+          "id": "current-event-aware",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "queries": [
+            "city transit opening date",
+            "city transit opening date official source",
+            "city transit opening date technical documentation"
+          ],
+          "ranked_canonical_urls": [
+            "https://news.example/transit-opening",
+            "https://engineering.example/transit",
+            "https://city.example/transit"
+          ],
+          "search_precision": 0.3333333333333333,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 3,
+          "unique_domains": 3
+        },
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "comparative_consumer",
+          "id": "consumer-analysis-aware",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "queries": [
+            "quietest compact kettle",
+            "quietest compact kettle official source",
+            "quietest compact kettle technical documentation"
+          ],
+          "ranked_canonical_urls": [
+            "https://reviews.example/quiet-kettles",
+            "https://maker.example/kettle/manual",
+            "https://maker.example/kettle"
+          ],
+          "search_precision": 0.3333333333333333,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 3,
+          "unique_domains": 2
+        },
+        {
+          "canonical_duplicate_rate": 0.16666666666666666,
+          "category": "ambiguous",
+          "id": "canonical-domain-crowding",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "queries": [
+            "example protocol overview",
+            "example protocol overview official source",
+            "example protocol overview technical documentation"
+          ],
+          "ranked_canonical_urls": [
+            "https://reference.example/protocol",
+            "https://crowded.example/docs",
+            "https://crowded.example/about",
+            "https://reference.example/protocol",
+            "https://crowded.example/news",
+            "https://crowded.example/contact"
+          ],
+          "search_precision": 0.16666666666666666,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 5,
+          "unique_domains": 2
+        },
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "multi_hop",
+          "id": "multi-hop-primary",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "queries": [
+            "river source and downstream reservoir",
+            "river source and downstream reservoir official source",
+            "river source and downstream reservoir technical documentation"
+          ],
+          "ranked_canonical_urls": [
+            "https://water.example/reservoir",
+            "https://geo.example/river",
+            "https://engineering.example/dam",
+            "https://blog.example/river"
+          ],
+          "search_precision": 0.5,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 4,
+          "unique_domains": 4
+        }
+      ],
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "query_planning": 6,
+          "search_merge_dedup": 6,
+          "search_request": 18,
+          "total": 6
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 6,
+            "p50_ms": 0.05,
+            "p95_ms": 0.05
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 6,
+            "p50_ms": 0.1,
+            "p95_ms": 0.1
+          },
+          "search_request": {
+            "count": 18,
+            "p50_ms": 4.0,
+            "p95_ms": 4.0
+          },
+          "total": {
+            "count": 6,
+            "p50_ms": 12.15,
+            "p95_ms": 12.15
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "failed_queries": 0,
+        "planned_queries": 18,
+        "query_failure_rate": 0.0,
+        "zero_result_case_rate": 0.0
+      }
+    },
+    "query_type_aware_expansion": {
+      "accuracy": {
+        "canonical_duplicate_rate": 0.08333333333333333,
+        "mrr": 1.0,
+        "ndcg": 1.0,
+        "search_precision": 0.611111111111111,
+        "search_recall": 1.0,
+        "unique_canonical_sources": 1.8333333333333333,
+        "unique_domains": 1.8333333333333333
+      },
+      "cases": [
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "exact_factual",
+          "id": "raw-score-scale",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "queries": [
+            "shortest planetary day"
+          ],
+          "ranked_canonical_urls": [
+            "https://science.example/jupiter",
+            "https://blog.example/planet-days"
+          ],
+          "search_precision": 0.5,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 2,
+          "unique_domains": 2
+        },
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "technical_documentation",
+          "id": "technical-docs",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "queries": [
+            "widget retry setting",
+            "widget retry setting technical documentation",
+            "widget retry setting official source"
+          ],
+          "ranked_canonical_urls": [
+            "https://docs.example/widget/retries",
+            "https://forum.example/widget"
+          ],
+          "search_precision": 0.5,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 2,
+          "unique_domains": 2
+        },
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "current_events",
+          "id": "current-event-aware",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "queries": [
+            "city transit opening date",
+            "city transit opening date latest",
+            "city transit opening date official source"
+          ],
+          "ranked_canonical_urls": [
+            "https://news.example/transit-opening",
+            "https://city.example/transit"
+          ],
+          "search_precision": 0.5,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 2,
+          "unique_domains": 2
+        },
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "comparative_consumer",
+          "id": "consumer-analysis-aware",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "queries": [
+            "quietest compact kettle",
+            "quietest compact kettle independent analysis"
+          ],
+          "ranked_canonical_urls": [
+            "https://reviews.example/quiet-kettles"
+          ],
+          "search_precision": 1.0,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 1,
+          "unique_domains": 1
+        },
+        {
+          "canonical_duplicate_rate": 0.5,
+          "category": "ambiguous",
+          "id": "canonical-domain-crowding",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "queries": [
+            "example protocol overview"
+          ],
+          "ranked_canonical_urls": [
+            "https://reference.example/protocol",
+            "https://reference.example/protocol"
+          ],
+          "search_precision": 0.5,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 1,
+          "unique_domains": 1
+        },
+        {
+          "canonical_duplicate_rate": 0.0,
+          "category": "multi_hop",
+          "id": "multi-hop-primary",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "queries": [
+            "river source and downstream reservoir",
+            "river source and downstream reservoir primary source"
+          ],
+          "ranked_canonical_urls": [
+            "https://geo.example/river",
+            "https://water.example/reservoir",
+            "https://blog.example/river"
+          ],
+          "search_precision": 0.6666666666666666,
+          "search_recall": 1.0,
+          "unique_canonical_sources": 3,
+          "unique_domains": 3
+        }
+      ],
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "query_planning": 6,
+          "search_merge_dedup": 6,
+          "search_request": 12,
+          "total": 6
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 6,
+            "p50_ms": 0.05,
+            "p95_ms": 0.05
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 6,
+            "p50_ms": 0.08,
+            "p95_ms": 0.08
+          },
+          "search_request": {
+            "count": 12,
+            "p50_ms": 4.0,
+            "p95_ms": 4.0
+          },
+          "total": {
+            "count": 6,
+            "p50_ms": 8.13,
+            "p95_ms": 12.13
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "failed_queries": 0,
+        "planned_queries": 12,
+        "query_failure_rate": 0.0,
+        "zero_result_case_rate": 0.0
+      }
+    }
+  },
+  "run_mode": "offline_stage2_search_policy_replay",
+  "schema_version": "1.0"
+}

@@ -1,0 +1,48 @@
+{
+  "accuracy": {
+    "broken_chunk_starts": 1,
+    "orphaned_section_fragments": 1,
+    "section_boundary_accuracy": 0.0
+  },
+  "chunking": {
+    "broken_starts": [
+      "ember**: Italy vs France (20:45)"
+    ],
+    "chunks": [
+      "France have played in several major tournaments and this background paragraph intentionally fills the preceding chunk with enough ordinary prose to exercise the overlap boundary. The article describes prior finals, qualification, coaching history, and recent results without adding another fixture list.",
+      ", qualification, coaching history, and recent results without adding another fixture list.\n\n## France's UEFA Nations League fixtures: Group A1\n**25 September**: Türkiye vs France (20:45)\n**28 September**: Belgium vs France (20:45)\n**2 October**: France vs Italy (20:45)\n**5 October**: France vs Belgium (20:45)\n**12 November**: Italy vs France (20:45)\n**15 November**: France vs Türkiye (20:45)\nAll times CET.",
+      "ember**: Italy vs France (20:45)\n**15 November**: France vs Türkiye (20:45)\nAll times CET.\n\n## Selected for you\nWorld Cup results by team and other related articles are available from the navigation area."
+    ],
+    "orphaned_section_fragments": [
+      "ember**: Italy vs France (20:45)\n**15 November**: France vs Türkiye (20:45)\nAll times CET.\n\n## Selected for you\nWorld Cup results by team and other related articles are available from the navigation area."
+    ]
+  },
+  "corpus_version": "2026-08-02.v1",
+  "latency": {
+    "chunks_produced": 3,
+    "measured": false,
+    "section_checks_evaluated": 2
+  },
+  "limitations": [
+    "The fixture is synthetic and derived from the observed UEFA page structure.",
+    "No network, browser, embedding model, CrossEncoder, llama.cpp, or answer model runs.",
+    "Latency fields are deterministic operation counts, not wall-clock measurements."
+  ],
+  "reliability": {
+    "answer_contract_controls": {
+      "citation_and_fetch_required": false,
+      "original_query_enforced": false,
+      "original_query_required": false,
+      "scope_instruction_present": false,
+      "transaction_validator_available": false
+    },
+    "consent_markers_remaining": [
+      "consent to cookies",
+      "selecting i accept",
+      "reject all",
+      "precise geolocation"
+    ]
+  },
+  "run_mode": "offline_production_policy",
+  "schema_version": "1.0"
+}

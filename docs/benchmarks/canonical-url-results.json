@@ -1,0 +1,84 @@
+{
+  "latency": {
+    "cases_evaluated": 4,
+    "measured": false
+  },
+  "limitations": [
+    "The benchmark exercises syntax/policy candidates without DNS resolution.",
+    "Production additionally applies asynchronous public-network resolution."
+  ],
+  "policies": {
+    "resolved_policy_checked": {
+      "accuracy": {
+        "canonical_resolution_accuracy": 1.0
+      },
+      "cases": [
+        {
+          "correct": true,
+          "expected": "https://example.test/canonical",
+          "id": "relative",
+          "observed": "https://example.test/canonical"
+        },
+        {
+          "correct": true,
+          "expected": "https://publisher.test/story",
+          "id": "absolute",
+          "observed": "https://publisher.test/story"
+        },
+        {
+          "correct": true,
+          "expected": "https://example.test/item",
+          "id": "loopback",
+          "observed": "https://example.test/item"
+        },
+        {
+          "correct": true,
+          "expected": "https://example.test/item",
+          "id": "credential-query",
+          "observed": "https://example.test/item"
+        }
+      ],
+      "reliability": {
+        "network_policy_required_before_storage": true,
+        "relative_urls_resolved": true
+      }
+    },
+    "unresolved_href": {
+      "accuracy": {
+        "canonical_resolution_accuracy": 0.75
+      },
+      "cases": [
+        {
+          "correct": false,
+          "expected": "https://example.test/canonical",
+          "id": "relative",
+          "observed": "https://example.test/news/item"
+        },
+        {
+          "correct": true,
+          "expected": "https://publisher.test/story",
+          "id": "absolute",
+          "observed": "https://publisher.test/story"
+        },
+        {
+          "correct": true,
+          "expected": "https://example.test/item",
+          "id": "loopback",
+          "observed": "https://example.test/item"
+        },
+        {
+          "correct": true,
+          "expected": "https://example.test/item",
+          "id": "credential-query",
+          "observed": "https://example.test/item"
+        }
+      ],
+      "reliability": {
+        "network_policy_required_before_storage": false,
+        "relative_urls_resolved": false
+      }
+    }
+  },
+  "run_mode": "offline_canonical_url_policy",
+  "schema_version": "1.0"
+}

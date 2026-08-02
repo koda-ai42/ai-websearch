@@ -1,0 +1,115 @@
+{
+  "accuracy": {
+    "measured": false
+  },
+  "latency": {
+    "cases_evaluated": 8,
+    "measured": false
+  },
+  "limitations": [
+    "This is a deterministic control-presence benchmark, not a penetration test.",
+    "No MCP socket, SearXNG endpoint, llama.cpp endpoint, or public URL is contacted."
+  ],
+  "policies": {
+    "existing_surface": {
+      "cases": [
+        {
+          "control": "minimal_tools",
+          "id": "answer-tool-surface",
+          "passed": false
+        },
+        {
+          "control": "loopback_mcp",
+          "id": "mcp-loopback",
+          "passed": false
+        },
+        {
+          "control": "loopback_searxng",
+          "id": "searxng-loopback",
+          "passed": false
+        },
+        {
+          "control": "safe_searxng_url",
+          "id": "searxng-no-credentials",
+          "passed": false
+        },
+        {
+          "control": "safe_searxng_url",
+          "id": "searxng-no-query",
+          "passed": false
+        },
+        {
+          "control": "no_service_redirects",
+          "id": "llama-no-redirect",
+          "passed": false
+        },
+        {
+          "control": "redacted_url_diagnostics",
+          "id": "url-log-redaction",
+          "passed": false
+        },
+        {
+          "control": "owned_logging",
+          "id": "logging-at-executable-boundary",
+          "passed": false
+        }
+      ],
+      "reliability": {
+        "control_coverage": 0.0,
+        "controls_passed": 0,
+        "controls_total": 8
+      }
+    },
+    "publication_hardened": {
+      "cases": [
+        {
+          "control": "minimal_tools",
+          "id": "answer-tool-surface",
+          "passed": true
+        },
+        {
+          "control": "loopback_mcp",
+          "id": "mcp-loopback",
+          "passed": true
+        },
+        {
+          "control": "loopback_searxng",
+          "id": "searxng-loopback",
+          "passed": true
+        },
+        {
+          "control": "safe_searxng_url",
+          "id": "searxng-no-credentials",
+          "passed": true
+        },
+        {
+          "control": "safe_searxng_url",
+          "id": "searxng-no-query",
+          "passed": true
+        },
+        {
+          "control": "no_service_redirects",
+          "id": "llama-no-redirect",
+          "passed": true
+        },
+        {
+          "control": "redacted_url_diagnostics",
+          "id": "url-log-redaction",
+          "passed": true
+        },
+        {
+          "control": "owned_logging",
+          "id": "logging-at-executable-boundary",
+          "passed": true
+        }
+      ],
+      "reliability": {
+        "control_coverage": 1.0,
+        "controls_passed": 8,
+        "controls_total": 8
+      }
+    }
+  },
+  "run_mode": "offline_security_policy",
+  "schema_version": "1.0"
+}

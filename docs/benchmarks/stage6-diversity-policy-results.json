@@ -1,0 +1,1539 @@
+{
+  "corpus": {
+    "path": "benchmarks/fixtures/stage6_v1/diversity_corpus.json",
+    "version": "2026-07-15.stage6.v1"
+  },
+  "evaluation_protocol": {
+    "accuracy_credit": "Each relevant evidence identity receives credit at most once; aliases and near-duplicates cannot inflate accuracy.",
+    "corroboration": "Retention is measured against explicitly labeled strong corroborators selected by score-order baseline.",
+    "database_access": "No database is opened by Stage 6 replay.",
+    "latency": "Deterministic fixture durations and operation counts, not live retrieval measurements.",
+    "scope": "Independent synthetic canonical/source/domain deduplication, near-duplicate penalty, per-source cap, and marginal-novelty experiments."
+  },
+  "live_integrations_executed": [],
+  "policies": {
+    "canonical_dedup": {
+      "accuracy": {
+        "evidence_precision": 0.6,
+        "evidence_recall": 0.6666666666666666,
+        "ndcg": 0.712439266045567,
+        "reciprocal_rank": 1.0
+      },
+      "cases": [
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.6666666666666666,
+          "evidence_recall": 1.0,
+          "id": "canonical_aliases",
+          "ndcg": 0.9197207891481876,
+          "near_duplicate_rate": 0.0,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "ca1",
+            "ca3",
+            "ca4"
+          ],
+          "strong_corroborators_displaced": 0,
+          "strong_corroborators_retained": 2,
+          "unique_canonical_urls": 3,
+          "unique_domains": 2,
+          "unique_sources": 3
+        },
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.6666666666666666,
+          "evidence_recall": 0.6666666666666666,
+          "id": "source_crowding",
+          "ndcg": 0.7653606369886217,
+          "near_duplicate_rate": 0.0,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "sc1",
+            "sc2",
+            "sc3"
+          ],
+          "strong_corroborators_displaced": 0,
+          "strong_corroborators_retained": 2,
+          "unique_canonical_urls": 3,
+          "unique_domains": 2,
+          "unique_sources": 2
+        },
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.6666666666666666,
+          "evidence_recall": 0.6666666666666666,
+          "id": "domain_corroboration",
+          "ndcg": 0.7039180890341347,
+          "near_duplicate_rate": 0.0,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "dc1",
+            "dc2",
+            "dc3"
+          ],
+          "strong_corroborators_displaced": 0,
+          "strong_corroborators_retained": 2,
+          "unique_canonical_urls": 3,
+          "unique_domains": 1,
+          "unique_sources": 3
+        },
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.3333333333333333,
+          "evidence_recall": 0.3333333333333333,
+          "id": "near_duplicate_chunks",
+          "ndcg": 0.46927872602275644,
+          "near_duplicate_rate": 0.3333333333333333,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "nd1",
+            "nd2",
+            "nd3"
+          ],
+          "strong_corroborators_displaced": 0,
+          "strong_corroborators_retained": 2,
+          "unique_canonical_urls": 3,
+          "unique_domains": 3,
+          "unique_sources": 3
+        },
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.6666666666666666,
+          "evidence_recall": 0.6666666666666666,
+          "id": "novelty_tradeoff",
+          "ndcg": 0.7039180890341347,
+          "near_duplicate_rate": 0.0,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "nv1",
+            "nv2",
+            "nv3"
+          ],
+          "strong_corroborators_displaced": 0,
+          "strong_corroborators_retained": 2,
+          "unique_canonical_urls": 3,
+          "unique_domains": 2,
+          "unique_sources": 2
+        }
+      ],
+      "corroboration": {
+        "baseline_applicable_count": 10,
+        "displaced_count": 0,
+        "retention_rate": 1.0
+      },
+      "diversity": {
+        "near_duplicate_rate": 0.06666666666666667,
+        "unique_canonical_urls": 3.0,
+        "unique_domains": 2.0,
+        "unique_sources": 2.6
+      },
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "diversity_selection": 5
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 5,
+            "p50_ms": 0.056,
+            "p95_ms": 0.056
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "operation_counts": {
+          "candidates_selected": 15,
+          "selection_shortfall": 0
+        },
+        "selection_shortfall_rate": 0.0
+      }
+    },
+    "domain_dedup": {
+      "accuracy": {
+        "evidence_precision": 0.4666666666666666,
+        "evidence_recall": 0.5,
+        "ndcg": 0.6041966741667455,
+        "reciprocal_rank": 1.0
+      },
+      "cases": [
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.3333333333333333,
+          "evidence_recall": 0.5,
+          "id": "canonical_aliases",
+          "ndcg": 0.6131471927654584,
+          "near_duplicate_rate": 0.3333333333333333,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "ca1",
+            "ca2",
+            "ca3"
+          ],
+          "strong_corroborators_displaced": 0,
+          "strong_corroborators_retained": 2,
+          "unique_canonical_urls": 2,
+          "unique_domains": 3,
+          "unique_sources": 3
+        },
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.3333333333333333,
+          "evidence_recall": 0.3333333333333333,
+          "id": "source_crowding",
+          "ndcg": 0.46927872602275644,
+          "near_duplicate_rate": 0.0,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "sc1",
+            "sc3",
+            "sc5"
+          ],
+          "strong_corroborators_displaced": 0,
+          "strong_corroborators_retained": 2,
+          "unique_canonical_urls": 3,
+          "unique_domains": 3,
+          "unique_sources": 3
+        },
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.6666666666666666,
+          "evidence_recall": 0.6666666666666666,
+          "id": "domain_corroboration",
+          "ndcg": 0.7653606369886217,
+          "near_duplicate_rate": 0.0,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "dc1",
+            "dc4",
+            "dc5"
+          ],
+          "strong_corroborators_displaced": 1,
+          "strong_corroborators_retained": 1,
+          "unique_canonical_urls": 3,
+          "unique_domains": 3,
+          "unique_sources": 3
+        },
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.3333333333333333,
+          "evidence_recall": 0.3333333333333333,
+          "id": "near_duplicate_chunks",
+          "ndcg": 0.46927872602275644,
+          "near_duplicate_rate": 0.3333333333333333,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "nd1",
+            "nd2",
+            "nd3"
+          ],
+          "strong_corroborators_displaced": 0,
+          "strong_corroborators_retained": 2,
+          "unique_canonical_urls": 3,
+          "unique_domains": 3,
+          "unique_sources": 3
+        },
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.6666666666666666,
+          "evidence_recall": 0.6666666666666666,
+          "id": "novelty_tradeoff",
+          "ndcg": 0.7039180890341347,
+          "near_duplicate_rate": 0.0,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "nv1",
+            "nv2",
+            "nv4"
+          ],
+          "strong_corroborators_displaced": 0,
+          "strong_corroborators_retained": 2,
+          "unique_canonical_urls": 3,
+          "unique_domains": 3,
+          "unique_sources": 3
+        }
+      ],
+      "corroboration": {
+        "baseline_applicable_count": 10,
+        "displaced_count": 1,
+        "retention_rate": 0.9
+      },
+      "diversity": {
+        "near_duplicate_rate": 0.13333333333333333,
+        "unique_canonical_urls": 2.8,
+        "unique_domains": 3.0,
+        "unique_sources": 3.0
+      },
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "diversity_selection": 5
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 5,
+            "p50_ms": 0.056,
+            "p95_ms": 0.056
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "operation_counts": {
+          "candidates_selected": 15,
+          "selection_shortfall": 0
+        },
+        "selection_shortfall_rate": 0.0
+      }
+    },
+    "marginal_novelty": {
+      "accuracy": {
+        "evidence_precision": 0.9333333333333333,
+        "evidence_recall": 1.0,
+        "ndcg": 1.0,
+        "reciprocal_rank": 1.0
+      },
+      "cases": [
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.6666666666666666,
+          "evidence_recall": 1.0,
+          "id": "canonical_aliases",
+          "ndcg": 1.0,
+          "near_duplicate_rate": 0.0,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "ca1",
+            "ca4",
+            "ca3"
+          ],
+          "strong_corroborators_displaced": 0,
+          "strong_corroborators_retained": 2,
+          "unique_canonical_urls": 3,
+          "unique_domains": 2,
+          "unique_sources": 3
+        },
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 1.0,
+          "evidence_recall": 1.0,
+          "id": "source_crowding",
+          "ndcg": 1.0,
+          "near_duplicate_rate": 0.0,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "sc1",
+            "sc2",
+            "sc4"
+          ],
+          "strong_corroborators_displaced": 1,
+          "strong_corroborators_retained": 1,
+          "unique_canonical_urls": 3,
+          "unique_domains": 1,
+          "unique_sources": 1
+        },
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 1.0,
+          "evidence_recall": 1.0,
+          "id": "domain_corroboration",
+          "ndcg": 1.0,
+          "near_duplicate_rate": 0.0,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "dc1",
+            "dc3",
+            "dc4"
+          ],
+          "strong_corroborators_displaced": 1,
+          "strong_corroborators_retained": 1,
+          "unique_canonical_urls": 3,
+          "unique_domains": 2,
+          "unique_sources": 3
+        },
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 1.0,
+          "evidence_recall": 1.0,
+          "id": "near_duplicate_chunks",
+          "ndcg": 1.0,
+          "near_duplicate_rate": 0.0,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "nd1",
+            "nd4",
+            "nd5"
+          ],
+          "strong_corroborators_displaced": 1,
+          "strong_corroborators_retained": 1,
+          "unique_canonical_urls": 3,
+          "unique_domains": 1,
+          "unique_sources": 1
+        },
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 1.0,
+          "evidence_recall": 1.0,
+          "id": "novelty_tradeoff",
+          "ndcg": 1.0,
+          "near_duplicate_rate": 0.0,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "nv1",
+            "nv4",
+            "nv3"
+          ],
+          "strong_corroborators_displaced": 1,
+          "strong_corroborators_retained": 1,
+          "unique_canonical_urls": 3,
+          "unique_domains": 2,
+          "unique_sources": 2
+        }
+      ],
+      "corroboration": {
+        "baseline_applicable_count": 10,
+        "displaced_count": 4,
+        "retention_rate": 0.6
+      },
+      "diversity": {
+        "near_duplicate_rate": 0.0,
+        "unique_canonical_urls": 3.0,
+        "unique_domains": 1.6,
+        "unique_sources": 2.0
+      },
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "diversity_selection": 5
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 5,
+            "p50_ms": 0.07600000000000001,
+            "p95_ms": 0.07600000000000001
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "operation_counts": {
+          "candidates_selected": 15,
+          "novelty_comparisons": 50,
+          "selection_shortfall": 0
+        },
+        "selection_shortfall_rate": 0.0
+      }
+    },
+    "near_duplicate_penalty": {
+      "accuracy": {
+        "evidence_precision": 0.6666666666666666,
+        "evidence_recall": 0.7333333333333333,
+        "ndcg": 0.7593671386478427,
+        "reciprocal_rank": 1.0
+      },
+      "cases": [
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.6666666666666666,
+          "evidence_recall": 1.0,
+          "id": "canonical_aliases",
+          "ndcg": 0.9197207891481876,
+          "near_duplicate_rate": 0.0,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "ca1",
+            "ca3",
+            "ca4"
+          ],
+          "strong_corroborators_displaced": 0,
+          "strong_corroborators_retained": 2,
+          "unique_canonical_urls": 3,
+          "unique_domains": 2,
+          "unique_sources": 3
+        },
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.6666666666666666,
+          "evidence_recall": 0.6666666666666666,
+          "id": "source_crowding",
+          "ndcg": 0.7653606369886217,
+          "near_duplicate_rate": 0.0,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "sc1",
+            "sc2",
+            "sc3"
+          ],
+          "strong_corroborators_displaced": 0,
+          "strong_corroborators_retained": 2,
+          "unique_canonical_urls": 3,
+          "unique_domains": 2,
+          "unique_sources": 2
+        },
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.6666666666666666,
+          "evidence_recall": 0.6666666666666666,
+          "id": "domain_corroboration",
+          "ndcg": 0.7039180890341347,
+          "near_duplicate_rate": 0.0,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "dc1",
+            "dc2",
+            "dc3"
+          ],
+          "strong_corroborators_displaced": 0,
+          "strong_corroborators_retained": 2,
+          "unique_canonical_urls": 3,
+          "unique_domains": 1,
+          "unique_sources": 3
+        },
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.6666666666666666,
+          "evidence_recall": 0.6666666666666666,
+          "id": "near_duplicate_chunks",
+          "ndcg": 0.7039180890341347,
+          "near_duplicate_rate": 0.0,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "nd1",
+            "nd3",
+            "nd4"
+          ],
+          "strong_corroborators_displaced": 0,
+          "strong_corroborators_retained": 2,
+          "unique_canonical_urls": 3,
+          "unique_domains": 2,
+          "unique_sources": 2
+        },
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.6666666666666666,
+          "evidence_recall": 0.6666666666666666,
+          "id": "novelty_tradeoff",
+          "ndcg": 0.7039180890341347,
+          "near_duplicate_rate": 0.0,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "nv1",
+            "nv2",
+            "nv3"
+          ],
+          "strong_corroborators_displaced": 0,
+          "strong_corroborators_retained": 2,
+          "unique_canonical_urls": 3,
+          "unique_domains": 2,
+          "unique_sources": 2
+        }
+      ],
+      "corroboration": {
+        "baseline_applicable_count": 10,
+        "displaced_count": 0,
+        "retention_rate": 1.0
+      },
+      "diversity": {
+        "near_duplicate_rate": 0.0,
+        "unique_canonical_urls": 3.0,
+        "unique_domains": 1.8,
+        "unique_sources": 2.4
+      },
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "diversity_selection": 5
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 5,
+            "p50_ms": 0.08,
+            "p95_ms": 0.08
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "operation_counts": {
+          "candidates_selected": 15,
+          "near_duplicate_comparisons": 60,
+          "selection_shortfall": 0
+        },
+        "selection_shortfall_rate": 0.0
+      }
+    },
+    "per_source_cap_2": {
+      "accuracy": {
+        "evidence_precision": 0.5333333333333333,
+        "evidence_recall": 0.5666666666666667,
+        "ndcg": 0.6511245467690212,
+        "reciprocal_rank": 1.0
+      },
+      "cases": [
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.3333333333333333,
+          "evidence_recall": 0.5,
+          "id": "canonical_aliases",
+          "ndcg": 0.6131471927654584,
+          "near_duplicate_rate": 0.3333333333333333,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "ca1",
+            "ca2",
+            "ca3"
+          ],
+          "strong_corroborators_displaced": 0,
+          "strong_corroborators_retained": 2,
+          "unique_canonical_urls": 2,
+          "unique_domains": 3,
+          "unique_sources": 3
+        },
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.6666666666666666,
+          "evidence_recall": 0.6666666666666666,
+          "id": "source_crowding",
+          "ndcg": 0.7653606369886217,
+          "near_duplicate_rate": 0.0,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "sc1",
+            "sc2",
+            "sc3"
+          ],
+          "strong_corroborators_displaced": 0,
+          "strong_corroborators_retained": 2,
+          "unique_canonical_urls": 3,
+          "unique_domains": 2,
+          "unique_sources": 2
+        },
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.6666666666666666,
+          "evidence_recall": 0.6666666666666666,
+          "id": "domain_corroboration",
+          "ndcg": 0.7039180890341347,
+          "near_duplicate_rate": 0.0,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "dc1",
+            "dc2",
+            "dc3"
+          ],
+          "strong_corroborators_displaced": 0,
+          "strong_corroborators_retained": 2,
+          "unique_canonical_urls": 3,
+          "unique_domains": 1,
+          "unique_sources": 3
+        },
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.3333333333333333,
+          "evidence_recall": 0.3333333333333333,
+          "id": "near_duplicate_chunks",
+          "ndcg": 0.46927872602275644,
+          "near_duplicate_rate": 0.3333333333333333,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "nd1",
+            "nd2",
+            "nd3"
+          ],
+          "strong_corroborators_displaced": 0,
+          "strong_corroborators_retained": 2,
+          "unique_canonical_urls": 3,
+          "unique_domains": 3,
+          "unique_sources": 3
+        },
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.6666666666666666,
+          "evidence_recall": 0.6666666666666666,
+          "id": "novelty_tradeoff",
+          "ndcg": 0.7039180890341347,
+          "near_duplicate_rate": 0.0,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "nv1",
+            "nv2",
+            "nv3"
+          ],
+          "strong_corroborators_displaced": 0,
+          "strong_corroborators_retained": 2,
+          "unique_canonical_urls": 3,
+          "unique_domains": 2,
+          "unique_sources": 2
+        }
+      ],
+      "corroboration": {
+        "baseline_applicable_count": 10,
+        "displaced_count": 0,
+        "retention_rate": 1.0
+      },
+      "diversity": {
+        "near_duplicate_rate": 0.13333333333333333,
+        "unique_canonical_urls": 2.8,
+        "unique_domains": 2.2,
+        "unique_sources": 2.6
+      },
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "diversity_selection": 5
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 5,
+            "p50_ms": 0.056,
+            "p95_ms": 0.056
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "operation_counts": {
+          "candidates_selected": 15,
+          "selection_shortfall": 0
+        },
+        "selection_shortfall_rate": 0.0
+      }
+    },
+    "score_order_baseline": {
+      "accuracy": {
+        "evidence_precision": 0.5333333333333333,
+        "evidence_recall": 0.5666666666666667,
+        "ndcg": 0.6511245467690212,
+        "reciprocal_rank": 1.0
+      },
+      "cases": [
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.3333333333333333,
+          "evidence_recall": 0.5,
+          "id": "canonical_aliases",
+          "ndcg": 0.6131471927654584,
+          "near_duplicate_rate": 0.3333333333333333,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "ca1",
+            "ca2",
+            "ca3"
+          ],
+          "strong_corroborators_displaced": 0,
+          "strong_corroborators_retained": 2,
+          "unique_canonical_urls": 2,
+          "unique_domains": 3,
+          "unique_sources": 3
+        },
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.6666666666666666,
+          "evidence_recall": 0.6666666666666666,
+          "id": "source_crowding",
+          "ndcg": 0.7653606369886217,
+          "near_duplicate_rate": 0.0,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "sc1",
+            "sc2",
+            "sc3"
+          ],
+          "strong_corroborators_displaced": 0,
+          "strong_corroborators_retained": 2,
+          "unique_canonical_urls": 3,
+          "unique_domains": 2,
+          "unique_sources": 2
+        },
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.6666666666666666,
+          "evidence_recall": 0.6666666666666666,
+          "id": "domain_corroboration",
+          "ndcg": 0.7039180890341347,
+          "near_duplicate_rate": 0.0,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "dc1",
+            "dc2",
+            "dc3"
+          ],
+          "strong_corroborators_displaced": 0,
+          "strong_corroborators_retained": 2,
+          "unique_canonical_urls": 3,
+          "unique_domains": 1,
+          "unique_sources": 3
+        },
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.3333333333333333,
+          "evidence_recall": 0.3333333333333333,
+          "id": "near_duplicate_chunks",
+          "ndcg": 0.46927872602275644,
+          "near_duplicate_rate": 0.3333333333333333,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "nd1",
+            "nd2",
+            "nd3"
+          ],
+          "strong_corroborators_displaced": 0,
+          "strong_corroborators_retained": 2,
+          "unique_canonical_urls": 3,
+          "unique_domains": 3,
+          "unique_sources": 3
+        },
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.6666666666666666,
+          "evidence_recall": 0.6666666666666666,
+          "id": "novelty_tradeoff",
+          "ndcg": 0.7039180890341347,
+          "near_duplicate_rate": 0.0,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "nv1",
+            "nv2",
+            "nv3"
+          ],
+          "strong_corroborators_displaced": 0,
+          "strong_corroborators_retained": 2,
+          "unique_canonical_urls": 3,
+          "unique_domains": 2,
+          "unique_sources": 2
+        }
+      ],
+      "corroboration": {
+        "baseline_applicable_count": 10,
+        "displaced_count": 0,
+        "retention_rate": 1.0
+      },
+      "diversity": {
+        "near_duplicate_rate": 0.13333333333333333,
+        "unique_canonical_urls": 2.8,
+        "unique_domains": 2.2,
+        "unique_sources": 2.6
+      },
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "diversity_selection": 5
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 5,
+            "p50_ms": 0.056,
+            "p95_ms": 0.056
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "operation_counts": {
+          "candidates_selected": 15,
+          "selection_shortfall": 0
+        },
+        "selection_shortfall_rate": 0.0
+      }
+    },
+    "source_dedup": {
+      "accuracy": {
+        "evidence_precision": 0.4666666666666666,
+        "evidence_recall": 0.5,
+        "ndcg": 0.5919081645758482,
+        "reciprocal_rank": 1.0
+      },
+      "cases": [
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.3333333333333333,
+          "evidence_recall": 0.5,
+          "id": "canonical_aliases",
+          "ndcg": 0.6131471927654584,
+          "near_duplicate_rate": 0.3333333333333333,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "ca1",
+            "ca2",
+            "ca3"
+          ],
+          "strong_corroborators_displaced": 0,
+          "strong_corroborators_retained": 2,
+          "unique_canonical_urls": 2,
+          "unique_domains": 3,
+          "unique_sources": 3
+        },
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.3333333333333333,
+          "evidence_recall": 0.3333333333333333,
+          "id": "source_crowding",
+          "ndcg": 0.46927872602275644,
+          "near_duplicate_rate": 0.0,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "sc1",
+            "sc3",
+            "sc5"
+          ],
+          "strong_corroborators_displaced": 0,
+          "strong_corroborators_retained": 2,
+          "unique_canonical_urls": 3,
+          "unique_domains": 3,
+          "unique_sources": 3
+        },
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.6666666666666666,
+          "evidence_recall": 0.6666666666666666,
+          "id": "domain_corroboration",
+          "ndcg": 0.7039180890341347,
+          "near_duplicate_rate": 0.0,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "dc1",
+            "dc2",
+            "dc3"
+          ],
+          "strong_corroborators_displaced": 0,
+          "strong_corroborators_retained": 2,
+          "unique_canonical_urls": 3,
+          "unique_domains": 1,
+          "unique_sources": 3
+        },
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.3333333333333333,
+          "evidence_recall": 0.3333333333333333,
+          "id": "near_duplicate_chunks",
+          "ndcg": 0.46927872602275644,
+          "near_duplicate_rate": 0.3333333333333333,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "nd1",
+            "nd2",
+            "nd3"
+          ],
+          "strong_corroborators_displaced": 0,
+          "strong_corroborators_retained": 2,
+          "unique_canonical_urls": 3,
+          "unique_domains": 3,
+          "unique_sources": 3
+        },
+        {
+          "baseline_strong_corroborators": 2,
+          "evidence_precision": 0.6666666666666666,
+          "evidence_recall": 0.6666666666666666,
+          "id": "novelty_tradeoff",
+          "ndcg": 0.7039180890341347,
+          "near_duplicate_rate": 0.0,
+          "reciprocal_rank": 1.0,
+          "selected_ids": [
+            "nv1",
+            "nv2",
+            "nv4"
+          ],
+          "strong_corroborators_displaced": 0,
+          "strong_corroborators_retained": 2,
+          "unique_canonical_urls": 3,
+          "unique_domains": 3,
+          "unique_sources": 3
+        }
+      ],
+      "corroboration": {
+        "baseline_applicable_count": 10,
+        "displaced_count": 0,
+        "retention_rate": 1.0
+      },
+      "diversity": {
+        "near_duplicate_rate": 0.13333333333333333,
+        "unique_canonical_urls": 2.8,
+        "unique_domains": 2.6,
+        "unique_sources": 3.0
+      },
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "diversity_selection": 5
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 5,
+            "p50_ms": 0.056,
+            "p95_ms": 0.056
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "operation_counts": {
+          "candidates_selected": 15,
+          "selection_shortfall": 0
+        },
+        "selection_shortfall_rate": 0.0
+      }
+    }
+  },
+  "run_mode": "offline_stage6_diversity_policy_replay",
+  "schema_version": "1.0"
+}

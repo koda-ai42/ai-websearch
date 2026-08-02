@@ -1,0 +1,2200 @@
+{
+  "corpus": {
+    "path": "benchmarks/fixtures/stage5_v1/retrieval_corpus.json",
+    "version": "2026-07-15.stage5.v1"
+  },
+  "evaluation_protocol": {
+    "database_access": "No SQLite or production database is opened.",
+    "latency": "Deterministic fixture durations and operation counts, not live retrieval measurements.",
+    "one_factor_at_a_time": true,
+    "reranker_used": false,
+    "scope": "Independent synthetic FTS, vector-candidate, fusion, and source-score experiments."
+  },
+  "fts_policies": {
+    "raw_observable": {
+      "accuracy": {
+        "ndcg": 0.3333333333333333,
+        "precision": 0.3333333333333333,
+        "recall": 0.3333333333333333,
+        "reciprocal_rank": 0.3333333333333333,
+        "retrieval_quality_applicable_cases": 3
+      },
+      "cases": [
+        {
+          "error_observable": false,
+          "id": "natural_question",
+          "ndcg": 0.0,
+          "precision": 0.0,
+          "query_failed": false,
+          "recall": 0.0,
+          "reciprocal_rank": 0.0,
+          "returned_ids": []
+        },
+        {
+          "error_observable": true,
+          "id": "punctuation",
+          "ndcg": null,
+          "precision": null,
+          "query_failed": true,
+          "recall": null,
+          "reciprocal_rank": null,
+          "returned_ids": []
+        },
+        {
+          "error_observable": false,
+          "id": "operator_word",
+          "ndcg": 0.0,
+          "precision": 0.0,
+          "query_failed": false,
+          "recall": 0.0,
+          "reciprocal_rank": 0.0,
+          "returned_ids": []
+        },
+        {
+          "error_observable": true,
+          "id": "malformed_near",
+          "ndcg": null,
+          "precision": null,
+          "query_failed": true,
+          "recall": null,
+          "reciprocal_rank": null,
+          "returned_ids": []
+        },
+        {
+          "error_observable": false,
+          "id": "rare_term",
+          "ndcg": 1.0,
+          "precision": 1.0,
+          "query_failed": false,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "returned_ids": [
+            "r1"
+          ]
+        }
+      ],
+      "latency": {
+        "failure_counts": {
+          "fts": 2
+        },
+        "operation_counts": {
+          "fts": 5
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 5,
+            "p50_ms": 0.04,
+            "p95_ms": 0.045
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "operation_counts": {
+          "fts_query": 5,
+          "fts_query_failure": 2,
+          "observable_query_error": 2,
+          "silent_empty_failure": 0
+        },
+        "query_failure_rate": 0.4,
+        "silent_failure_rate": 0.0
+      }
+    },
+    "raw_silent": {
+      "accuracy": {
+        "ndcg": 0.3333333333333333,
+        "precision": 0.3333333333333333,
+        "recall": 0.3333333333333333,
+        "reciprocal_rank": 0.3333333333333333,
+        "retrieval_quality_applicable_cases": 3
+      },
+      "cases": [
+        {
+          "error_observable": false,
+          "id": "natural_question",
+          "ndcg": 0.0,
+          "precision": 0.0,
+          "query_failed": false,
+          "recall": 0.0,
+          "reciprocal_rank": 0.0,
+          "returned_ids": []
+        },
+        {
+          "error_observable": false,
+          "id": "punctuation",
+          "ndcg": null,
+          "precision": null,
+          "query_failed": true,
+          "recall": null,
+          "reciprocal_rank": null,
+          "returned_ids": []
+        },
+        {
+          "error_observable": false,
+          "id": "operator_word",
+          "ndcg": 0.0,
+          "precision": 0.0,
+          "query_failed": false,
+          "recall": 0.0,
+          "reciprocal_rank": 0.0,
+          "returned_ids": []
+        },
+        {
+          "error_observable": false,
+          "id": "malformed_near",
+          "ndcg": null,
+          "precision": null,
+          "query_failed": true,
+          "recall": null,
+          "reciprocal_rank": null,
+          "returned_ids": []
+        },
+        {
+          "error_observable": false,
+          "id": "rare_term",
+          "ndcg": 1.0,
+          "precision": 1.0,
+          "query_failed": false,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "returned_ids": [
+            "r1"
+          ]
+        }
+      ],
+      "latency": {
+        "failure_counts": {
+          "fts": 2
+        },
+        "operation_counts": {
+          "fts": 5
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 5,
+            "p50_ms": 0.04,
+            "p95_ms": 0.045
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "operation_counts": {
+          "fts_query": 5,
+          "fts_query_failure": 2,
+          "observable_query_error": 0,
+          "silent_empty_failure": 2
+        },
+        "query_failure_rate": 0.4,
+        "silent_failure_rate": 0.4
+      }
+    },
+    "sanitized_and": {
+      "accuracy": {
+        "ndcg": 0.8,
+        "precision": 0.8,
+        "recall": 0.8,
+        "reciprocal_rank": 0.8,
+        "retrieval_quality_applicable_cases": 5
+      },
+      "cases": [
+        {
+          "error_observable": false,
+          "id": "natural_question",
+          "ndcg": 1.0,
+          "precision": 1.0,
+          "query_failed": false,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "returned_ids": [
+            "n1"
+          ]
+        },
+        {
+          "error_observable": false,
+          "id": "punctuation",
+          "ndcg": 1.0,
+          "precision": 1.0,
+          "query_failed": false,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "returned_ids": [
+            "p1"
+          ]
+        },
+        {
+          "error_observable": false,
+          "id": "operator_word",
+          "ndcg": 1.0,
+          "precision": 1.0,
+          "query_failed": false,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "returned_ids": [
+            "o3"
+          ]
+        },
+        {
+          "error_observable": false,
+          "id": "malformed_near",
+          "ndcg": 0.0,
+          "precision": 0.0,
+          "query_failed": false,
+          "recall": 0.0,
+          "reciprocal_rank": 0.0,
+          "returned_ids": []
+        },
+        {
+          "error_observable": false,
+          "id": "rare_term",
+          "ndcg": 1.0,
+          "precision": 1.0,
+          "query_failed": false,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "returned_ids": [
+            "r1"
+          ]
+        }
+      ],
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "fts": 5
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 5,
+            "p50_ms": 0.04,
+            "p95_ms": 0.045
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "operation_counts": {
+          "fts_query": 5,
+          "fts_query_failure": 0,
+          "observable_query_error": 0,
+          "silent_empty_failure": 0
+        },
+        "query_failure_rate": 0.0,
+        "silent_failure_rate": 0.0
+      }
+    },
+    "sanitized_or": {
+      "accuracy": {
+        "ndcg": 0.9,
+        "precision": 0.6666666666666667,
+        "recall": 1.0,
+        "reciprocal_rank": 0.8666666666666666,
+        "retrieval_quality_applicable_cases": 5
+      },
+      "cases": [
+        {
+          "error_observable": false,
+          "id": "natural_question",
+          "ndcg": 1.0,
+          "precision": 0.5,
+          "query_failed": false,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "returned_ids": [
+            "n1",
+            "n2"
+          ]
+        },
+        {
+          "error_observable": false,
+          "id": "punctuation",
+          "ndcg": 1.0,
+          "precision": 0.5,
+          "query_failed": false,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "returned_ids": [
+            "p1",
+            "p2"
+          ]
+        },
+        {
+          "error_observable": false,
+          "id": "operator_word",
+          "ndcg": 0.5,
+          "precision": 0.3333333333333333,
+          "query_failed": false,
+          "recall": 1.0,
+          "reciprocal_rank": 0.3333333333333333,
+          "returned_ids": [
+            "o1",
+            "o2",
+            "o3"
+          ]
+        },
+        {
+          "error_observable": false,
+          "id": "malformed_near",
+          "ndcg": 1.0,
+          "precision": 1.0,
+          "query_failed": false,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "returned_ids": [
+            "m1"
+          ]
+        },
+        {
+          "error_observable": false,
+          "id": "rare_term",
+          "ndcg": 1.0,
+          "precision": 1.0,
+          "query_failed": false,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "returned_ids": [
+            "r1"
+          ]
+        }
+      ],
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "fts": 5
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 5,
+            "p50_ms": 0.04,
+            "p95_ms": 0.045
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "operation_counts": {
+          "fts_query": 5,
+          "fts_query_failure": 0,
+          "observable_query_error": 0,
+          "silent_empty_failure": 0
+        },
+        "query_failure_rate": 0.0,
+        "silent_failure_rate": 0.0
+      }
+    }
+  },
+  "fusion_policies": {
+    "minmax_50_50": {
+      "accuracy": {
+        "ndcg": 0.8442893273045486,
+        "precision": 0.7222222222222222,
+        "recall": 0.8333333333333334,
+        "reciprocal_rank": 1.0
+      },
+      "cases": [
+        {
+          "id": "vector_outlier",
+          "ndcg": 0.9197207891481876,
+          "precision": 0.6666666666666666,
+          "ranked_ids": [
+            "a",
+            "b",
+            "c"
+          ],
+          "recall": 1.0,
+          "reciprocal_rank": 1.0
+        },
+        {
+          "id": "keyword_signal",
+          "ndcg": 0.6131471927654584,
+          "precision": 0.5,
+          "ranked_ids": [
+            "e",
+            "f"
+          ],
+          "recall": 0.5,
+          "reciprocal_rank": 1.0
+        },
+        {
+          "id": "source_tension",
+          "ndcg": 1.0,
+          "precision": 1.0,
+          "ranked_ids": [
+            "h",
+            "i"
+          ],
+          "recall": 1.0,
+          "reciprocal_rank": 1.0
+        }
+      ],
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "normalization_fusion": 3
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 3,
+            "p50_ms": 0.03,
+            "p95_ms": 0.04
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "cases_evaluated": 3,
+        "reranker_used": false
+      }
+    },
+    "original_minmax_70_30": {
+      "accuracy": {
+        "ndcg": 0.6934264036172708,
+        "precision": 0.7222222222222222,
+        "recall": 0.8333333333333334,
+        "reciprocal_rank": 0.6666666666666666
+      },
+      "cases": [
+        {
+          "id": "vector_outlier",
+          "ndcg": 0.6934264036172708,
+          "precision": 0.6666666666666666,
+          "ranked_ids": [
+            "b",
+            "a",
+            "c"
+          ],
+          "recall": 1.0,
+          "reciprocal_rank": 0.5
+        },
+        {
+          "id": "keyword_signal",
+          "ndcg": 0.38685280723454163,
+          "precision": 0.5,
+          "ranked_ids": [
+            "f",
+            "e"
+          ],
+          "recall": 0.5,
+          "reciprocal_rank": 0.5
+        },
+        {
+          "id": "source_tension",
+          "ndcg": 1.0,
+          "precision": 1.0,
+          "ranked_ids": [
+            "h",
+            "i"
+          ],
+          "recall": 1.0,
+          "reciprocal_rank": 1.0
+        }
+      ],
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "normalization_fusion": 3
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 3,
+            "p50_ms": 0.03,
+            "p95_ms": 0.04
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "cases_evaluated": 3,
+        "reranker_used": false
+      }
+    },
+    "rank_calibrated_70_30": {
+      "accuracy": {
+        "ndcg": 0.6934264036172708,
+        "precision": 0.7222222222222222,
+        "recall": 0.8333333333333334,
+        "reciprocal_rank": 0.6666666666666666
+      },
+      "cases": [
+        {
+          "id": "vector_outlier",
+          "ndcg": 0.6934264036172708,
+          "precision": 0.6666666666666666,
+          "ranked_ids": [
+            "b",
+            "a",
+            "c"
+          ],
+          "recall": 1.0,
+          "reciprocal_rank": 0.5
+        },
+        {
+          "id": "keyword_signal",
+          "ndcg": 0.38685280723454163,
+          "precision": 0.5,
+          "ranked_ids": [
+            "f",
+            "e"
+          ],
+          "recall": 0.5,
+          "reciprocal_rank": 0.5
+        },
+        {
+          "id": "source_tension",
+          "ndcg": 1.0,
+          "precision": 1.0,
+          "ranked_ids": [
+            "h",
+            "i"
+          ],
+          "recall": 1.0,
+          "reciprocal_rank": 1.0
+        }
+      ],
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "normalization_fusion": 3
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 3,
+            "p50_ms": 0.03,
+            "p95_ms": 0.04
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "cases_evaluated": 3,
+        "reranker_used": false
+      }
+    },
+    "weighted_rrf_70_30": {
+      "accuracy": {
+        "ndcg": 0.4355245321275764,
+        "precision": 0.4444444444444444,
+        "recall": 0.5,
+        "reciprocal_rank": 0.611111111111111
+      },
+      "cases": [
+        {
+          "id": "vector_outlier",
+          "ndcg": 0.3065735963827292,
+          "precision": 0.3333333333333333,
+          "ranked_ids": [
+            "b",
+            "d",
+            "a"
+          ],
+          "recall": 0.5,
+          "reciprocal_rank": 0.3333333333333333
+        },
+        {
+          "id": "keyword_signal",
+          "ndcg": 0.38685280723454163,
+          "precision": 0.5,
+          "ranked_ids": [
+            "f",
+            "e"
+          ],
+          "recall": 0.5,
+          "reciprocal_rank": 0.5
+        },
+        {
+          "id": "source_tension",
+          "ndcg": 0.6131471927654584,
+          "precision": 0.5,
+          "ranked_ids": [
+            "i",
+            "j"
+          ],
+          "recall": 0.5,
+          "reciprocal_rank": 1.0
+        }
+      ],
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "normalization_fusion": 3
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 3,
+            "p50_ms": 0.03,
+            "p95_ms": 0.04
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "cases_evaluated": 3,
+        "reranker_used": false
+      }
+    }
+  },
+  "live_integrations_executed": [],
+  "run_mode": "offline_stage5_retrieval_policy_replay",
+  "schema_version": "1.0",
+  "source_score_policies": {
+    "no_source_multiplier": {
+      "accuracy": {
+        "ndcg": 0.6934264036172708,
+        "precision": 0.7222222222222222,
+        "recall": 0.8333333333333334,
+        "reciprocal_rank": 0.6666666666666666
+      },
+      "cases": [
+        {
+          "id": "vector_outlier",
+          "ndcg": 0.6934264036172708,
+          "precision": 0.6666666666666666,
+          "ranked_ids": [
+            "b",
+            "a",
+            "c"
+          ],
+          "recall": 1.0,
+          "reciprocal_rank": 0.5
+        },
+        {
+          "id": "keyword_signal",
+          "ndcg": 0.38685280723454163,
+          "precision": 0.5,
+          "ranked_ids": [
+            "f",
+            "e"
+          ],
+          "recall": 0.5,
+          "reciprocal_rank": 0.5
+        },
+        {
+          "id": "source_tension",
+          "ndcg": 1.0,
+          "precision": 1.0,
+          "ranked_ids": [
+            "h",
+            "i"
+          ],
+          "recall": 1.0,
+          "reciprocal_rank": 1.0
+        }
+      ],
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "normalization_fusion": 3
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 3,
+            "p50_ms": 0.03,
+            "p95_ms": 0.04
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "cases_evaluated": 3,
+        "reranker_used": false
+      }
+    },
+    "original_source_multiplier": {
+      "accuracy": {
+        "ndcg": 0.6934264036172708,
+        "precision": 0.7222222222222222,
+        "recall": 0.8333333333333334,
+        "reciprocal_rank": 0.6666666666666666
+      },
+      "cases": [
+        {
+          "id": "vector_outlier",
+          "ndcg": 0.6934264036172708,
+          "precision": 0.6666666666666666,
+          "ranked_ids": [
+            "b",
+            "a",
+            "c"
+          ],
+          "recall": 1.0,
+          "reciprocal_rank": 0.5
+        },
+        {
+          "id": "keyword_signal",
+          "ndcg": 0.38685280723454163,
+          "precision": 0.5,
+          "ranked_ids": [
+            "f",
+            "e"
+          ],
+          "recall": 0.5,
+          "reciprocal_rank": 0.5
+        },
+        {
+          "id": "source_tension",
+          "ndcg": 1.0,
+          "precision": 1.0,
+          "ranked_ids": [
+            "h",
+            "i"
+          ],
+          "recall": 1.0,
+          "reciprocal_rank": 1.0
+        }
+      ],
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "normalization_fusion": 3
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 3,
+            "p50_ms": 0.03,
+            "p95_ms": 0.04
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "cases_evaluated": 3,
+        "reranker_used": false
+      }
+    },
+    "strong_source_multiplier": {
+      "accuracy": {
+        "ndcg": 0.6934264036172708,
+        "precision": 0.7222222222222222,
+        "recall": 0.8333333333333334,
+        "reciprocal_rank": 0.6666666666666666
+      },
+      "cases": [
+        {
+          "id": "vector_outlier",
+          "ndcg": 0.6934264036172708,
+          "precision": 0.6666666666666666,
+          "ranked_ids": [
+            "b",
+            "a",
+            "c"
+          ],
+          "recall": 1.0,
+          "reciprocal_rank": 0.5
+        },
+        {
+          "id": "keyword_signal",
+          "ndcg": 0.38685280723454163,
+          "precision": 0.5,
+          "ranked_ids": [
+            "f",
+            "e"
+          ],
+          "recall": 0.5,
+          "reciprocal_rank": 0.5
+        },
+        {
+          "id": "source_tension",
+          "ndcg": 1.0,
+          "precision": 1.0,
+          "ranked_ids": [
+            "h",
+            "i"
+          ],
+          "recall": 1.0,
+          "reciprocal_rank": 1.0
+        }
+      ],
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "normalization_fusion": 3
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 3,
+            "p50_ms": 0.03,
+            "p95_ms": 0.04
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "cases_evaluated": 3,
+        "reranker_used": false
+      }
+    }
+  },
+  "vector_candidate_policies": {
+    "candidate_k_16": {
+      "accuracy": {
+        "mean_candidate_recall": 0.8888888888888888
+      },
+      "cases": [
+        {
+          "candidate_count": 8,
+          "candidate_recall": 1.0,
+          "corpus_size": 8,
+          "id": "small"
+        },
+        {
+          "candidate_count": 16,
+          "candidate_recall": 1.0,
+          "corpus_size": 16,
+          "id": "medium"
+        },
+        {
+          "candidate_count": 16,
+          "candidate_recall": 0.6666666666666666,
+          "corpus_size": 32,
+          "id": "large"
+        }
+      ],
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "vector_scan": 3
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 3,
+            "p50_ms": 0.192,
+            "p95_ms": 0.352
+          }
+        }
+      },
+      "reliability": {
+        "materialized_candidates": 40,
+        "vector_comparisons": 56
+      }
+    },
+    "candidate_k_32": {
+      "accuracy": {
+        "mean_candidate_recall": 1.0
+      },
+      "cases": [
+        {
+          "candidate_count": 8,
+          "candidate_recall": 1.0,
+          "corpus_size": 8,
+          "id": "small"
+        },
+        {
+          "candidate_count": 16,
+          "candidate_recall": 1.0,
+          "corpus_size": 16,
+          "id": "medium"
+        },
+        {
+          "candidate_count": 32,
+          "candidate_recall": 1.0,
+          "corpus_size": 32,
+          "id": "large"
+        }
+      ],
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "vector_scan": 3
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 3,
+            "p50_ms": 0.192,
+            "p95_ms": 0.384
+          }
+        }
+      },
+      "reliability": {
+        "materialized_candidates": 56,
+        "vector_comparisons": 56
+      }
+    },
+    "candidate_k_4": {
+      "accuracy": {
+        "mean_candidate_recall": 0.27777777777777773
+      },
+      "cases": [
+        {
+          "candidate_count": 4,
+          "candidate_recall": 0.0,
+          "corpus_size": 8,
+          "id": "small"
+        },
+        {
+          "candidate_count": 4,
+          "candidate_recall": 0.5,
+          "corpus_size": 16,
+          "id": "medium"
+        },
+        {
+          "candidate_count": 4,
+          "candidate_recall": 0.3333333333333333,
+          "corpus_size": 32,
+          "id": "large"
+        }
+      ],
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "vector_scan": 3
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 3,
+            "p50_ms": 0.168,
+            "p95_ms": 0.328
+          }
+        }
+      },
+      "reliability": {
+        "materialized_candidates": 12,
+        "vector_comparisons": 56
+      }
+    },
+    "candidate_k_8": {
+      "accuracy": {
+        "mean_candidate_recall": 0.611111111111111
+      },
+      "cases": [
+        {
+          "candidate_count": 8,
+          "candidate_recall": 1.0,
+          "corpus_size": 8,
+          "id": "small"
+        },
+        {
+          "candidate_count": 8,
+          "candidate_recall": 0.5,
+          "corpus_size": 16,
+          "id": "medium"
+        },
+        {
+          "candidate_count": 8,
+          "candidate_recall": 0.3333333333333333,
+          "corpus_size": 32,
+          "id": "large"
+        }
+      ],
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "vector_scan": 3
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 3,
+            "p50_ms": 0.176,
+            "p95_ms": 0.336
+          }
+        }
+      },
+      "reliability": {
+        "materialized_candidates": 24,
+        "vector_comparisons": 56
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "accuracy": {
+    "old_topic_still_retrievable": true,
+    "refresh_outcome_recorded": true,
+    "stale_fallback_retrievable": true
+  },
+  "latency": {
+    "database_operations": 5,
+    "measured": false
+  },
+  "limitations": [
+    "Uses a disposable SQLite database and a fixed vector without model inference.",
+    "Does not execute a browser refresh; the terminal refresh outcome is injected."
+  ],
+  "reliability": {
+    "active_versions": 1,
+    "cache_status": "stale_fallback",
+    "good_source_preserved": true,
+    "model_inference": false,
+    "network_access": false
+  },
+  "run_mode": "offline_production_cache",
+  "schema_version": "1.0"
+}

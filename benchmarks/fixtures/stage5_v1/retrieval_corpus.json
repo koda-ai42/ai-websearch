@@ -1,0 +1,20 @@
+{
+  "version": "2026-07-15.stage5.v1",
+  "fts_cases": [
+    {"id":"natural_question","query":"what is widget retry backoff","documents":[{"id":"n1","text":"widget retry backoff is exponential"},{"id":"n2","text":"widget retry settings"},{"id":"n3","text":"unrelated release notes"}],"relevant_ids":["n1"]},
+    {"id":"punctuation","query":"widget API: retry?","documents":[{"id":"p1","text":"widget api retry reference"},{"id":"p2","text":"widget api authentication"}],"relevant_ids":["p1"]},
+    {"id":"operator_word","query":"alpha OR beta","documents":[{"id":"o1","text":"alpha only"},{"id":"o2","text":"beta only"},{"id":"o3","text":"alpha beta migration"}],"relevant_ids":["o3"]},
+    {"id":"malformed_near","query":"NEAR(alpha","documents":[{"id":"m1","text":"alpha reference"},{"id":"m2","text":"gamma reference"}],"relevant_ids":["m1"]},
+    {"id":"rare_term","query":"xylophene","documents":[{"id":"r1","text":"xylophene compatibility"},{"id":"r2","text":"common compatibility"}],"relevant_ids":["r1"]}
+  ],
+  "vector_cases": [
+    {"id":"small","ranked_ids":["s1","s2","s3","s4","s5","s6","s7","s8"],"relevant_ids":["s7"]},
+    {"id":"medium","ranked_ids":["m1","m2","m3","m4","m5","m6","m7","m8","m9","m10","m11","m12","m13","m14","m15","m16"],"relevant_ids":["m3","m12"]},
+    {"id":"large","ranked_ids":["l1","l2","l3","l4","l5","l6","l7","l8","l9","l10","l11","l12","l13","l14","l15","l16","l17","l18","l19","l20","l21","l22","l23","l24","l25","l26","l27","l28","l29","l30","l31","l32"],"relevant_ids":["l2","l9","l24"]}
+  ],
+  "ranking_cases": [
+    {"id":"vector_outlier","top_k":3,"chunks":[{"id":"a","vector":0.91,"keyword":0.75,"source":0.5},{"id":"b","vector":0.99,"keyword":0.0,"source":1.0},{"id":"c","vector":0.89,"keyword":0.8,"source":0.4},{"id":"d","vector":0.88,"keyword":0.2,"source":0.8}],"relevant_ids":["a","c"]},
+    {"id":"keyword_signal","top_k":2,"chunks":[{"id":"e","vector":0.70,"keyword":0.95,"source":0.5},{"id":"f","vector":0.92,"keyword":0.1,"source":0.5},{"id":"g","vector":0.68,"keyword":0.85,"source":0.5}],"relevant_ids":["e","g"]},
+    {"id":"source_tension","top_k":2,"chunks":[{"id":"h","vector":0.86,"keyword":0.8,"source":0.2},{"id":"i","vector":0.84,"keyword":0.75,"source":0.9},{"id":"j","vector":0.82,"keyword":0.7,"source":1.0}],"relevant_ids":["h","i"]}
+  ]
+}

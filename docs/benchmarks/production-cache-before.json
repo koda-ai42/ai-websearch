@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "run_mode": "offline_production_cache",
+  "accuracy": {
+    "stale_fallback_retrievable": false,
+    "old_topic_still_retrievable": true,
+    "refresh_outcome_recorded": false
+  },
+  "reliability": {
+    "good_source_preserved": true,
+    "active_versions": 1,
+    "cache_status": null,
+    "network_access": false,
+    "model_inference": false
+  },
+  "latency": {
+    "measured": false,
+    "database_operations": 4
+  },
+  "limitations": [
+    "Recorded from the pre-change production schema and topic-association behavior.",
+    "The active source survived a failed refresh but was not associated with the new topic."
+  ]
+}

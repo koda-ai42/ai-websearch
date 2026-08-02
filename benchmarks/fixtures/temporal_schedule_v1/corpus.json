@@ -1,0 +1,14 @@
+{
+  "version": "2026-08-02.v1",
+  "chunking_case": {
+    "chunk_size": 520,
+    "overlap": 90,
+    "min_chunk_chars": 80,
+    "section_heading": "## France's UEFA Nations League fixtures: Group A1",
+    "tail_marker": "15 November",
+    "markdown": "France have played in several major tournaments and this background paragraph intentionally fills the preceding chunk with enough ordinary prose to exercise the overlap boundary. The article describes prior finals, qualification, coaching history, and recent results without adding another fixture list.\n\n## France's UEFA Nations League fixtures: Group A1\n**25 September**: Türkiye vs France (20:45)\n**28 September**: Belgium vs France (20:45)\n**2 October**: France vs Italy (20:45)\n**5 October**: France vs Belgium (20:45)\n**12 November**: Italy vs France (20:45)\n**15 November**: France vs Türkiye (20:45)\nAll times CET.\n\n## Selected for you\nWorld Cup results by team and other related articles are available from the navigation area."
+  },
+  "consent_case": {
+    "markdown": "Consent to Cookies & Data processing\nWe, and other third parties, use cookies and other technologies to process device information. Selecting I Accept enables tracking technologies. Reject all or manage preferences. Store and/or access information on a device. Precise geolocation data and personalised advertising may be used.\n\n# France at the World Cup 2026\nFrance had to settle for fourth place.\n\n## France's World Cup matches\n**14 July**: France 0-2 Spain\n**18 July – third place play-off**: France 4-6 England"
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "version": "2026-07-14.stage2.v1",
+  "cases": [
+    {
+      "id": "raw-score-scale",
+      "category": "exact_factual",
+      "query": "shortest planetary day",
+      "relevant_canonical_urls": ["https://science.example/jupiter"],
+      "search": {
+        "shortest planetary day": [
+          {"url": "https://science.example/jupiter", "canonical_url": "https://science.example/jupiter", "score": 0.82, "source_score": 0.5},
+          {"url": "https://blog.example/planet-days", "canonical_url": "https://blog.example/planet-days", "score": 0.62, "source_score": 0.5}
+        ],
+        "shortest planetary day official source": [
+          {"url": "https://agency.example/about", "canonical_url": "https://agency.example/about", "score": 99.0, "source_score": 0.5},
+          {"url": "https://science.example/jupiter", "canonical_url": "https://science.example/jupiter", "score": 0.7, "source_score": 0.5}
+        ],
+        "shortest planetary day technical documentation": [
+          {"url": "https://software.example/planet-api", "canonical_url": "https://software.example/planet-api", "score": 12.0, "source_score": 0.5},
+          {"url": "https://science.example/jupiter", "canonical_url": "https://science.example/jupiter", "score": 0.65, "source_score": 0.5}
+        ]
+      }
+    },
+    {
+      "id": "technical-docs",
+      "category": "technical_documentation",
+      "query": "widget retry setting",
+      "relevant_canonical_urls": ["https://docs.example/widget/retries"],
+      "search": {
+        "widget retry setting": [
+          {"url": "https://forum.example/widget", "canonical_url": "https://forum.example/widget", "score": 0.9, "source_score": 0.5},
+          {"url": "https://docs.example/widget/retries", "canonical_url": "https://docs.example/widget/retries", "score": 0.82, "source_score": 0.6}
+        ],
+        "widget retry setting official source": [
+          {"url": "https://docs.example/widget/retries", "canonical_url": "https://docs.example/widget/retries", "score": 0.93, "source_score": 0.6}
+        ],
+        "widget retry setting technical documentation": [
+          {"url": "https://docs.example/widget/retries", "canonical_url": "https://docs.example/widget/retries", "score": 0.97, "source_score": 0.6}
+        ]
+      }
+    },
+    {
+      "id": "current-event-aware",
+      "category": "current_events",
+      "query": "city transit opening date",
+      "relevant_canonical_urls": ["https://news.example/transit-opening"],
+      "search": {
+        "city transit opening date": [
+          {"url": "https://news.example/transit-opening", "canonical_url": "https://news.example/transit-opening", "score": 0.8, "source_score": 0.5}
+        ],
+        "city transit opening date official source": [
+          {"url": "https://city.example/transit", "canonical_url": "https://city.example/transit", "score": 0.94, "source_score": 0.5}
+        ],
+        "city transit opening date technical documentation": [
+          {"url": "https://engineering.example/transit", "canonical_url": "https://engineering.example/transit", "score": 0.98, "source_score": 0.5}
+        ],
+        "city transit opening date latest": [
+          {"url": "https://news.example/transit-opening", "canonical_url": "https://news.example/transit-opening", "score": 0.96, "source_score": 0.5}
+        ]
+      }
+    },
+    {
+      "id": "consumer-analysis-aware",
+      "category": "comparative_consumer",
+      "query": "quietest compact kettle",
+      "relevant_canonical_urls": ["https://reviews.example/quiet-kettles"],
+      "search": {
+        "quietest compact kettle": [
+          {"url": "https://reviews.example/quiet-kettles", "canonical_url": "https://reviews.example/quiet-kettles", "score": 0.78, "source_score": 0.5}
+        ],
+        "quietest compact kettle official source": [
+          {"url": "https://maker.example/kettle", "canonical_url": "https://maker.example/kettle", "score": 0.97, "source_score": 0.5}
+        ],
+        "quietest compact kettle technical documentation": [
+          {"url": "https://maker.example/kettle/manual", "canonical_url": "https://maker.example/kettle/manual", "score": 0.95, "source_score": 0.5}
+        ],
+        "quietest compact kettle independent analysis": [
+          {"url": "https://reviews.example/quiet-kettles", "canonical_url": "https://reviews.example/quiet-kettles", "score": 0.96, "source_score": 0.5}
+        ]
+      }
+    },
+    {
+      "id": "canonical-domain-crowding",
+      "category": "ambiguous",
+      "query": "example protocol overview",
+      "relevant_canonical_urls": ["https://reference.example/protocol"],
+      "search": {
+        "example protocol overview": [
+          {"url": "https://mirror.example/protocol?view=full", "canonical_url": "https://reference.example/protocol", "score": 0.88, "source_score": 0.5},
+          {"url": "https://reference.example/protocol", "canonical_url": "https://reference.example/protocol", "score": 0.86, "source_score": 0.5}
+        ],
+        "example protocol overview official source": [
+          {"url": "https://crowded.example/about", "canonical_url": "https://crowded.example/about", "score": 0.99, "source_score": 0.5},
+          {"url": "https://crowded.example/news", "canonical_url": "https://crowded.example/news", "score": 0.98, "source_score": 0.5},
+          {"url": "https://crowded.example/contact", "canonical_url": "https://crowded.example/contact", "score": 0.97, "source_score": 0.5}
+        ],
+        "example protocol overview technical documentation": [
+          {"url": "https://crowded.example/docs", "canonical_url": "https://crowded.example/docs", "score": 0.96, "source_score": 0.5}
+        ]
+      }
+    },
+    {
+      "id": "multi-hop-primary",
+      "category": "multi_hop",
+      "query": "river source and downstream reservoir",
+      "relevant_canonical_urls": ["https://geo.example/river", "https://water.example/reservoir"],
+      "search": {
+        "river source and downstream reservoir": [
+          {"url": "https://geo.example/river", "canonical_url": "https://geo.example/river", "score": 0.86, "source_score": 0.5},
+          {"url": "https://blog.example/river", "canonical_url": "https://blog.example/river", "score": 0.83, "source_score": 0.5}
+        ],
+        "river source and downstream reservoir official source": [
+          {"url": "https://water.example/reservoir", "canonical_url": "https://water.example/reservoir", "score": 0.92, "source_score": 0.5}
+        ],
+        "river source and downstream reservoir technical documentation": [
+          {"url": "https://engineering.example/dam", "canonical_url": "https://engineering.example/dam", "score": 0.94, "source_score": 0.5}
+        ],
+        "river source and downstream reservoir primary source": [
+          {"url": "https://geo.example/river", "canonical_url": "https://geo.example/river", "score": 0.95, "source_score": 0.5},
+          {"url": "https://water.example/reservoir", "canonical_url": "https://water.example/reservoir", "score": 0.94, "source_score": 0.5}
+        ]
+      }
+    }
+  ]
+}

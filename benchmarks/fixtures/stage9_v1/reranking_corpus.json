@@ -1,0 +1,25 @@
+{
+  "version": "stage9_v1",
+  "cases": [
+    {"id":"identifier","category":"exact technical identifiers","selection_limit":2,"relevant_ids":["B"],"candidates":[
+      {"id":"A","hybrid_rank":1,"heuristic_score":0.70,"cross_encoder_score":0.10,"text":"general material"},
+      {"id":"B","hybrid_rank":2,"heuristic_score":0.90,"cross_encoder_score":0.95,"text":"exact identifier answer"},
+      {"id":"C","hybrid_rank":3,"heuristic_score":0.40,"cross_encoder_score":0.40,"text":"other material"}]},
+    {"id":"paraphrase","category":"semantic paraphrases","selection_limit":2,"relevant_ids":["C"],"candidates":[
+      {"id":"A","hybrid_rank":1,"heuristic_score":0.80,"cross_encoder_score":0.20,"text":"keyword overlap"},
+      {"id":"B","hybrid_rank":2,"heuristic_score":0.50,"cross_encoder_score":0.30,"text":"background"},
+      {"id":"C","hybrid_rank":3,"heuristic_score":0.70,"cross_encoder_score":0.92,"text":"semantic answer"}]},
+    {"id":"fact","category":"simple factual queries","selection_limit":2,"relevant_ids":["A"],"candidates":[
+      {"id":"A","hybrid_rank":1,"heuristic_score":0.90,"cross_encoder_score":0.88,"text":"direct fact"},
+      {"id":"B","hybrid_rank":2,"heuristic_score":0.40,"cross_encoder_score":0.20,"text":"detail"}]},
+    {"id":"comparison","category":"complex comparisons","selection_limit":3,"relevant_ids":["B","C"],"candidates":[
+      {"id":"A","hybrid_rank":1,"heuristic_score":0.80,"cross_encoder_score":0.10,"text":"overview"},
+      {"id":"B","hybrid_rank":2,"heuristic_score":0.90,"cross_encoder_score":0.90,"text":"first comparison side"},
+      {"id":"C","hybrid_rank":3,"heuristic_score":0.70,"cross_encoder_score":0.85,"text":"second comparison side"},
+      {"id":"D","hybrid_rank":4,"heuristic_score":0.30,"cross_encoder_score":0.20,"text":"overview"}]},
+    {"id":"ambiguous","category":"ambiguous questions","selection_limit":2,"relevant_ids":["B"],"candidates":[
+      {"id":"A","hybrid_rank":1,"heuristic_score":0.60,"cross_encoder_score":0.30,"text":"wrong interpretation"},
+      {"id":"B","hybrid_rank":2,"heuristic_score":0.65,"cross_encoder_score":0.70,"text":"supported interpretation"},
+      {"id":"C","hybrid_rank":3,"heuristic_score":0.40,"cross_encoder_score":0.20,"text":"wrong interpretation"}]}
+  ]
+}

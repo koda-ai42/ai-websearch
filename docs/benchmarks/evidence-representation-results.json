@@ -1,0 +1,34 @@
+{
+  "latency": {
+    "measured": false,
+    "stored_characters_removed_per_chunk": 100
+  },
+  "limitations": [
+    "Token shares are lexical diagnostics, not embedding-model quality scores.",
+    "No sentence-transformer, CrossEncoder, network, browser or llama.cpp call is executed."
+  ],
+  "policies": {
+    "clean_storage_rendered_boundary": {
+      "accuracy": {
+        "evidence_token_share": 1.0,
+        "security_boilerplate_tokens_per_chunk": 0
+      },
+      "reliability": {
+        "requires_database_rebuild": true,
+        "untrusted_boundary_rendered": true
+      }
+    },
+    "stored_security_prefix": {
+      "accuracy": {
+        "evidence_token_share": 0.4444444444444444,
+        "security_boilerplate_tokens_per_chunk": 15
+      },
+      "reliability": {
+        "requires_database_rebuild": false,
+        "untrusted_boundary_rendered": true
+      }
+    }
+  },
+  "run_mode": "offline_evidence_representation",
+  "schema_version": "1.0"
+}

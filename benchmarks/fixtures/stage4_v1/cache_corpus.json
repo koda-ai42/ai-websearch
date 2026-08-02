@@ -1,0 +1,77 @@
+{
+  "version": "2026-07-14.stage4.v1",
+  "scenarios": [
+    {
+      "id": "fresh-cache-hit-before-refresh",
+      "ttl_hours": 24,
+      "events": [
+        {"at_hour": 0, "url": "https://example.test/article", "canonical_url": "https://example.test/article", "crawl_success": true, "outcome": "success", "content_hash": "good-v1", "provenance": {"source": "public-crawl", "fixture": "initial"}},
+        {"at_hour": 5, "url": "https://example.test/article", "canonical_url": "https://example.test/article", "crawl_success": true, "outcome": "success", "content_hash": "unexpected-refresh-v2", "provenance": {"source": "public-crawl", "fixture": "should-not-refresh"}}
+      ],
+      "expected": {"active_content_hash": "good-v1", "active_versions": 1, "safe_embedding_operations": 1, "safe_cache_hits": 1, "tests_cache_hit": true, "tests_unchanged_detection": false, "tests_good_preservation": true, "tests_wall_rejection": false, "tests_version_semantics": true}
+    },
+    {
+      "id": "unchanged-stale-refresh",
+      "ttl_hours": 24,
+      "events": [
+        {"at_hour": 0, "url": "https://example.test/unchanged", "canonical_url": "https://example.test/unchanged", "crawl_success": true, "outcome": "success", "content_hash": "same-hash", "provenance": {"source": "public-crawl", "fixture": "initial"}},
+        {"at_hour": 25, "url": "https://example.test/unchanged", "canonical_url": "https://example.test/unchanged", "crawl_success": true, "outcome": "success", "content_hash": "same-hash", "provenance": {"source": "public-crawl", "fixture": "unchanged-refresh"}}
+      ],
+      "expected": {"active_content_hash": "same-hash", "active_versions": 1, "safe_embedding_operations": 1, "safe_cache_hits": 0, "tests_cache_hit": false, "tests_unchanged_detection": true, "tests_good_preservation": false, "tests_wall_rejection": false, "tests_version_semantics": true}
+    },
+    {
+      "id": "changed-content-version",
+      "ttl_hours": 24,
+      "events": [
+        {"at_hour": 0, "url": "https://example.test/changed", "canonical_url": "https://example.test/changed", "crawl_success": true, "outcome": "success", "content_hash": "changed-v1", "provenance": {"source": "public-crawl", "fixture": "initial"}},
+        {"at_hour": 25, "url": "https://example.test/changed", "canonical_url": "https://example.test/changed", "crawl_success": true, "outcome": "success", "content_hash": "changed-v2", "provenance": {"source": "public-crawl", "fixture": "new-version"}}
+      ],
+      "expected": {"active_content_hash": "changed-v2", "active_versions": 1, "safe_embedding_operations": 2, "safe_cache_hits": 0, "tests_cache_hit": false, "tests_unchanged_detection": false, "tests_good_preservation": false, "tests_wall_rejection": false, "tests_version_semantics": true}
+    },
+    {
+      "id": "failed-refresh-preserves-good",
+      "ttl_hours": 24,
+      "events": [
+        {"at_hour": 0, "url": "https://example.test/failure", "canonical_url": "https://example.test/failure", "crawl_success": true, "outcome": "success", "content_hash": "preserved-good", "provenance": {"source": "public-crawl", "fixture": "initial"}},
+        {"at_hour": 25, "url": "https://example.test/failure", "canonical_url": "https://example.test/failure", "crawl_success": false, "outcome": "extraction_failure", "content_hash": "", "provenance": {"source": "public-crawl", "fixture": "failed-refresh"}}
+      ],
+      "expected": {"active_content_hash": "preserved-good", "active_versions": 1, "safe_embedding_operations": 1, "safe_cache_hits": 0, "tests_cache_hit": false, "tests_unchanged_detection": false, "tests_good_preservation": true, "tests_wall_rejection": false, "tests_version_semantics": false}
+    },
+    {
+      "id": "consent-wall-after-good",
+      "ttl_hours": 24,
+      "events": [
+        {"at_hour": 0, "url": "https://example.test/wall", "canonical_url": "https://example.test/wall", "crawl_success": true, "outcome": "success", "content_hash": "wall-good", "provenance": {"source": "public-crawl", "fixture": "initial"}},
+        {"at_hour": 25, "url": "https://example.test/wall", "canonical_url": "https://example.test/wall", "crawl_success": true, "outcome": "consent", "content_hash": "consent-wall", "provenance": {"source": "public-crawl", "fixture": "consent-refresh"}}
+      ],
+      "expected": {"active_content_hash": "wall-good", "active_versions": 1, "safe_embedding_operations": 1, "safe_cache_hits": 0, "tests_cache_hit": false, "tests_unchanged_detection": false, "tests_good_preservation": true, "tests_wall_rejection": true, "tests_version_semantics": true}
+    },
+    {
+      "id": "standalone-auth-wall",
+      "ttl_hours": 24,
+      "events": [
+        {"at_hour": 0, "url": "https://example.test/private", "canonical_url": "https://example.test/private", "crawl_success": true, "outcome": "authentication", "content_hash": "login-wall", "provenance": {"source": "public-crawl", "fixture": "auth-wall"}}
+      ],
+      "expected": {"active_content_hash": null, "active_versions": 0, "safe_embedding_operations": 0, "safe_cache_hits": 0, "tests_cache_hit": false, "tests_unchanged_detection": false, "tests_good_preservation": false, "tests_wall_rejection": true, "tests_version_semantics": true}
+    },
+    {
+      "id": "canonical-alias-unchanged",
+      "ttl_hours": 24,
+      "events": [
+        {"at_hour": 0, "url": "https://m.example.test/article", "canonical_url": "https://example.test/canonical", "crawl_success": true, "outcome": "success", "content_hash": "canonical-same", "provenance": {"source": "public-crawl", "fixture": "mobile"}},
+        {"at_hour": 25, "url": "https://example.test/canonical", "canonical_url": "https://example.test/canonical", "crawl_success": true, "outcome": "success", "content_hash": "canonical-same", "provenance": {"source": "public-crawl", "fixture": "canonical"}}
+      ],
+      "expected": {"active_content_hash": "canonical-same", "active_versions": 1, "safe_embedding_operations": 1, "safe_cache_hits": 0, "tests_cache_hit": false, "tests_unchanged_detection": true, "tests_good_preservation": false, "tests_wall_rejection": false, "tests_version_semantics": true}
+    },
+    {
+      "id": "historical-content-reversion",
+      "ttl_hours": 24,
+      "events": [
+        {"at_hour": 0, "url": "https://example.test/revert", "canonical_url": "https://example.test/revert", "crawl_success": true, "outcome": "success", "content_hash": "revert-v1", "provenance": {"source": "public-crawl", "fixture": "v1"}},
+        {"at_hour": 25, "url": "https://example.test/revert", "canonical_url": "https://example.test/revert", "crawl_success": true, "outcome": "success", "content_hash": "revert-v2", "provenance": {"source": "public-crawl", "fixture": "v2"}},
+        {"at_hour": 50, "url": "https://example.test/revert", "canonical_url": "https://example.test/revert", "crawl_success": true, "outcome": "success", "content_hash": "revert-v1", "provenance": {"source": "public-crawl", "fixture": "reverted-v1"}}
+      ],
+      "expected": {"active_content_hash": "revert-v1", "active_versions": 1, "safe_embedding_operations": 2, "embedding_operations_by_policy": {"replace_active": 3, "retain_history_single_active": 2, "current_append_model": 2}, "safe_cache_hits": 0, "tests_cache_hit": false, "tests_unchanged_detection": true, "tests_good_preservation": false, "tests_wall_rejection": false, "tests_version_semantics": true}
+    }
+  ]
+}

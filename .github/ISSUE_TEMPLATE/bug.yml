@@ -1,0 +1,34 @@
+name: Bug report
+description: Report a reproducible ai-websearch problem without sensitive data.
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Do not include API keys, cookies, private URLs, browser state, model paths, or process environments.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal reproduction
+      description: Include sanitized commands, configuration, and inputs.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: ai-websearch version, OS, Python, device, and which live components were exercised.
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation output
+      description: Summarize relevant offline/live results and redact URLs and secrets.

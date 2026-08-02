@@ -1,0 +1,114 @@
+{
+  "accuracy": {
+    "answer_quality_measured": false,
+    "limit_fields_evaluated": 9,
+    "matching_limit_fields": 9,
+    "mode_limit_policy_conformance": 1.0
+  },
+  "implementation": "mode_specific_request_limits",
+  "latency": {
+    "measured": false,
+    "synthetic_maximum_page_attempts_across_modes": 17,
+    "target_maximum_page_attempts_across_modes": 17
+  },
+  "limitations": [
+    "This benchmark validates configured ceilings, not answer accuracy.",
+    "Page-attempt totals are deterministic policy counts, not observed wall-clock latency.",
+    "SearXNG, Chromium, embeddings, reranking, llama.cpp, and WebUI are not executed."
+  ],
+  "modes": [
+    {
+      "matches": {
+        "max_chunks": true,
+        "max_page_attempts": true,
+        "max_sources": true
+      },
+      "mode": "rapid",
+      "observed": {
+        "max_chunks": 8,
+        "max_page_attempts": 2,
+        "max_sources": 2
+      },
+      "target": {
+        "max_chunks": 8,
+        "max_page_attempts": 2,
+        "max_sources": 2
+      }
+    },
+    {
+      "matches": {
+        "max_chunks": true,
+        "max_page_attempts": true,
+        "max_sources": true
+      },
+      "mode": "auto",
+      "observed": {
+        "max_chunks": 15,
+        "max_page_attempts": 5,
+        "max_sources": 5
+      },
+      "target": {
+        "max_chunks": 15,
+        "max_page_attempts": 5,
+        "max_sources": 5
+      }
+    },
+    {
+      "matches": {
+        "max_chunks": true,
+        "max_page_attempts": true,
+        "max_sources": true
+      },
+      "mode": "deep",
+      "observed": {
+        "max_chunks": 24,
+        "max_page_attempts": 10,
+        "max_sources": 8
+      },
+      "target": {
+        "max_chunks": 24,
+        "max_page_attempts": 10,
+        "max_sources": 8
+      }
+    }
+  ],
+  "progression": {
+    "contract_conformance": 1.0,
+    "contract_violations": 0,
+    "matches": {
+      "complex_initial_pass": true,
+      "deep_evidence_checkpoints": true,
+      "escalation_page_ceiling": true,
+      "simple_initial_pass": true
+    },
+    "observed": {
+      "complex_initial_pass": "rapid",
+      "deep_evidence_checkpoints": [
+        2,
+        5,
+        10
+      ],
+      "escalation_page_ceiling": 3,
+      "simple_initial_pass": "rapid"
+    },
+    "target": {
+      "complex_initial_pass": "rapid",
+      "deep_evidence_checkpoints": [
+        2,
+        5,
+        10
+      ],
+      "escalation_page_ceiling": 3,
+      "simple_initial_pass": "rapid"
+    }
+  },
+  "reliability": {
+    "model_inference": false,
+    "modes_evaluated": 3,
+    "network_access": false,
+    "progression_contract_violations": 0,
+    "request_wide_page_bound_violations": 0
+  },
+  "run_mode": "offline_production_policy",
+  "schema_version": "1.0"
+}

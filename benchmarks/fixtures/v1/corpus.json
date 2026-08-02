@@ -1,0 +1,183 @@
+{
+  "version": "2026-07-14.v1",
+  "cases": [
+    {
+      "id": "fact-planet",
+      "category": "exact_factual",
+      "query": "which planet has the shortest day",
+      "relevant_urls": ["https://science.example/planets/jupiter"],
+      "expected_citations": ["https://science.example/planets/jupiter"],
+      "required_chunk_ids": ["fact-jupiter"],
+      "search": {
+        "which planet has the shortest day": [
+          {"url": "https://science.example/planets/jupiter", "score": 0.82, "source_score": 0.5},
+          {"url": "https://blog.example/planet-days", "score": 0.61, "source_score": 0.5}
+        ],
+        "which planet has the shortest day official source": [
+          {"url": "https://agency.example/press/mission", "score": 0.99, "source_score": 0.5},
+          {"url": "https://agency.example/about", "score": 0.97, "source_score": 0.5},
+          {"url": "https://agency.example/gallery", "score": 0.95, "source_score": 0.5}
+        ],
+        "which planet has the shortest day technical documentation": [
+          {"url": "https://software.example/docs/planet", "score": 0.98, "source_score": 0.5},
+          {"url": "https://hardware.example/docs/day", "score": 0.96, "source_score": 0.5},
+          {"url": "https://archive.example/technical", "score": 0.94, "source_score": 0.5}
+        ]
+      },
+      "crawls": {
+        "https://science.example/planets/jupiter": {"outcome": "success", "canonical_url": "https://science.example/planets/jupiter", "duration_ms": 11.0, "chunks": [{"id": "fact-jupiter", "source_id": "science-jupiter", "url": "https://science.example/planets/jupiter", "text": "Jupiter rotates in about ten hours, the shortest day of any planet.", "score": 0.96, "relevant": true, "answer_bearing": true}]},
+        "https://blog.example/planet-days": {"outcome": "success", "canonical_url": "https://blog.example/planet-days", "duration_ms": 9.0, "chunks": [{"id": "fact-blog", "source_id": "blog-days", "url": "https://blog.example/planet-days", "text": "A general discussion of seasons and years.", "score": 0.34, "relevant": false, "answer_bearing": false}]},
+        "https://agency.example/press/mission": {"outcome": "success", "canonical_url": "https://agency.example/press/mission", "chunks": [{"id": "mission", "source_id": "agency-mission", "url": "https://agency.example/press/mission", "text": "Mission launch announcement.", "score": 0.31, "relevant": false, "answer_bearing": false}]},
+        "https://agency.example/about": {"outcome": "success", "canonical_url": "https://agency.example/about", "chunks": [{"id": "about", "source_id": "agency-about", "url": "https://agency.example/about", "text": "Agency history and contact details.", "score": 0.22, "relevant": false, "answer_bearing": false}]},
+        "https://agency.example/gallery": {"outcome": "success", "canonical_url": "https://agency.example/gallery", "chunks": [{"id": "gallery", "source_id": "agency-gallery", "url": "https://agency.example/gallery", "text": "Image gallery navigation.", "score": 0.18, "relevant": false, "answer_bearing": false}]},
+        "https://software.example/docs/planet": {"outcome": "success", "canonical_url": "https://software.example/docs/planet", "chunks": [{"id": "software", "source_id": "software-docs", "url": "https://software.example/docs/planet", "text": "Planet class API documentation.", "score": 0.27, "relevant": false, "answer_bearing": false}]},
+        "https://hardware.example/docs/day": {"outcome": "success", "canonical_url": "https://hardware.example/docs/day", "chunks": [{"id": "hardware", "source_id": "hardware-docs", "url": "https://hardware.example/docs/day", "text": "Clock hardware timing documentation.", "score": 0.24, "relevant": false, "answer_bearing": false}]},
+        "https://archive.example/technical": {"outcome": "success", "canonical_url": "https://archive.example/technical", "chunks": [{"id": "archive", "source_id": "archive", "url": "https://archive.example/technical", "text": "Unrelated technical archive.", "score": 0.15, "relevant": false, "answer_bearing": false}]}
+      }
+    },
+    {
+      "id": "docs-widget",
+      "category": "technical_documentation",
+      "query": "widget api retry setting",
+      "relevant_urls": ["https://docs.example/widget/retries"],
+      "expected_citations": ["https://docs.example/widget/retries"],
+      "required_chunk_ids": ["docs-retry"],
+      "search": {
+        "widget api retry setting": [{"url": "https://docs.example/widget/retries", "score": 0.92, "source_score": 0.6}],
+        "widget api retry setting official source": [{"url": "https://docs.example/widget/retries", "score": 0.95, "source_score": 0.6}],
+        "widget api retry setting technical documentation": [{"url": "https://docs.example/widget/retries", "score": 0.97, "source_score": 0.6}]
+      },
+      "crawls": {
+        "https://docs.example/widget/retries": {"outcome": "success", "canonical_url": "https://docs.example/widget/retries", "duration_ms": 8.0, "chunks": [{"id": "docs-retry", "source_id": "docs-widget", "url": "https://docs.example/widget/retries", "text": "Set max_retries to three to retry transient requests.", "score": 0.99, "relevant": true, "answer_bearing": true}]}
+      }
+    },
+    {
+      "id": "news-release",
+      "category": "current_events",
+      "query": "city transit opening date",
+      "relevant_urls": ["https://news.example/transit-opening"],
+      "expected_citations": ["https://news.example/transit-opening"],
+      "required_chunk_ids": ["news-date"],
+      "search": {
+        "city transit opening date": [{"url": "https://news.example/transit-opening", "score": 0.9, "source_score": 0.5}],
+        "city transit opening date official source": [{"url": "https://city.example/projects/transit", "score": 0.91, "source_score": 0.5}],
+        "city transit opening date technical documentation": [{"url": "https://engineering.example/transit-spec", "score": 0.72, "source_score": 0.5}]
+      },
+      "crawls": {
+        "https://news.example/transit-opening": {"outcome": "success", "canonical_url": "https://news.example/transit-opening", "chunks": [{"id": "news-date", "source_id": "news", "url": "https://news.example/transit-opening", "text": "The line opens on 12 October.", "score": 0.95, "relevant": true, "answer_bearing": true}]},
+        "https://city.example/projects/transit": {"outcome": "consent", "canonical_url": "https://city.example/projects/transit", "chunks": []},
+        "https://engineering.example/transit-spec": {"outcome": "success", "canonical_url": "https://engineering.example/transit-spec", "chunks": [{"id": "transit-spec", "source_id": "engineering", "url": "https://engineering.example/transit-spec", "text": "Track gauge and platform specifications.", "score": 0.38, "relevant": false, "answer_bearing": false}]}
+      }
+    },
+    {
+      "id": "consumer-kettle",
+      "category": "comparative_consumer",
+      "query": "quietest small electric kettle comparison",
+      "relevant_urls": ["https://reviews.example/quiet-kettles"],
+      "expected_citations": ["https://reviews.example/quiet-kettles"],
+      "required_chunk_ids": ["kettle-db"],
+      "search": {
+        "quietest small electric kettle comparison": [{"url": "https://reviews.example/quiet-kettles", "score": 0.89, "source_score": 0.5}],
+        "quietest small electric kettle comparison official source": [{"url": "https://maker.example/kettle", "score": 0.96, "source_score": 0.5}],
+        "quietest small electric kettle comparison technical documentation": [{"url": "https://maker.example/kettle/manual", "score": 0.93, "source_score": 0.5}]
+      },
+      "crawls": {
+        "https://reviews.example/quiet-kettles": {"outcome": "success", "canonical_url": "https://reviews.example/quiet-kettles", "chunks": [{"id": "kettle-db", "source_id": "reviews", "url": "https://reviews.example/quiet-kettles", "text": "Measured noise was 48 dB for the compact model.", "score": 0.94, "relevant": true, "answer_bearing": true}]},
+        "https://maker.example/kettle": {"outcome": "subscription", "canonical_url": "https://maker.example/kettle", "chunks": []},
+        "https://maker.example/kettle/manual": {"outcome": "success", "canonical_url": "https://maker.example/kettle/manual", "chunks": [{"id": "manual", "source_id": "maker", "url": "https://maker.example/kettle/manual", "text": "Fill and cleaning instructions without noise measurements.", "score": 0.42, "relevant": false, "answer_bearing": false}]}
+      }
+    },
+    {
+      "id": "multihop-river",
+      "category": "multi_hop",
+      "query": "river source elevation and downstream reservoir",
+      "relevant_urls": ["https://geo.example/river-source", "https://water.example/reservoir"],
+      "expected_citations": ["https://geo.example/river-source", "https://water.example/reservoir"],
+      "required_chunk_ids": ["river-elevation", "reservoir-name"],
+      "search": {
+        "river source elevation and downstream reservoir": [{"url": "https://geo.example/river-source", "score": 0.91, "source_score": 0.5}, {"url": "https://water.example/reservoir", "score": 0.86, "source_score": 0.5}],
+        "river source elevation and downstream reservoir official source": [{"url": "https://water.example/reservoir", "score": 0.94, "source_score": 0.5}],
+        "river source elevation and downstream reservoir technical documentation": [{"url": "https://geo.example/river-source", "score": 0.88, "source_score": 0.5}]
+      },
+      "crawls": {
+        "https://geo.example/river-source": {"outcome": "success", "canonical_url": "https://geo.example/river-source", "chunks": [{"id": "river-elevation", "source_id": "geo", "url": "https://geo.example/river-source", "text": "The mapped source elevation is 1,240 metres.", "score": 0.97, "relevant": true, "answer_bearing": true}]},
+        "https://water.example/reservoir": {"outcome": "success", "canonical_url": "https://water.example/reservoir", "chunks": [{"id": "reservoir-name", "source_id": "water", "url": "https://water.example/reservoir", "text": "The river enters Lake Example reservoir downstream.", "score": 0.96, "relevant": true, "answer_bearing": true}]}
+      }
+    },
+    {
+      "id": "ambiguous-mercury",
+      "category": "ambiguous",
+      "query": "mercury retention period",
+      "relevant_urls": ["https://chem.example/mercury-retention"],
+      "expected_citations": ["https://chem.example/mercury-retention"],
+      "required_chunk_ids": ["mercury-chem"],
+      "search": {
+        "mercury retention period": [{"url": "https://chem.example/mercury-retention", "score": 0.8, "source_score": 0.5}, {"url": "https://software.example/mercury-retention", "score": 0.79, "source_score": 0.5}],
+        "mercury retention period official source": [{"url": "https://software.example/mercury-retention", "score": 0.94, "source_score": 0.5}],
+        "mercury retention period technical documentation": [{"url": "https://software.example/mercury-retention/docs", "score": 0.96, "source_score": 0.5}]
+      },
+      "crawls": {
+        "https://chem.example/mercury-retention": {"outcome": "success", "canonical_url": "https://chem.example/mercury-retention", "chunks": [{"id": "mercury-chem", "source_id": "chem", "url": "https://chem.example/mercury-retention", "text": "The study reports tissue retention over 30 days.", "score": 0.91, "relevant": true, "answer_bearing": true}]},
+        "https://software.example/mercury-retention": {"outcome": "success", "canonical_url": "https://software.example/mercury-retention", "chunks": [{"id": "mercury-software", "source_id": "software", "url": "https://software.example/mercury-retention", "text": "Log retention defaults to seven days.", "score": 0.88, "relevant": false, "answer_bearing": false}]},
+        "https://software.example/mercury-retention/docs": {"outcome": "authentication", "canonical_url": "https://software.example/mercury-retention/docs", "chunks": []}
+      }
+    },
+    {
+      "id": "no-answer-secret",
+      "category": "no_answer",
+      "query": "unpublished project secret launch date",
+      "relevant_urls": [],
+      "expected_citations": [],
+      "required_chunk_ids": [],
+      "search": {
+        "unpublished project secret launch date": [{"url": "https://rumor.example/project", "score": 0.82, "source_score": 0.5}],
+        "unpublished project secret launch date official source": null,
+        "unpublished project secret launch date technical documentation": [{"url": "https://archive.example/project", "score": 0.77, "source_score": 0.5}]
+      },
+      "crawls": {
+        "https://rumor.example/project": {"outcome": "success", "canonical_url": "https://rumor.example/project", "chunks": [{"id": "rumor", "source_id": "rumor", "url": "https://rumor.example/project", "text": "No confirmed date has been published.", "score": 0.4, "relevant": false, "answer_bearing": false}]},
+        "https://archive.example/project": {"outcome": "access_denied", "canonical_url": "https://archive.example/project", "chunks": []}
+      },
+      "tokenize_failure": true
+    },
+    {
+      "id": "conflict-population",
+      "category": "conflicting_sources",
+      "query": "example town population 2025",
+      "relevant_urls": ["https://stats.example/town", "https://town.example/report"],
+      "expected_citations": ["https://stats.example/town", "https://town.example/report"],
+      "required_chunk_ids": ["population-a", "population-b"],
+      "search": {
+        "example town population 2025": [{"url": "https://stats.example/town", "score": 0.92, "source_score": 0.5}, {"url": "https://town.example/report", "score": 0.9, "source_score": 0.5}],
+        "example town population 2025 official source": [{"url": "https://town.example/report", "score": 0.96, "source_score": 0.5}],
+        "example town population 2025 technical documentation": [{"url": "https://stats.example/town", "score": 0.88, "source_score": 0.5}]
+      },
+      "crawls": {
+        "https://stats.example/town": {"outcome": "success", "canonical_url": "https://stats.example/town", "chunks": [{"id": "population-a", "source_id": "stats", "url": "https://stats.example/town", "text": "The estimate is 10,100 residents.", "score": 0.94, "relevant": true, "answer_bearing": true}]},
+        "https://town.example/report": {"outcome": "success", "canonical_url": "https://town.example/report", "chunks": [{"id": "population-b", "source_id": "town", "url": "https://town.example/report", "text": "The municipal report lists 10,250 residents.", "score": 0.93, "relevant": true, "answer_bearing": true}]}
+      }
+    },
+    {
+      "id": "crawl-access-matrix",
+      "category": "crawl_access",
+      "query": "access outcome fixture",
+      "relevant_urls": ["https://public.example/article"],
+      "expected_citations": ["https://public.example/article"],
+      "required_chunk_ids": ["public-answer"],
+      "search": {
+        "access outcome fixture": [{"url": "https://public.example/article", "score": 0.99, "source_score": 0.5}, {"url": "https://captcha.example/page", "score": 0.95, "source_score": 0.5}, {"url": "https://empty.example/page", "score": 0.9, "source_score": 0.5}, {"url": "https://failure.example/page", "score": 0.85, "source_score": 0.5}],
+        "access outcome fixture official source": [{"url": "https://refresh.example/article", "score": 0.93, "source_score": 0.5}],
+        "access outcome fixture technical documentation": [{"url": "https://public.example/article", "score": 0.8, "source_score": 0.5}]
+      },
+      "crawls": {
+        "https://public.example/article": {"outcome": "success", "canonical_url": "https://public.example/article", "chunks": [{"id": "public-answer", "source_id": "public", "url": "https://public.example/article", "text": "Public fixture answer.", "score": 0.98, "relevant": true, "answer_bearing": true}]},
+        "https://captcha.example/page": {"outcome": "captcha", "canonical_url": "https://captcha.example/page", "chunks": []},
+        "https://empty.example/page": {"outcome": "empty_content", "canonical_url": "https://empty.example/page", "chunks": []},
+        "https://failure.example/page": {"outcome": "extraction_failure", "canonical_url": "https://failure.example/page", "chunks": []},
+        "https://refresh.example/article": {"outcome": "access_denied", "canonical_url": "https://refresh.example/article", "chunks": []}
+      },
+      "failed_refresh": {"good_content_preserved": false},
+      "llama_props_failure": true
+    }
+  ]
+}

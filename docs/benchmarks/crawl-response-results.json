@@ -1,0 +1,115 @@
+{
+  "latency": {
+    "cases_evaluated": 6,
+    "measured": false
+  },
+  "limitations": [
+    "CrawlResult objects are synthetic and no browser or robots request is executed.",
+    "Retry delay and request deadlines are not timed."
+  ],
+  "policies": {
+    "content_only": {
+      "accuracy": {
+        "outcome_accuracy": 0.3333333333333333
+      },
+      "cases": [
+        {
+          "correct": false,
+          "expected": "robots_denied",
+          "id": "robots",
+          "observed": "access_denied"
+        },
+        {
+          "correct": false,
+          "expected": "http_error",
+          "id": "not-found",
+          "observed": "success"
+        },
+        {
+          "correct": false,
+          "expected": "empty_content",
+          "id": "empty-success",
+          "observed": "access_denied"
+        },
+        {
+          "correct": true,
+          "expected": "captcha",
+          "id": "captcha-403",
+          "observed": "captcha"
+        },
+        {
+          "correct": false,
+          "expected": "authentication",
+          "id": "authentication-401",
+          "observed": "access_denied"
+        },
+        {
+          "correct": true,
+          "expected": "success",
+          "id": "public-success",
+          "observed": "success"
+        }
+      ],
+      "reliability": {
+        "empty_content_distinct": false,
+        "http_status_used": false,
+        "robots_distinct": false
+      }
+    },
+    "response_aware": {
+      "accuracy": {
+        "outcome_accuracy": 1.0
+      },
+      "cases": [
+        {
+          "correct": true,
+          "expected": "robots_denied",
+          "id": "robots",
+          "observed": "robots_denied"
+        },
+        {
+          "correct": true,
+          "expected": "http_error",
+          "id": "not-found",
+          "observed": "http_error"
+        },
+        {
+          "correct": true,
+          "expected": "empty_content",
+          "id": "empty-success",
+          "observed": "empty_content"
+        },
+        {
+          "correct": true,
+          "expected": "captcha",
+          "id": "captcha-403",
+          "observed": "captcha"
+        },
+        {
+          "correct": true,
+          "expected": "authentication",
+          "id": "authentication-401",
+          "observed": "authentication"
+        },
+        {
+          "correct": true,
+          "expected": "success",
+          "id": "public-success",
+          "observed": "success"
+        }
+      ],
+      "reliability": {
+        "empty_content_distinct": true,
+        "http_status_used": true,
+        "robots_distinct": true
+      }
+    }
+  },
+  "retry_policy": {
+    "connection_retryable": true,
+    "deterministic_value_error_retryable": false,
+    "timeout_retryable": true
+  },
+  "run_mode": "offline_crawl_response_policy",
+  "schema_version": "1.0"
+}

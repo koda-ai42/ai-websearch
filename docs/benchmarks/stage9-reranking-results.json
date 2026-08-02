@@ -1,0 +1,392 @@
+{
+  "evaluation_protocol": {
+    "latency": "Deterministic fixture cost model, not observed wall-clock latency.",
+    "same_questions_database_candidate_pool_extraction_embeddings_and_selection": true,
+    "scores": "Frozen fake reranker scores; no model download, network, database, or live inference."
+  },
+  "modes": {
+    "cross_encoder": {
+      "by_category": {
+        "ambiguous questions": {
+          "citation_support": 1.0,
+          "duplicate_chunk_ratio": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "mrr": 1.0,
+          "ndcg_at_10": 1.0,
+          "relevant_chunk_ratio": 0.5,
+          "reranking_latency_ms": 7.5,
+          "total_latency_ms": 12.5
+        },
+        "complex comparisons": {
+          "citation_support": 1.0,
+          "duplicate_chunk_ratio": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "mrr": 1.0,
+          "ndcg_at_10": 1.0,
+          "relevant_chunk_ratio": 0.6666666666666666,
+          "reranking_latency_ms": 10.0,
+          "total_latency_ms": 15.0
+        },
+        "exact technical identifiers": {
+          "citation_support": 1.0,
+          "duplicate_chunk_ratio": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "mrr": 1.0,
+          "ndcg_at_10": 1.0,
+          "relevant_chunk_ratio": 0.5,
+          "reranking_latency_ms": 7.5,
+          "total_latency_ms": 12.5
+        },
+        "semantic paraphrases": {
+          "citation_support": 1.0,
+          "duplicate_chunk_ratio": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "mrr": 1.0,
+          "ndcg_at_10": 1.0,
+          "relevant_chunk_ratio": 0.5,
+          "reranking_latency_ms": 7.5,
+          "total_latency_ms": 12.5
+        },
+        "simple factual queries": {
+          "citation_support": 1.0,
+          "duplicate_chunk_ratio": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "mrr": 1.0,
+          "ndcg_at_10": 1.0,
+          "relevant_chunk_ratio": 0.5,
+          "reranking_latency_ms": 5.0,
+          "total_latency_ms": 10.0
+        }
+      },
+      "cases": [
+        {
+          "category": "exact technical identifiers",
+          "citation_support": 1.0,
+          "duplicate_chunk_ratio": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "identifier",
+          "mrr": 1.0,
+          "ndcg_at_10": 1.0,
+          "relevant_chunk_ratio": 0.5,
+          "reranking_latency_ms": 7.5,
+          "total_latency_ms": 12.5
+        },
+        {
+          "category": "semantic paraphrases",
+          "citation_support": 1.0,
+          "duplicate_chunk_ratio": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "paraphrase",
+          "mrr": 1.0,
+          "ndcg_at_10": 1.0,
+          "relevant_chunk_ratio": 0.5,
+          "reranking_latency_ms": 7.5,
+          "total_latency_ms": 12.5
+        },
+        {
+          "category": "simple factual queries",
+          "citation_support": 1.0,
+          "duplicate_chunk_ratio": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "fact",
+          "mrr": 1.0,
+          "ndcg_at_10": 1.0,
+          "relevant_chunk_ratio": 0.5,
+          "reranking_latency_ms": 5.0,
+          "total_latency_ms": 10.0
+        },
+        {
+          "category": "complex comparisons",
+          "citation_support": 1.0,
+          "duplicate_chunk_ratio": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "comparison",
+          "mrr": 1.0,
+          "ndcg_at_10": 1.0,
+          "relevant_chunk_ratio": 0.6666666666666666,
+          "reranking_latency_ms": 10.0,
+          "total_latency_ms": 15.0
+        },
+        {
+          "category": "ambiguous questions",
+          "citation_support": 1.0,
+          "duplicate_chunk_ratio": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "ambiguous",
+          "mrr": 1.0,
+          "ndcg_at_10": 1.0,
+          "relevant_chunk_ratio": 0.5,
+          "reranking_latency_ms": 7.5,
+          "total_latency_ms": 12.5
+        }
+      ],
+      "overall": {
+        "citation_support": 1.0,
+        "duplicate_chunk_ratio": 0.0,
+        "final_answer_correctness_proxy": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0,
+        "relevant_chunk_ratio": 0.5333333333333333,
+        "reranking_latency_ms": 7.5,
+        "total_latency_ms": 12.5
+      },
+      "peak_memory_bytes": null
+    },
+    "heuristic": {
+      "by_category": {
+        "ambiguous questions": {
+          "citation_support": 1.0,
+          "duplicate_chunk_ratio": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "mrr": 1.0,
+          "ndcg_at_10": 1.0,
+          "relevant_chunk_ratio": 0.5,
+          "reranking_latency_ms": 0.24,
+          "total_latency_ms": 5.24
+        },
+        "complex comparisons": {
+          "citation_support": 1.0,
+          "duplicate_chunk_ratio": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "mrr": 1.0,
+          "ndcg_at_10": 0.9197207891481876,
+          "relevant_chunk_ratio": 0.6666666666666666,
+          "reranking_latency_ms": 0.32,
+          "total_latency_ms": 5.32
+        },
+        "exact technical identifiers": {
+          "citation_support": 1.0,
+          "duplicate_chunk_ratio": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "mrr": 1.0,
+          "ndcg_at_10": 1.0,
+          "relevant_chunk_ratio": 0.5,
+          "reranking_latency_ms": 0.24,
+          "total_latency_ms": 5.24
+        },
+        "semantic paraphrases": {
+          "citation_support": 1.0,
+          "duplicate_chunk_ratio": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "mrr": 0.5,
+          "ndcg_at_10": 0.6309297535714575,
+          "relevant_chunk_ratio": 0.5,
+          "reranking_latency_ms": 0.24,
+          "total_latency_ms": 5.24
+        },
+        "simple factual queries": {
+          "citation_support": 1.0,
+          "duplicate_chunk_ratio": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "mrr": 1.0,
+          "ndcg_at_10": 1.0,
+          "relevant_chunk_ratio": 0.5,
+          "reranking_latency_ms": 0.16,
+          "total_latency_ms": 5.16
+        }
+      },
+      "cases": [
+        {
+          "category": "exact technical identifiers",
+          "citation_support": 1.0,
+          "duplicate_chunk_ratio": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "identifier",
+          "mrr": 1.0,
+          "ndcg_at_10": 1.0,
+          "relevant_chunk_ratio": 0.5,
+          "reranking_latency_ms": 0.24,
+          "total_latency_ms": 5.24
+        },
+        {
+          "category": "semantic paraphrases",
+          "citation_support": 1.0,
+          "duplicate_chunk_ratio": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "paraphrase",
+          "mrr": 0.5,
+          "ndcg_at_10": 0.6309297535714575,
+          "relevant_chunk_ratio": 0.5,
+          "reranking_latency_ms": 0.24,
+          "total_latency_ms": 5.24
+        },
+        {
+          "category": "simple factual queries",
+          "citation_support": 1.0,
+          "duplicate_chunk_ratio": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "fact",
+          "mrr": 1.0,
+          "ndcg_at_10": 1.0,
+          "relevant_chunk_ratio": 0.5,
+          "reranking_latency_ms": 0.16,
+          "total_latency_ms": 5.16
+        },
+        {
+          "category": "complex comparisons",
+          "citation_support": 1.0,
+          "duplicate_chunk_ratio": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "comparison",
+          "mrr": 1.0,
+          "ndcg_at_10": 0.9197207891481876,
+          "relevant_chunk_ratio": 0.6666666666666666,
+          "reranking_latency_ms": 0.32,
+          "total_latency_ms": 5.32
+        },
+        {
+          "category": "ambiguous questions",
+          "citation_support": 1.0,
+          "duplicate_chunk_ratio": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "ambiguous",
+          "mrr": 1.0,
+          "ndcg_at_10": 1.0,
+          "relevant_chunk_ratio": 0.5,
+          "reranking_latency_ms": 0.24,
+          "total_latency_ms": 5.24
+        }
+      ],
+      "overall": {
+        "citation_support": 1.0,
+        "duplicate_chunk_ratio": 0.0,
+        "final_answer_correctness_proxy": 1.0,
+        "mrr": 0.9,
+        "ndcg_at_10": 0.9101301085439291,
+        "relevant_chunk_ratio": 0.5333333333333333,
+        "reranking_latency_ms": 0.24,
+        "total_latency_ms": 5.24
+      },
+      "peak_memory_bytes": null
+    },
+    "off": {
+      "by_category": {
+        "ambiguous questions": {
+          "citation_support": 1.0,
+          "duplicate_chunk_ratio": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "mrr": 0.5,
+          "ndcg_at_10": 0.6309297535714575,
+          "relevant_chunk_ratio": 0.5,
+          "reranking_latency_ms": 0.0,
+          "total_latency_ms": 5.0
+        },
+        "complex comparisons": {
+          "citation_support": 1.0,
+          "duplicate_chunk_ratio": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "mrr": 0.5,
+          "ndcg_at_10": 0.6934264036172708,
+          "relevant_chunk_ratio": 0.6666666666666666,
+          "reranking_latency_ms": 0.0,
+          "total_latency_ms": 5.0
+        },
+        "exact technical identifiers": {
+          "citation_support": 1.0,
+          "duplicate_chunk_ratio": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "mrr": 0.5,
+          "ndcg_at_10": 0.6309297535714575,
+          "relevant_chunk_ratio": 0.5,
+          "reranking_latency_ms": 0.0,
+          "total_latency_ms": 5.0
+        },
+        "semantic paraphrases": {
+          "citation_support": 0.0,
+          "duplicate_chunk_ratio": 0.0,
+          "final_answer_correctness_proxy": 0.0,
+          "mrr": 0.3333333333333333,
+          "ndcg_at_10": 0.5,
+          "relevant_chunk_ratio": 0.0,
+          "reranking_latency_ms": 0.0,
+          "total_latency_ms": 5.0
+        },
+        "simple factual queries": {
+          "citation_support": 1.0,
+          "duplicate_chunk_ratio": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "mrr": 1.0,
+          "ndcg_at_10": 1.0,
+          "relevant_chunk_ratio": 0.5,
+          "reranking_latency_ms": 0.0,
+          "total_latency_ms": 5.0
+        }
+      },
+      "cases": [
+        {
+          "category": "exact technical identifiers",
+          "citation_support": 1.0,
+          "duplicate_chunk_ratio": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "identifier",
+          "mrr": 0.5,
+          "ndcg_at_10": 0.6309297535714575,
+          "relevant_chunk_ratio": 0.5,
+          "reranking_latency_ms": 0.0,
+          "total_latency_ms": 5.0
+        },
+        {
+          "category": "semantic paraphrases",
+          "citation_support": 0.0,
+          "duplicate_chunk_ratio": 0.0,
+          "final_answer_correctness_proxy": 0.0,
+          "id": "paraphrase",
+          "mrr": 0.3333333333333333,
+          "ndcg_at_10": 0.5,
+          "relevant_chunk_ratio": 0.0,
+          "reranking_latency_ms": 0.0,
+          "total_latency_ms": 5.0
+        },
+        {
+          "category": "simple factual queries",
+          "citation_support": 1.0,
+          "duplicate_chunk_ratio": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "fact",
+          "mrr": 1.0,
+          "ndcg_at_10": 1.0,
+          "relevant_chunk_ratio": 0.5,
+          "reranking_latency_ms": 0.0,
+          "total_latency_ms": 5.0
+        },
+        {
+          "category": "complex comparisons",
+          "citation_support": 1.0,
+          "duplicate_chunk_ratio": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "comparison",
+          "mrr": 0.5,
+          "ndcg_at_10": 0.6934264036172708,
+          "relevant_chunk_ratio": 0.6666666666666666,
+          "reranking_latency_ms": 0.0,
+          "total_latency_ms": 5.0
+        },
+        {
+          "category": "ambiguous questions",
+          "citation_support": 1.0,
+          "duplicate_chunk_ratio": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "ambiguous",
+          "mrr": 0.5,
+          "ndcg_at_10": 0.6309297535714575,
+          "relevant_chunk_ratio": 0.5,
+          "reranking_latency_ms": 0.0,
+          "total_latency_ms": 5.0
+        }
+      ],
+      "overall": {
+        "citation_support": 0.8,
+        "duplicate_chunk_ratio": 0.0,
+        "final_answer_correctness_proxy": 0.8,
+        "mrr": 0.5666666666666667,
+        "ndcg_at_10": 0.6910571821520372,
+        "relevant_chunk_ratio": 0.43333333333333335,
+        "reranking_latency_ms": 0.0,
+        "total_latency_ms": 5.0
+      },
+      "peak_memory_bytes": null
+    }
+  },
+  "run_mode": "offline_stage9_configurable_reranking_replay",
+  "schema_version": "1.0"
+}

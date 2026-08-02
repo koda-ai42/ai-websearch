@@ -1,0 +1,279 @@
+{
+  "accuracy": {
+    "crawl_outcome_accuracy": 0.8,
+    "evidence_gate_accuracy": 1.0,
+    "false_sufficient_count": 0,
+    "legitimate_acceptance_rate": 0.4,
+    "retained_candidate_precision": 1.0,
+    "wall_rejection_rate": 1.0
+  },
+  "corpus_version": "2026-08-02.v2",
+  "crawl_cases": [
+    {
+      "correct": true,
+      "expected": "cookie_consent",
+      "id": "long-consent-only",
+      "observed": "cookie_consent"
+    },
+    {
+      "correct": true,
+      "expected": "cookie_consent",
+      "id": "thin-consent-only",
+      "observed": "cookie_consent"
+    },
+    {
+      "correct": true,
+      "expected": "success",
+      "id": "article-with-consent-footer",
+      "observed": "success"
+    },
+    {
+      "correct": true,
+      "expected": "access_denied",
+      "id": "navigation-shell",
+      "observed": "access_denied"
+    },
+    {
+      "correct": true,
+      "expected": "success",
+      "id": "substantive-public-article",
+      "observed": "success"
+    },
+    {
+      "correct": true,
+      "expected": "captcha",
+      "id": "captcha-verify-human",
+      "observed": "captcha"
+    },
+    {
+      "correct": true,
+      "expected": "captcha",
+      "id": "captcha-cloudflare-ray",
+      "observed": "captcha"
+    },
+    {
+      "correct": true,
+      "expected": "captcha",
+      "id": "captcha-unusual-traffic",
+      "observed": "captcha"
+    },
+    {
+      "correct": true,
+      "expected": "captcha",
+      "id": "captcha-title-short-page",
+      "observed": "captcha"
+    },
+    {
+      "correct": true,
+      "expected": "authentication",
+      "id": "authentication-sign-in",
+      "observed": "authentication"
+    },
+    {
+      "correct": true,
+      "expected": "authentication",
+      "id": "authentication-login",
+      "observed": "authentication"
+    },
+    {
+      "correct": true,
+      "expected": "authentication",
+      "id": "authentication-session",
+      "observed": "authentication"
+    },
+    {
+      "correct": true,
+      "expected": "subscription",
+      "id": "subscription-continue",
+      "observed": "subscription"
+    },
+    {
+      "correct": true,
+      "expected": "subscription",
+      "id": "subscription-required",
+      "observed": "subscription"
+    },
+    {
+      "correct": true,
+      "expected": "subscription",
+      "id": "subscription-existing-user",
+      "observed": "subscription"
+    },
+    {
+      "correct": true,
+      "expected": "access_denied",
+      "id": "access-denied-403",
+      "observed": "access_denied"
+    },
+    {
+      "correct": true,
+      "expected": "access_denied",
+      "id": "access-denied-blocked",
+      "observed": "access_denied"
+    },
+    {
+      "correct": true,
+      "expected": "access_denied",
+      "id": "access-denied-plain",
+      "observed": "access_denied"
+    },
+    {
+      "correct": false,
+      "expected": "success",
+      "id": "long-authentication-security-article",
+      "observed": "authentication"
+    },
+    {
+      "correct": false,
+      "expected": "success",
+      "id": "long-captcha-accessibility-article",
+      "observed": "captcha"
+    },
+    {
+      "correct": false,
+      "expected": "success",
+      "id": "long-cloudflare-incident-article",
+      "observed": "captcha"
+    },
+    {
+      "correct": false,
+      "expected": "success",
+      "id": "long-subscription-economics-article",
+      "observed": "subscription"
+    },
+    {
+      "correct": false,
+      "expected": "success",
+      "id": "long-access-denied-security-article",
+      "observed": "access_denied"
+    },
+    {
+      "correct": false,
+      "expected": "success",
+      "id": "long-unusual-traffic-research",
+      "observed": "captcha"
+    },
+    {
+      "correct": true,
+      "expected": "cookie_consent",
+      "id": "consent-vendor-wall",
+      "observed": "cookie_consent"
+    },
+    {
+      "correct": true,
+      "expected": "cookie_consent",
+      "id": "consent-short-wall",
+      "observed": "cookie_consent"
+    },
+    {
+      "correct": true,
+      "expected": "access_denied",
+      "id": "navigation-shell-home",
+      "observed": "access_denied"
+    },
+    {
+      "correct": true,
+      "expected": "access_denied",
+      "id": "navigation-shell-menu",
+      "observed": "access_denied"
+    },
+    {
+      "correct": true,
+      "expected": "success",
+      "id": "public-science-report",
+      "observed": "success"
+    },
+    {
+      "correct": true,
+      "expected": "success",
+      "id": "public-software-documentation",
+      "observed": "success"
+    }
+  ],
+  "evidence_cases": [
+    {
+      "bad_candidates_retained": 0,
+      "candidates_after": 0,
+      "candidates_before": 2,
+      "correct": true,
+      "expected_sufficient": false,
+      "filter_rejections": {
+        "candidate_bound": 0,
+        "content_quality": 2,
+        "low_query_coverage": 0,
+        "too_short": 0
+      },
+      "id": "dual-channel-consent-boilerplate",
+      "observed_sufficient": false,
+      "reason": "no_usable_evidence"
+    },
+    {
+      "bad_candidates_retained": 0,
+      "candidates_after": 1,
+      "candidates_before": 1,
+      "correct": true,
+      "expected_sufficient": true,
+      "filter_rejections": {
+        "candidate_bound": 0,
+        "content_quality": 0,
+        "low_query_coverage": 0,
+        "too_short": 0
+      },
+      "id": "simple-answer-bearing-source",
+      "observed_sufficient": true,
+      "reason": "sufficient_evidence"
+    },
+    {
+      "bad_candidates_retained": 0,
+      "candidates_after": 1,
+      "candidates_before": 1,
+      "correct": true,
+      "expected_sufficient": false,
+      "filter_rejections": {
+        "candidate_bound": 0,
+        "content_quality": 0,
+        "low_query_coverage": 0,
+        "too_short": 0
+      },
+      "id": "complex-single-source",
+      "observed_sufficient": false,
+      "reason": "complex_query_needs_source_diversity"
+    },
+    {
+      "bad_candidates_retained": 0,
+      "candidates_after": 1,
+      "candidates_before": 9,
+      "correct": true,
+      "expected_sufficient": true,
+      "filter_rejections": {
+        "candidate_bound": 0,
+        "content_quality": 8,
+        "low_query_coverage": 0,
+        "too_short": 0
+      },
+      "id": "minimum-pool-must-not-force-garbage",
+      "observed_sufficient": true,
+      "reason": "sufficient_evidence"
+    }
+  ],
+  "latency": {
+    "crawl_cases_evaluated": 30,
+    "evidence_cases_evaluated": 4,
+    "measured": false
+  },
+  "limitations": [
+    "Synthetic text exercises production policy helpers without network or browser execution.",
+    "No embedding or CrossEncoder inference is performed.",
+    "Latency fields are deterministic case counts, not wall-clock measurements."
+  ],
+  "reliability": {
+    "browser_execution": false,
+    "consent_or_shell_cases_accepted": 0,
+    "database_access": false,
+    "known_bad_candidates_retained": 0,
+    "model_inference": false,
+    "network_access": false
+  },
+  "run_mode": "offline_production_policy",
+  "schema_version": "1.0"
+}

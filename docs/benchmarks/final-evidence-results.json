@@ -1,0 +1,84 @@
+{
+  "latency": {
+    "cases_evaluated": 4,
+    "measured": false
+  },
+  "limitations": [
+    "Selection is frozen and deterministic; llama.cpp tokenization is not executed.",
+    "Answerability is the production evidence-gate decision, not an LLM answer score."
+  ],
+  "policies": {
+    "final_pack_reassessment": {
+      "accuracy": {
+        "answerability_accuracy": 1.0,
+        "false_answerable_count": 0
+      },
+      "cases": [
+        {
+          "correct": true,
+          "expected_answerable": false,
+          "id": "complex-source-trim",
+          "observed_answerable": false
+        },
+        {
+          "correct": true,
+          "expected_answerable": true,
+          "id": "simple-evidence-retained",
+          "observed_answerable": true
+        },
+        {
+          "correct": true,
+          "expected_answerable": false,
+          "id": "all-evidence-removed",
+          "observed_answerable": false
+        },
+        {
+          "correct": true,
+          "expected_answerable": true,
+          "id": "diverse-comparison-retained",
+          "observed_answerable": true
+        }
+      ],
+      "reliability": {
+        "final_selection_assessed": true
+      }
+    },
+    "pre_pack_only": {
+      "accuracy": {
+        "answerability_accuracy": 0.5,
+        "false_answerable_count": 2
+      },
+      "cases": [
+        {
+          "correct": false,
+          "expected_answerable": false,
+          "id": "complex-source-trim",
+          "observed_answerable": true
+        },
+        {
+          "correct": true,
+          "expected_answerable": true,
+          "id": "simple-evidence-retained",
+          "observed_answerable": true
+        },
+        {
+          "correct": false,
+          "expected_answerable": false,
+          "id": "all-evidence-removed",
+          "observed_answerable": true
+        },
+        {
+          "correct": true,
+          "expected_answerable": true,
+          "id": "diverse-comparison-retained",
+          "observed_answerable": true
+        }
+      ],
+      "reliability": {
+        "final_selection_assessed": false
+      }
+    }
+  },
+  "run_mode": "offline_final_evidence_policy",
+  "schema_version": "1.0"
+}

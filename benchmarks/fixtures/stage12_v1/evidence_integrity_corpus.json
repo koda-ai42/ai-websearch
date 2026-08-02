@@ -1,0 +1,363 @@
+{
+  "version": "2026-08-02.v2",
+  "crawl_cases": [
+    {
+      "id": "long-consent-only",
+      "title": "Privacy choices",
+      "seed": "Manage your privacy. Accept all cookies. Review consent purposes, partners, vendors, legitimate interests, device identifiers, and advertising preferences.",
+      "repeat": 90,
+      "expected_outcome": "cookie_consent"
+    },
+    {
+      "id": "thin-consent-only",
+      "title": "Before you continue",
+      "seed": "Before you continue, accept all cookies or manage your privacy settings.",
+      "repeat": 3,
+      "expected_outcome": "cookie_consent"
+    },
+    {
+      "id": "article-with-consent-footer",
+      "title": "Municipal battery storage report",
+      "seed": "The municipal battery project stores renewable electricity and releases it during the evening peak. Engineers reported improved grid stability after twelve months of operation.",
+      "repeat": 35,
+      "suffix": "Manage your privacy and accept all cookies.",
+      "expected_outcome": "success"
+    },
+    {
+      "id": "navigation-shell",
+      "title": "Back Button",
+      "seed": "Back Button Menu Search Home Account Language Select Close Open More Previous Next",
+      "repeat": 60,
+      "expected_outcome": "access_denied"
+    },
+    {
+      "id": "substantive-public-article",
+      "title": "Independent engineering analysis",
+      "seed": "Independent measurements show that the revised bridge design reduced vibration while preserving load capacity. The report describes the test method, observations, and limitations.",
+      "repeat": 30,
+      "expected_outcome": "success"
+    },
+    {
+      "id": "captcha-verify-human",
+      "title": "Security verification",
+      "seed": "Verify that you are human before continuing to the requested page.",
+      "repeat": 3,
+      "expected_outcome": "captcha"
+    },
+    {
+      "id": "captcha-cloudflare-ray",
+      "title": "Just a moment",
+      "seed": "Checking if the site connection is secure. Cloudflare Ray ID 123456.",
+      "repeat": 3,
+      "expected_outcome": "captcha"
+    },
+    {
+      "id": "captcha-unusual-traffic",
+      "title": "Unusual traffic",
+      "seed": "Our systems detected unusual traffic from your computer network. Complete the captcha.",
+      "repeat": 2,
+      "expected_outcome": "captcha"
+    },
+    {
+      "id": "captcha-title-short-page",
+      "title": "CAPTCHA",
+      "seed": "Security challenge. Continue after verification.",
+      "repeat": 3,
+      "expected_outcome": "captcha"
+    },
+    {
+      "id": "authentication-sign-in",
+      "title": "Account required",
+      "seed": "Sign in to continue to this resource.",
+      "repeat": 3,
+      "expected_outcome": "authentication"
+    },
+    {
+      "id": "authentication-login",
+      "title": "Login",
+      "seed": "Log in to continue. Authentication required.",
+      "repeat": 3,
+      "expected_outcome": "authentication"
+    },
+    {
+      "id": "authentication-session",
+      "title": "Members area",
+      "seed": "You must be logged in before this private document can be viewed.",
+      "repeat": 3,
+      "expected_outcome": "authentication"
+    },
+    {
+      "id": "subscription-continue",
+      "title": "Subscriber article",
+      "seed": "Subscribe to continue reading this article.",
+      "repeat": 3,
+      "expected_outcome": "subscription"
+    },
+    {
+      "id": "subscription-required",
+      "title": "Premium content",
+      "seed": "Subscription required. This report is subscribers only.",
+      "repeat": 3,
+      "expected_outcome": "subscription"
+    },
+    {
+      "id": "subscription-existing-user",
+      "title": "Continue reading",
+      "seed": "Continue reading with your subscription.",
+      "repeat": 4,
+      "expected_outcome": "subscription"
+    },
+    {
+      "id": "access-denied-403",
+      "title": "Forbidden",
+      "seed": "403 Forbidden. You do not have permission to access this resource.",
+      "repeat": 3,
+      "expected_outcome": "access_denied"
+    },
+    {
+      "id": "access-denied-blocked",
+      "title": "Request blocked",
+      "seed": "Your request was blocked by the site security policy.",
+      "repeat": 3,
+      "expected_outcome": "access_denied"
+    },
+    {
+      "id": "access-denied-plain",
+      "title": "Access denied",
+      "seed": "Access denied. Contact the site administrator if this is unexpected.",
+      "repeat": 3,
+      "expected_outcome": "access_denied"
+    },
+    {
+      "id": "long-authentication-security-article",
+      "title": "History of web authentication",
+      "seed": "This public technical article explains why interfaces may display sign in to continue and authentication required messages. It compares password, passkey, token, and session designs using reproducible experiments and public standards.",
+      "repeat": 35,
+      "expected_outcome": "success"
+    },
+    {
+      "id": "long-captcha-accessibility-article",
+      "title": "CAPTCHA accessibility research",
+      "seed": "This public research article studies prompts such as verify that you are human and complete the captcha. It evaluates accessibility, false rejection rates, privacy, alternative challenges, methods, observations, and limitations.",
+      "repeat": 35,
+      "expected_outcome": "success"
+    },
+    {
+      "id": "long-cloudflare-incident-article",
+      "title": "Content delivery incident analysis",
+      "seed": "The incident report documents a page that displayed checking if the site connection is secure and a Cloudflare Ray ID. Engineers describe the timeline, root cause, measurements, remediation, and follow-up work.",
+      "repeat": 35,
+      "expected_outcome": "success"
+    },
+    {
+      "id": "long-subscription-economics-article",
+      "title": "Digital subscription economics",
+      "seed": "This public economic analysis discusses notices such as subscribe to continue and subscribers only. It reports methods, revenue observations, reader surveys, market limitations, and independent conclusions.",
+      "repeat": 35,
+      "expected_outcome": "success"
+    },
+    {
+      "id": "long-access-denied-security-article",
+      "title": "HTTP authorization failures",
+      "seed": "This public technical guide explains 403 Forbidden, access denied, and you do not have permission to access messages. It gives standards references, examples, diagnostics, and safe remediation guidance.",
+      "repeat": 35,
+      "expected_outcome": "success"
+    },
+    {
+      "id": "long-unusual-traffic-research",
+      "title": "Automated traffic measurement study",
+      "seed": "The study quotes unusual traffic from your computer network as one observed response. Researchers report collection methods, public measurements, sampling limitations, and reproducible aggregate results.",
+      "repeat": 35,
+      "expected_outcome": "success"
+    },
+    {
+      "id": "consent-vendor-wall",
+      "title": "Consent preferences",
+      "seed": "Manage your privacy. Consent preferences. Advertising partners. Precise geolocation data. Legitimate interests. Accept all cookies.",
+      "repeat": 45,
+      "expected_outcome": "cookie_consent"
+    },
+    {
+      "id": "consent-short-wall",
+      "title": "Before you continue",
+      "seed": "Cookie consent. Accept all cookies or manage your privacy.",
+      "repeat": 4,
+      "expected_outcome": "cookie_consent"
+    },
+    {
+      "id": "navigation-shell-home",
+      "title": "Home",
+      "seed": "Home Menu Search Account Back Button Close Open More Next Previous Language Select",
+      "repeat": 55,
+      "expected_outcome": "access_denied"
+    },
+    {
+      "id": "navigation-shell-menu",
+      "title": "Menu",
+      "seed": "Menu Home Search Account Back Button Close Open More Next Previous Language Select",
+      "repeat": 55,
+      "expected_outcome": "access_denied"
+    },
+    {
+      "id": "public-science-report",
+      "title": "Coastal monitoring report",
+      "seed": "The monitoring program measured water temperature, salinity, and dissolved oxygen at twelve public stations. The report explains calibration, seasonal observations, uncertainty, and data availability.",
+      "repeat": 30,
+      "expected_outcome": "success"
+    },
+    {
+      "id": "public-software-documentation",
+      "title": "Retry configuration reference",
+      "seed": "The retry setting accepts a positive integer and applies only to transient network failures. The reference documents defaults, error handling, examples, and compatibility notes.",
+      "repeat": 30,
+      "expected_outcome": "success"
+    }
+  ],
+  "evidence_cases": [
+    {
+      "id": "dual-channel-consent-boilerplate",
+      "query": "orbital transfer window calculation",
+      "expected_sufficient": false,
+      "candidates": [
+        {
+          "source_id": 1,
+          "title": "Back Button",
+          "seed": "Manage privacy preferences, advertising purposes, partners, vendors, precise location, device identifiers, and legitimate interests.",
+          "repeat": 12,
+          "vector_rank": 1,
+          "keyword_rank": 1,
+          "usable": false
+        },
+        {
+          "source_id": 1,
+          "title": "Back Button",
+          "seed": "Consent settings can be changed for advertising partners, measurement purposes, device storage, and audience research.",
+          "repeat": 12,
+          "vector_rank": 2,
+          "keyword_rank": null,
+          "usable": false
+        }
+      ]
+    },
+    {
+      "id": "simple-answer-bearing-source",
+      "query": "What material does the prototype use?",
+      "expected_sufficient": true,
+      "candidates": [
+        {
+          "source_id": 2,
+          "title": "Prototype materials report",
+          "seed": "The prototype uses recycled aluminium for its structural frame. The report documents the material selection and testing process.",
+          "repeat": 8,
+          "vector_rank": 1,
+          "keyword_rank": 1,
+          "usable": true
+        }
+      ]
+    },
+    {
+      "id": "complex-single-source",
+      "query": "Compare alpha versus beta and evaluate their trade-offs",
+      "expected_sufficient": false,
+      "candidates": [
+        {
+          "source_id": 3,
+          "title": "Alpha and beta comparison",
+          "seed": "Alpha and beta have different performance and reliability trade-offs under sustained load.",
+          "repeat": 8,
+          "vector_rank": 1,
+          "keyword_rank": 1,
+          "usable": true
+        }
+      ]
+    },
+    {
+      "id": "minimum-pool-must-not-force-garbage",
+      "query": "Which catalyst improves ammonia synthesis?",
+      "expected_sufficient": true,
+      "candidates": [
+        {
+          "source_id": 10,
+          "title": "Back Button",
+          "seed": "Advertising consent vendors purposes location identifiers preferences",
+          "repeat": 12,
+          "vector_rank": 1,
+          "keyword_rank": 1,
+          "usable": false
+        },
+        {
+          "source_id": 11,
+          "title": "Back Button",
+          "seed": "Advertising consent vendors purposes location identifiers preferences",
+          "repeat": 12,
+          "vector_rank": 2,
+          "keyword_rank": null,
+          "usable": false
+        },
+        {
+          "source_id": 12,
+          "title": "Back Button",
+          "seed": "Advertising consent vendors purposes location identifiers preferences",
+          "repeat": 12,
+          "vector_rank": 3,
+          "keyword_rank": null,
+          "usable": false
+        },
+        {
+          "source_id": 13,
+          "title": "Back Button",
+          "seed": "Advertising consent vendors purposes location identifiers preferences",
+          "repeat": 12,
+          "vector_rank": 4,
+          "keyword_rank": null,
+          "usable": false
+        },
+        {
+          "source_id": 14,
+          "title": "Back Button",
+          "seed": "Advertising consent vendors purposes location identifiers preferences",
+          "repeat": 12,
+          "vector_rank": 5,
+          "keyword_rank": null,
+          "usable": false
+        },
+        {
+          "source_id": 15,
+          "title": "Back Button",
+          "seed": "Advertising consent vendors purposes location identifiers preferences",
+          "repeat": 12,
+          "vector_rank": 6,
+          "keyword_rank": null,
+          "usable": false
+        },
+        {
+          "source_id": 16,
+          "title": "Back Button",
+          "seed": "Advertising consent vendors purposes location identifiers preferences",
+          "repeat": 12,
+          "vector_rank": 7,
+          "keyword_rank": null,
+          "usable": false
+        },
+        {
+          "source_id": 17,
+          "title": "Back Button",
+          "seed": "Advertising consent vendors purposes location identifiers preferences",
+          "repeat": 12,
+          "vector_rank": 8,
+          "keyword_rank": null,
+          "usable": false
+        },
+        {
+          "source_id": 18,
+          "title": "Catalyst study",
+          "seed": "The catalyst study found that promoted iron improves ammonia synthesis under the tested pressure and temperature conditions.",
+          "repeat": 8,
+          "vector_rank": 9,
+          "keyword_rank": 2,
+          "usable": true
+        }
+      ]
+    }
+  ]
+}

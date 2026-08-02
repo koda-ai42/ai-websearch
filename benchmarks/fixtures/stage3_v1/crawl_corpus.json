@@ -1,0 +1,132 @@
+{
+  "version": "2026-07-14.stage3.v1",
+  "cases": [
+    {
+      "id": "article-fit-preferred",
+      "crawl_success": true,
+      "status": 200,
+      "html": "<article>Measured result is 42.</article>",
+      "direct_markdown": "Navigation Home Products Contact Measured result is 42 Advertisement",
+      "markdown": {
+        "fit": "Measured result is 42.",
+        "raw": "Navigation Home Products Contact Measured result is 42 Advertisement",
+        "citations": "Measured result is 42.[1]"
+      },
+      "expected_outcome": "success",
+      "expected_markdown_variant": "fit",
+      "navigation_ms": 12.0,
+      "browser_startup_ms": 20.0,
+      "browser_teardown_ms": 3.0
+    },
+    {
+      "id": "article-raw-fallback",
+      "crawl_success": true,
+      "status": 200,
+      "html": "<main>Raw fallback article.</main>",
+      "direct_markdown": null,
+      "markdown": {"fit": "", "raw": "Raw fallback article.", "citations": "Raw fallback article.[1]"},
+      "expected_outcome": "success",
+      "expected_markdown_variant": "raw",
+      "navigation_ms": 9.0
+    },
+    {
+      "id": "article-citations-fallback",
+      "crawl_success": true,
+      "status": 200,
+      "html": "<main>Citation fallback article.</main>",
+      "direct_markdown": null,
+      "markdown": {"fit": "", "raw": "", "citations": "Citation fallback article.[1]"},
+      "expected_outcome": "success",
+      "expected_markdown_variant": "citations",
+      "navigation_ms": 8.0
+    },
+    {
+      "id": "article-direct-string",
+      "crawl_success": true,
+      "status": 200,
+      "html": "<article>Direct article.</article>",
+      "direct_markdown": "Direct article.",
+      "markdown": {"fit": "", "raw": "", "citations": ""},
+      "expected_outcome": "success",
+      "expected_markdown_variant": "direct",
+      "navigation_ms": 7.0
+    },
+    {
+      "id": "cookie-consent-wall",
+      "crawl_success": true,
+      "status": 200,
+      "html": "<div>Cookie consent: accept cookies or manage cookies</div>",
+      "direct_markdown": "Cookie consent. Accept cookies. Manage cookies.",
+      "markdown": {"fit": "Cookie consent. Accept cookies.", "raw": "Cookie consent. Accept cookies. Manage cookies.", "citations": ""},
+      "expected_outcome": "consent",
+      "expected_markdown_variant": null,
+      "navigation_ms": 6.0
+    },
+    {
+      "id": "authentication-wall",
+      "crawl_success": true,
+      "status": 401,
+      "html": "<form>Authentication required. Sign in to continue.</form>",
+      "direct_markdown": "Authentication required. Sign in to continue.",
+      "markdown": {"fit": "Sign in to continue.", "raw": "Authentication required.", "citations": ""},
+      "expected_outcome": "authentication",
+      "expected_markdown_variant": null,
+      "navigation_ms": 5.0
+    },
+    {
+      "id": "captcha-wall",
+      "crawl_success": true,
+      "status": 200,
+      "html": "<div>CAPTCHA: verify you are human</div>",
+      "direct_markdown": "CAPTCHA. Verify you are human.",
+      "markdown": {"fit": "Verify you are human.", "raw": "CAPTCHA challenge.", "citations": ""},
+      "expected_outcome": "captcha",
+      "expected_markdown_variant": null,
+      "navigation_ms": 5.0
+    },
+    {
+      "id": "subscription-wall",
+      "crawl_success": true,
+      "status": 200,
+      "html": "<div>Subscription required. Subscribe to continue.</div>",
+      "direct_markdown": "Subscription required. Subscribe to continue.",
+      "markdown": {"fit": "Subscribe to continue.", "raw": "Subscription required.", "citations": ""},
+      "expected_outcome": "subscription",
+      "expected_markdown_variant": null,
+      "navigation_ms": 5.0
+    },
+    {
+      "id": "access-denied",
+      "crawl_success": true,
+      "status": 403,
+      "html": "<h1>Access denied</h1><p>Forbidden</p>",
+      "direct_markdown": "Access denied. Forbidden.",
+      "markdown": {"fit": "Access denied.", "raw": "Access denied. Forbidden.", "citations": ""},
+      "expected_outcome": "access_denied",
+      "expected_markdown_variant": null,
+      "navigation_ms": 5.0
+    },
+    {
+      "id": "empty-success",
+      "crawl_success": true,
+      "status": 200,
+      "html": "<html><body></body></html>",
+      "direct_markdown": "",
+      "markdown": {"fit": "", "raw": "", "citations": ""},
+      "expected_outcome": "empty_content",
+      "expected_markdown_variant": null,
+      "navigation_ms": 4.0
+    },
+    {
+      "id": "crawler-failure",
+      "crawl_success": false,
+      "status": 0,
+      "html": "",
+      "direct_markdown": "",
+      "markdown": {"fit": "", "raw": "", "citations": ""},
+      "expected_outcome": "extraction_failure",
+      "expected_markdown_variant": null,
+      "navigation_ms": 35.0
+    }
+  ]
+}

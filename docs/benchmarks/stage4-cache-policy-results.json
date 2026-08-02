@@ -1,0 +1,918 @@
+{
+  "corpus": {
+    "path": "benchmarks/fixtures/stage4_v1/cache_corpus.json",
+    "version": "2026-07-14.stage4.v1"
+  },
+  "evaluation_protocol": {
+    "database_access": "No SQLite database is opened by Stage 4 replay.",
+    "latency": "Deterministic fixture durations and operation counts, not live cache measurements.",
+    "peak_rss_bytes": "Not measured during offline replay; reported as null.",
+    "scope": "In-memory URL/canonical cache policy and version-semantics modeling only."
+  },
+  "live_integrations_executed": [],
+  "policies": {
+    "current_append_model": {
+      "accuracy": {
+        "cache_before_refresh_applicable_cases": 1,
+        "cache_before_refresh_rate": 0.0,
+        "good_content_preservation_applicable_cases": 3,
+        "good_content_preservation_rate": 1.0,
+        "scenario_correctness": 0.125,
+        "single_active_version_applicable_cases": 7,
+        "single_active_version_rate": 0.2857142857142857,
+        "unchanged_work_avoidance_applicable_cases": 3,
+        "unchanged_work_avoidance_rate": 0.0,
+        "wall_rejection_applicable_cases": 2,
+        "wall_rejection_rate": 0.0
+      },
+      "latency": {
+        "failure_counts": {
+          "crawl_extraction": 1
+        },
+        "operation_counts": {
+          "chunking": 15,
+          "crawl_extraction": 16,
+          "database_read": 15,
+          "database_write": 12,
+          "embedding_encode": 15,
+          "total": 16
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 15,
+            "p50_ms": 0.06,
+            "p95_ms": 0.06
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 16,
+            "p50_ms": 5.0,
+            "p95_ms": 5.0
+          },
+          "database_read": {
+            "count": 15,
+            "p50_ms": 0.02,
+            "p95_ms": 0.02
+          },
+          "database_write": {
+            "count": 12,
+            "p50_ms": 0.2,
+            "p95_ms": 0.2
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 15,
+            "p50_ms": 0.4,
+            "p95_ms": 0.4
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 16,
+            "p50_ms": 5.68,
+            "p95_ms": 5.68
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "failed_refreshes": 1,
+        "operation_counts": {
+          "cache_write": 12,
+          "chunk": 15,
+          "content_identity_read": 15,
+          "duplicate_after_processing": 3,
+          "embed": 15,
+          "refresh": 16,
+          "refresh_failure": 1
+        },
+        "provenance_complete": true,
+        "version_semantics": "append_all_active",
+        "wall_results_cached": 2
+      },
+      "scenarios": [
+        {
+          "active_content_hashes": [
+            "good-v1",
+            "unexpected-refresh-v2"
+          ],
+          "active_versions": 2,
+          "cache_consulted_before_refresh": false,
+          "cache_hits": 0,
+          "embedding_operations": 2,
+          "failed_refreshes": 0,
+          "good_content_preserved": true,
+          "id": "fresh-cache-hit-before-refresh",
+          "provenance_complete": true,
+          "scenario_correct": false,
+          "single_active_version_correct": false,
+          "stored_versions": 2,
+          "unchanged_preprocess_skips": 0,
+          "unchanged_work_avoided": null,
+          "wall_rejected": null,
+          "wall_results_cached": 0
+        },
+        {
+          "active_content_hashes": [
+            "same-hash"
+          ],
+          "active_versions": 1,
+          "cache_consulted_before_refresh": null,
+          "cache_hits": 0,
+          "embedding_operations": 2,
+          "failed_refreshes": 0,
+          "good_content_preserved": null,
+          "id": "unchanged-stale-refresh",
+          "provenance_complete": true,
+          "scenario_correct": false,
+          "single_active_version_correct": true,
+          "stored_versions": 1,
+          "unchanged_preprocess_skips": 0,
+          "unchanged_work_avoided": false,
+          "wall_rejected": null,
+          "wall_results_cached": 0
+        },
+        {
+          "active_content_hashes": [
+            "changed-v1",
+            "changed-v2"
+          ],
+          "active_versions": 2,
+          "cache_consulted_before_refresh": null,
+          "cache_hits": 0,
+          "embedding_operations": 2,
+          "failed_refreshes": 0,
+          "good_content_preserved": null,
+          "id": "changed-content-version",
+          "provenance_complete": true,
+          "scenario_correct": false,
+          "single_active_version_correct": false,
+          "stored_versions": 2,
+          "unchanged_preprocess_skips": 0,
+          "unchanged_work_avoided": null,
+          "wall_rejected": null,
+          "wall_results_cached": 0
+        },
+        {
+          "active_content_hashes": [
+            "preserved-good"
+          ],
+          "active_versions": 1,
+          "cache_consulted_before_refresh": null,
+          "cache_hits": 0,
+          "embedding_operations": 1,
+          "failed_refreshes": 1,
+          "good_content_preserved": true,
+          "id": "failed-refresh-preserves-good",
+          "provenance_complete": true,
+          "scenario_correct": true,
+          "single_active_version_correct": null,
+          "stored_versions": 1,
+          "unchanged_preprocess_skips": 0,
+          "unchanged_work_avoided": null,
+          "wall_rejected": null,
+          "wall_results_cached": 0
+        },
+        {
+          "active_content_hashes": [
+            "wall-good",
+            "consent-wall"
+          ],
+          "active_versions": 2,
+          "cache_consulted_before_refresh": null,
+          "cache_hits": 0,
+          "embedding_operations": 2,
+          "failed_refreshes": 0,
+          "good_content_preserved": true,
+          "id": "consent-wall-after-good",
+          "provenance_complete": true,
+          "scenario_correct": false,
+          "single_active_version_correct": false,
+          "stored_versions": 2,
+          "unchanged_preprocess_skips": 0,
+          "unchanged_work_avoided": null,
+          "wall_rejected": false,
+          "wall_results_cached": 1
+        },
+        {
+          "active_content_hashes": [
+            "login-wall"
+          ],
+          "active_versions": 1,
+          "cache_consulted_before_refresh": null,
+          "cache_hits": 0,
+          "embedding_operations": 1,
+          "failed_refreshes": 0,
+          "good_content_preserved": null,
+          "id": "standalone-auth-wall",
+          "provenance_complete": true,
+          "scenario_correct": false,
+          "single_active_version_correct": false,
+          "stored_versions": 1,
+          "unchanged_preprocess_skips": 0,
+          "unchanged_work_avoided": null,
+          "wall_rejected": false,
+          "wall_results_cached": 1
+        },
+        {
+          "active_content_hashes": [
+            "canonical-same"
+          ],
+          "active_versions": 1,
+          "cache_consulted_before_refresh": null,
+          "cache_hits": 0,
+          "embedding_operations": 2,
+          "failed_refreshes": 0,
+          "good_content_preserved": null,
+          "id": "canonical-alias-unchanged",
+          "provenance_complete": true,
+          "scenario_correct": false,
+          "single_active_version_correct": true,
+          "stored_versions": 1,
+          "unchanged_preprocess_skips": 0,
+          "unchanged_work_avoided": false,
+          "wall_rejected": null,
+          "wall_results_cached": 0
+        },
+        {
+          "active_content_hashes": [
+            "revert-v1",
+            "revert-v2"
+          ],
+          "active_versions": 2,
+          "cache_consulted_before_refresh": null,
+          "cache_hits": 0,
+          "embedding_operations": 3,
+          "failed_refreshes": 0,
+          "good_content_preserved": null,
+          "id": "historical-content-reversion",
+          "provenance_complete": true,
+          "scenario_correct": false,
+          "single_active_version_correct": false,
+          "stored_versions": 2,
+          "unchanged_preprocess_skips": 0,
+          "unchanged_work_avoided": false,
+          "wall_rejected": null,
+          "wall_results_cached": 0
+        }
+      ]
+    },
+    "replace_active": {
+      "accuracy": {
+        "cache_before_refresh_applicable_cases": 1,
+        "cache_before_refresh_rate": 1.0,
+        "good_content_preservation_applicable_cases": 3,
+        "good_content_preservation_rate": 1.0,
+        "scenario_correctness": 1.0,
+        "single_active_version_applicable_cases": 7,
+        "single_active_version_rate": 1.0,
+        "unchanged_work_avoidance_applicable_cases": 3,
+        "unchanged_work_avoidance_rate": 1.0,
+        "wall_rejection_applicable_cases": 2,
+        "wall_rejection_rate": 1.0
+      },
+      "latency": {
+        "failure_counts": {
+          "crawl_extraction": 1
+        },
+        "operation_counts": {
+          "chunking": 10,
+          "crawl_extraction": 15,
+          "database_read": 28,
+          "database_write": 10,
+          "embedding_encode": 10,
+          "total": 16
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 10,
+            "p50_ms": 0.06,
+            "p95_ms": 0.06
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 15,
+            "p50_ms": 5.0,
+            "p95_ms": 5.0
+          },
+          "database_read": {
+            "count": 28,
+            "p50_ms": 0.02,
+            "p95_ms": 0.02
+          },
+          "database_write": {
+            "count": 10,
+            "p50_ms": 0.2,
+            "p95_ms": 0.2
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 10,
+            "p50_ms": 0.4,
+            "p95_ms": 0.4
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 16,
+            "p50_ms": 5.7,
+            "p95_ms": 5.7
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "failed_refreshes": 1,
+        "operation_counts": {
+          "cache_hit": 1,
+          "cache_read_before_refresh": 16,
+          "cache_write": 10,
+          "chunk": 10,
+          "content_identity_read": 12,
+          "embed": 10,
+          "refresh": 15,
+          "refresh_failure": 1,
+          "rejected_non_success": 2,
+          "unchanged_preprocess_skip": 2
+        },
+        "provenance_complete": true,
+        "version_semantics": "replace",
+        "wall_results_cached": 0
+      },
+      "scenarios": [
+        {
+          "active_content_hashes": [
+            "good-v1"
+          ],
+          "active_versions": 1,
+          "cache_consulted_before_refresh": true,
+          "cache_hits": 1,
+          "embedding_operations": 1,
+          "failed_refreshes": 0,
+          "good_content_preserved": true,
+          "id": "fresh-cache-hit-before-refresh",
+          "provenance_complete": true,
+          "scenario_correct": true,
+          "single_active_version_correct": true,
+          "stored_versions": 1,
+          "unchanged_preprocess_skips": 0,
+          "unchanged_work_avoided": null,
+          "wall_rejected": null,
+          "wall_results_cached": 0
+        },
+        {
+          "active_content_hashes": [
+            "same-hash"
+          ],
+          "active_versions": 1,
+          "cache_consulted_before_refresh": null,
+          "cache_hits": 0,
+          "embedding_operations": 1,
+          "failed_refreshes": 0,
+          "good_content_preserved": null,
+          "id": "unchanged-stale-refresh",
+          "provenance_complete": true,
+          "scenario_correct": true,
+          "single_active_version_correct": true,
+          "stored_versions": 1,
+          "unchanged_preprocess_skips": 1,
+          "unchanged_work_avoided": true,
+          "wall_rejected": null,
+          "wall_results_cached": 0
+        },
+        {
+          "active_content_hashes": [
+            "changed-v2"
+          ],
+          "active_versions": 1,
+          "cache_consulted_before_refresh": null,
+          "cache_hits": 0,
+          "embedding_operations": 2,
+          "failed_refreshes": 0,
+          "good_content_preserved": null,
+          "id": "changed-content-version",
+          "provenance_complete": true,
+          "scenario_correct": true,
+          "single_active_version_correct": true,
+          "stored_versions": 1,
+          "unchanged_preprocess_skips": 0,
+          "unchanged_work_avoided": null,
+          "wall_rejected": null,
+          "wall_results_cached": 0
+        },
+        {
+          "active_content_hashes": [
+            "preserved-good"
+          ],
+          "active_versions": 1,
+          "cache_consulted_before_refresh": null,
+          "cache_hits": 0,
+          "embedding_operations": 1,
+          "failed_refreshes": 1,
+          "good_content_preserved": true,
+          "id": "failed-refresh-preserves-good",
+          "provenance_complete": true,
+          "scenario_correct": true,
+          "single_active_version_correct": null,
+          "stored_versions": 1,
+          "unchanged_preprocess_skips": 0,
+          "unchanged_work_avoided": null,
+          "wall_rejected": null,
+          "wall_results_cached": 0
+        },
+        {
+          "active_content_hashes": [
+            "wall-good"
+          ],
+          "active_versions": 1,
+          "cache_consulted_before_refresh": null,
+          "cache_hits": 0,
+          "embedding_operations": 1,
+          "failed_refreshes": 0,
+          "good_content_preserved": true,
+          "id": "consent-wall-after-good",
+          "provenance_complete": true,
+          "scenario_correct": true,
+          "single_active_version_correct": true,
+          "stored_versions": 1,
+          "unchanged_preprocess_skips": 0,
+          "unchanged_work_avoided": null,
+          "wall_rejected": true,
+          "wall_results_cached": 0
+        },
+        {
+          "active_content_hashes": [],
+          "active_versions": 0,
+          "cache_consulted_before_refresh": null,
+          "cache_hits": 0,
+          "embedding_operations": 0,
+          "failed_refreshes": 0,
+          "good_content_preserved": null,
+          "id": "standalone-auth-wall",
+          "provenance_complete": true,
+          "scenario_correct": true,
+          "single_active_version_correct": true,
+          "stored_versions": 0,
+          "unchanged_preprocess_skips": 0,
+          "unchanged_work_avoided": null,
+          "wall_rejected": true,
+          "wall_results_cached": 0
+        },
+        {
+          "active_content_hashes": [
+            "canonical-same"
+          ],
+          "active_versions": 1,
+          "cache_consulted_before_refresh": null,
+          "cache_hits": 0,
+          "embedding_operations": 1,
+          "failed_refreshes": 0,
+          "good_content_preserved": null,
+          "id": "canonical-alias-unchanged",
+          "provenance_complete": true,
+          "scenario_correct": true,
+          "single_active_version_correct": true,
+          "stored_versions": 1,
+          "unchanged_preprocess_skips": 1,
+          "unchanged_work_avoided": true,
+          "wall_rejected": null,
+          "wall_results_cached": 0
+        },
+        {
+          "active_content_hashes": [
+            "revert-v1"
+          ],
+          "active_versions": 1,
+          "cache_consulted_before_refresh": null,
+          "cache_hits": 0,
+          "embedding_operations": 3,
+          "failed_refreshes": 0,
+          "good_content_preserved": null,
+          "id": "historical-content-reversion",
+          "provenance_complete": true,
+          "scenario_correct": true,
+          "single_active_version_correct": true,
+          "stored_versions": 1,
+          "unchanged_preprocess_skips": 0,
+          "unchanged_work_avoided": true,
+          "wall_rejected": null,
+          "wall_results_cached": 0
+        }
+      ]
+    },
+    "retain_history_single_active": {
+      "accuracy": {
+        "cache_before_refresh_applicable_cases": 1,
+        "cache_before_refresh_rate": 1.0,
+        "good_content_preservation_applicable_cases": 3,
+        "good_content_preservation_rate": 1.0,
+        "scenario_correctness": 1.0,
+        "single_active_version_applicable_cases": 7,
+        "single_active_version_rate": 1.0,
+        "unchanged_work_avoidance_applicable_cases": 3,
+        "unchanged_work_avoidance_rate": 1.0,
+        "wall_rejection_applicable_cases": 2,
+        "wall_rejection_rate": 1.0
+      },
+      "latency": {
+        "failure_counts": {
+          "crawl_extraction": 1
+        },
+        "operation_counts": {
+          "chunking": 9,
+          "crawl_extraction": 15,
+          "database_read": 28,
+          "database_write": 9,
+          "embedding_encode": 9,
+          "total": 16
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 9,
+            "p50_ms": 0.06,
+            "p95_ms": 0.06
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 15,
+            "p50_ms": 5.0,
+            "p95_ms": 5.0
+          },
+          "database_read": {
+            "count": 28,
+            "p50_ms": 0.02,
+            "p95_ms": 0.02
+          },
+          "database_write": {
+            "count": 9,
+            "p50_ms": 0.2,
+            "p95_ms": 0.2
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 9,
+            "p50_ms": 0.4,
+            "p95_ms": 0.4
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 16,
+            "p50_ms": 5.7,
+            "p95_ms": 5.7
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "failed_refreshes": 1,
+        "operation_counts": {
+          "cache_hit": 1,
+          "cache_read_before_refresh": 16,
+          "cache_write": 9,
+          "chunk": 9,
+          "content_identity_read": 12,
+          "embed": 9,
+          "historical_reactivation": 1,
+          "refresh": 15,
+          "refresh_failure": 1,
+          "rejected_non_success": 2,
+          "unchanged_preprocess_skip": 3
+        },
+        "provenance_complete": true,
+        "version_semantics": "retain_single_active",
+        "wall_results_cached": 0
+      },
+      "scenarios": [
+        {
+          "active_content_hashes": [
+            "good-v1"
+          ],
+          "active_versions": 1,
+          "cache_consulted_before_refresh": true,
+          "cache_hits": 1,
+          "embedding_operations": 1,
+          "failed_refreshes": 0,
+          "good_content_preserved": true,
+          "id": "fresh-cache-hit-before-refresh",
+          "provenance_complete": true,
+          "scenario_correct": true,
+          "single_active_version_correct": true,
+          "stored_versions": 1,
+          "unchanged_preprocess_skips": 0,
+          "unchanged_work_avoided": null,
+          "wall_rejected": null,
+          "wall_results_cached": 0
+        },
+        {
+          "active_content_hashes": [
+            "same-hash"
+          ],
+          "active_versions": 1,
+          "cache_consulted_before_refresh": null,
+          "cache_hits": 0,
+          "embedding_operations": 1,
+          "failed_refreshes": 0,
+          "good_content_preserved": null,
+          "id": "unchanged-stale-refresh",
+          "provenance_complete": true,
+          "scenario_correct": true,
+          "single_active_version_correct": true,
+          "stored_versions": 1,
+          "unchanged_preprocess_skips": 1,
+          "unchanged_work_avoided": true,
+          "wall_rejected": null,
+          "wall_results_cached": 0
+        },
+        {
+          "active_content_hashes": [
+            "changed-v2"
+          ],
+          "active_versions": 1,
+          "cache_consulted_before_refresh": null,
+          "cache_hits": 0,
+          "embedding_operations": 2,
+          "failed_refreshes": 0,
+          "good_content_preserved": null,
+          "id": "changed-content-version",
+          "provenance_complete": true,
+          "scenario_correct": true,
+          "single_active_version_correct": true,
+          "stored_versions": 2,
+          "unchanged_preprocess_skips": 0,
+          "unchanged_work_avoided": null,
+          "wall_rejected": null,
+          "wall_results_cached": 0
+        },
+        {
+          "active_content_hashes": [
+            "preserved-good"
+          ],
+          "active_versions": 1,
+          "cache_consulted_before_refresh": null,
+          "cache_hits": 0,
+          "embedding_operations": 1,
+          "failed_refreshes": 1,
+          "good_content_preserved": true,
+          "id": "failed-refresh-preserves-good",
+          "provenance_complete": true,
+          "scenario_correct": true,
+          "single_active_version_correct": null,
+          "stored_versions": 1,
+          "unchanged_preprocess_skips": 0,
+          "unchanged_work_avoided": null,
+          "wall_rejected": null,
+          "wall_results_cached": 0
+        },
+        {
+          "active_content_hashes": [
+            "wall-good"
+          ],
+          "active_versions": 1,
+          "cache_consulted_before_refresh": null,
+          "cache_hits": 0,
+          "embedding_operations": 1,
+          "failed_refreshes": 0,
+          "good_content_preserved": true,
+          "id": "consent-wall-after-good",
+          "provenance_complete": true,
+          "scenario_correct": true,
+          "single_active_version_correct": true,
+          "stored_versions": 1,
+          "unchanged_preprocess_skips": 0,
+          "unchanged_work_avoided": null,
+          "wall_rejected": true,
+          "wall_results_cached": 0
+        },
+        {
+          "active_content_hashes": [],
+          "active_versions": 0,
+          "cache_consulted_before_refresh": null,
+          "cache_hits": 0,
+          "embedding_operations": 0,
+          "failed_refreshes": 0,
+          "good_content_preserved": null,
+          "id": "standalone-auth-wall",
+          "provenance_complete": true,
+          "scenario_correct": true,
+          "single_active_version_correct": true,
+          "stored_versions": 0,
+          "unchanged_preprocess_skips": 0,
+          "unchanged_work_avoided": null,
+          "wall_rejected": true,
+          "wall_results_cached": 0
+        },
+        {
+          "active_content_hashes": [
+            "canonical-same"
+          ],
+          "active_versions": 1,
+          "cache_consulted_before_refresh": null,
+          "cache_hits": 0,
+          "embedding_operations": 1,
+          "failed_refreshes": 0,
+          "good_content_preserved": null,
+          "id": "canonical-alias-unchanged",
+          "provenance_complete": true,
+          "scenario_correct": true,
+          "single_active_version_correct": true,
+          "stored_versions": 1,
+          "unchanged_preprocess_skips": 1,
+          "unchanged_work_avoided": true,
+          "wall_rejected": null,
+          "wall_results_cached": 0
+        },
+        {
+          "active_content_hashes": [
+            "revert-v1"
+          ],
+          "active_versions": 1,
+          "cache_consulted_before_refresh": null,
+          "cache_hits": 0,
+          "embedding_operations": 2,
+          "failed_refreshes": 0,
+          "good_content_preserved": null,
+          "id": "historical-content-reversion",
+          "provenance_complete": true,
+          "scenario_correct": true,
+          "single_active_version_correct": true,
+          "stored_versions": 2,
+          "unchanged_preprocess_skips": 1,
+          "unchanged_work_avoided": true,
+          "wall_rejected": null,
+          "wall_results_cached": 0
+        }
+      ]
+    }
+  },
+  "run_mode": "offline_stage4_cache_policy_replay",
+  "schema_version": "1.0"
+}

@@ -1,0 +1,74 @@
+{
+  "latency": {
+    "cases_evaluated": 3,
+    "measured": false
+  },
+  "limitations": [
+    "Failure combinations are deterministic models; no SearXNG request is sent.",
+    "Retry latency is excluded and must be measured against a synthetic local endpoint."
+  ],
+  "policies": {
+    "diagnostic_failures": {
+      "accuracy": {
+        "outcome_accuracy": 1.0
+      },
+      "cases": [
+        {
+          "correct": true,
+          "expected": "partial_failure",
+          "id": "partial",
+          "observed": "partial_failure"
+        },
+        {
+          "correct": true,
+          "expected": "total_failure",
+          "id": "all-failed",
+          "observed": "total_failure"
+        },
+        {
+          "correct": true,
+          "expected": "empty_success",
+          "id": "valid-empty",
+          "observed": "empty_success"
+        }
+      ],
+      "reliability": {
+        "partial_failure_observable": true,
+        "total_failure_raises": true,
+        "valid_empty_distinct": true
+      }
+    },
+    "silent_failures": {
+      "accuracy": {
+        "outcome_accuracy": 0.3333333333333333
+      },
+      "cases": [
+        {
+          "correct": false,
+          "expected": "partial_failure",
+          "id": "partial",
+          "observed": "success"
+        },
+        {
+          "correct": false,
+          "expected": "total_failure",
+          "id": "all-failed",
+          "observed": "empty_success"
+        },
+        {
+          "correct": true,
+          "expected": "empty_success",
+          "id": "valid-empty",
+          "observed": "empty_success"
+        }
+      ],
+      "reliability": {
+        "partial_failure_observable": false,
+        "total_failure_raises": false,
+        "valid_empty_distinct": false
+      }
+    }
+  },
+  "run_mode": "offline_search_failure_policy",
+  "schema_version": "1.0"
+}

@@ -1,0 +1,1335 @@
+{
+  "corpus": {
+    "path": "benchmarks/fixtures/stage3_v1/crawl_corpus.json",
+    "version": "2026-07-14.stage3.v1"
+  },
+  "evaluation_protocol": {
+    "latency": "Deterministic fixture durations and operation counts, not live browser measurements.",
+    "lifecycle_accuracy": "Not evaluated by timing-only lifecycle modeling; outcome preservation is null.",
+    "peak_rss_bytes": "Not measured during offline replay; reported as null.",
+    "scope": "Crawl outcome classification, Markdown selection, wall rejection, and browser lifecycle modeling only."
+  },
+  "extraction_policies": {
+    "current_behavior_model": {
+      "accuracy": {
+        "markdown_variant_accuracy": 0.75,
+        "outcome_classification_accuracy": 0.5454545454545454,
+        "wall_rejection_rate": 0.0
+      },
+      "cases": [
+        {
+          "expected_markdown_variant": "fit",
+          "expected_outcome": "success",
+          "id": "article-fit-preferred",
+          "outcome_correct": true,
+          "predicted_outcome": "success",
+          "selected_markdown_variant": "direct",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": "raw",
+          "expected_outcome": "success",
+          "id": "article-raw-fallback",
+          "outcome_correct": true,
+          "predicted_outcome": "success",
+          "selected_markdown_variant": "raw",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": "citations",
+          "expected_outcome": "success",
+          "id": "article-citations-fallback",
+          "outcome_correct": true,
+          "predicted_outcome": "success",
+          "selected_markdown_variant": "citations",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": "direct",
+          "expected_outcome": "success",
+          "id": "article-direct-string",
+          "outcome_correct": true,
+          "predicted_outcome": "success",
+          "selected_markdown_variant": "direct",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "consent",
+          "id": "cookie-consent-wall",
+          "outcome_correct": false,
+          "predicted_outcome": "success",
+          "selected_markdown_variant": "direct",
+          "wall_content_rejected": false
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "authentication",
+          "id": "authentication-wall",
+          "outcome_correct": false,
+          "predicted_outcome": "success",
+          "selected_markdown_variant": "direct",
+          "wall_content_rejected": false
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "captcha",
+          "id": "captcha-wall",
+          "outcome_correct": false,
+          "predicted_outcome": "success",
+          "selected_markdown_variant": "direct",
+          "wall_content_rejected": false
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "subscription",
+          "id": "subscription-wall",
+          "outcome_correct": false,
+          "predicted_outcome": "success",
+          "selected_markdown_variant": "direct",
+          "wall_content_rejected": false
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "access_denied",
+          "id": "access-denied",
+          "outcome_correct": false,
+          "predicted_outcome": "success",
+          "selected_markdown_variant": "direct",
+          "wall_content_rejected": false
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "empty_content",
+          "id": "empty-success",
+          "outcome_correct": true,
+          "predicted_outcome": "empty_content",
+          "selected_markdown_variant": null,
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "extraction_failure",
+          "id": "crawler-failure",
+          "outcome_correct": true,
+          "predicted_outcome": "extraction_failure",
+          "selected_markdown_variant": null,
+          "wall_content_rejected": true
+        }
+      ],
+      "latency": {
+        "failure_counts": {
+          "crawl_extraction": 1
+        },
+        "operation_counts": {
+          "crawl_extraction": 11,
+          "total": 11
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 11,
+            "p50_ms": 0.1,
+            "p95_ms": 0.1
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 11,
+            "p50_ms": 0.1,
+            "p95_ms": 0.1
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "classified_outcomes": [
+          "empty_content",
+          "extraction_failure",
+          "success"
+        ],
+        "empty_success_pages": 1,
+        "fixture_crawl_failures": 1,
+        "misclassified_cases": 5,
+        "wall_pages_accepted_as_success": 5
+      }
+    },
+    "explicit_citations_first": {
+      "accuracy": {
+        "markdown_variant_accuracy": 0.5,
+        "outcome_classification_accuracy": 1.0,
+        "wall_rejection_rate": 1.0
+      },
+      "cases": [
+        {
+          "expected_markdown_variant": "fit",
+          "expected_outcome": "success",
+          "id": "article-fit-preferred",
+          "outcome_correct": true,
+          "predicted_outcome": "success",
+          "selected_markdown_variant": "citations",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": "raw",
+          "expected_outcome": "success",
+          "id": "article-raw-fallback",
+          "outcome_correct": true,
+          "predicted_outcome": "success",
+          "selected_markdown_variant": "citations",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": "citations",
+          "expected_outcome": "success",
+          "id": "article-citations-fallback",
+          "outcome_correct": true,
+          "predicted_outcome": "success",
+          "selected_markdown_variant": "citations",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": "direct",
+          "expected_outcome": "success",
+          "id": "article-direct-string",
+          "outcome_correct": true,
+          "predicted_outcome": "success",
+          "selected_markdown_variant": "direct",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "consent",
+          "id": "cookie-consent-wall",
+          "outcome_correct": true,
+          "predicted_outcome": "consent",
+          "selected_markdown_variant": "fit",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "authentication",
+          "id": "authentication-wall",
+          "outcome_correct": true,
+          "predicted_outcome": "authentication",
+          "selected_markdown_variant": "fit",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "captcha",
+          "id": "captcha-wall",
+          "outcome_correct": true,
+          "predicted_outcome": "captcha",
+          "selected_markdown_variant": "fit",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "subscription",
+          "id": "subscription-wall",
+          "outcome_correct": true,
+          "predicted_outcome": "subscription",
+          "selected_markdown_variant": "fit",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "access_denied",
+          "id": "access-denied",
+          "outcome_correct": true,
+          "predicted_outcome": "access_denied",
+          "selected_markdown_variant": "fit",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "empty_content",
+          "id": "empty-success",
+          "outcome_correct": true,
+          "predicted_outcome": "empty_content",
+          "selected_markdown_variant": null,
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "extraction_failure",
+          "id": "crawler-failure",
+          "outcome_correct": true,
+          "predicted_outcome": "extraction_failure",
+          "selected_markdown_variant": null,
+          "wall_content_rejected": true
+        }
+      ],
+      "latency": {
+        "failure_counts": {
+          "crawl_extraction": 1
+        },
+        "operation_counts": {
+          "crawl_extraction": 11,
+          "total": 11
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 11,
+            "p50_ms": 0.1,
+            "p95_ms": 0.1
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 11,
+            "p50_ms": 0.1,
+            "p95_ms": 0.1
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "classified_outcomes": [
+          "access_denied",
+          "authentication",
+          "captcha",
+          "consent",
+          "empty_content",
+          "extraction_failure",
+          "subscription",
+          "success"
+        ],
+        "empty_success_pages": 1,
+        "fixture_crawl_failures": 1,
+        "misclassified_cases": 0,
+        "wall_pages_accepted_as_success": 0
+      }
+    },
+    "explicit_current_precedence": {
+      "accuracy": {
+        "markdown_variant_accuracy": 0.75,
+        "outcome_classification_accuracy": 1.0,
+        "wall_rejection_rate": 1.0
+      },
+      "cases": [
+        {
+          "expected_markdown_variant": "fit",
+          "expected_outcome": "success",
+          "id": "article-fit-preferred",
+          "outcome_correct": true,
+          "predicted_outcome": "success",
+          "selected_markdown_variant": "direct",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": "raw",
+          "expected_outcome": "success",
+          "id": "article-raw-fallback",
+          "outcome_correct": true,
+          "predicted_outcome": "success",
+          "selected_markdown_variant": "raw",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": "citations",
+          "expected_outcome": "success",
+          "id": "article-citations-fallback",
+          "outcome_correct": true,
+          "predicted_outcome": "success",
+          "selected_markdown_variant": "citations",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": "direct",
+          "expected_outcome": "success",
+          "id": "article-direct-string",
+          "outcome_correct": true,
+          "predicted_outcome": "success",
+          "selected_markdown_variant": "direct",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "consent",
+          "id": "cookie-consent-wall",
+          "outcome_correct": true,
+          "predicted_outcome": "consent",
+          "selected_markdown_variant": "direct",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "authentication",
+          "id": "authentication-wall",
+          "outcome_correct": true,
+          "predicted_outcome": "authentication",
+          "selected_markdown_variant": "direct",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "captcha",
+          "id": "captcha-wall",
+          "outcome_correct": true,
+          "predicted_outcome": "captcha",
+          "selected_markdown_variant": "direct",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "subscription",
+          "id": "subscription-wall",
+          "outcome_correct": true,
+          "predicted_outcome": "subscription",
+          "selected_markdown_variant": "direct",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "access_denied",
+          "id": "access-denied",
+          "outcome_correct": true,
+          "predicted_outcome": "access_denied",
+          "selected_markdown_variant": "direct",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "empty_content",
+          "id": "empty-success",
+          "outcome_correct": true,
+          "predicted_outcome": "empty_content",
+          "selected_markdown_variant": null,
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "extraction_failure",
+          "id": "crawler-failure",
+          "outcome_correct": true,
+          "predicted_outcome": "extraction_failure",
+          "selected_markdown_variant": null,
+          "wall_content_rejected": true
+        }
+      ],
+      "latency": {
+        "failure_counts": {
+          "crawl_extraction": 1
+        },
+        "operation_counts": {
+          "crawl_extraction": 11,
+          "total": 11
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 11,
+            "p50_ms": 0.1,
+            "p95_ms": 0.1
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 11,
+            "p50_ms": 0.1,
+            "p95_ms": 0.1
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "classified_outcomes": [
+          "access_denied",
+          "authentication",
+          "captcha",
+          "consent",
+          "empty_content",
+          "extraction_failure",
+          "subscription",
+          "success"
+        ],
+        "empty_success_pages": 1,
+        "fixture_crawl_failures": 1,
+        "misclassified_cases": 0,
+        "wall_pages_accepted_as_success": 0
+      }
+    },
+    "explicit_fit_first": {
+      "accuracy": {
+        "markdown_variant_accuracy": 1.0,
+        "outcome_classification_accuracy": 1.0,
+        "wall_rejection_rate": 1.0
+      },
+      "cases": [
+        {
+          "expected_markdown_variant": "fit",
+          "expected_outcome": "success",
+          "id": "article-fit-preferred",
+          "outcome_correct": true,
+          "predicted_outcome": "success",
+          "selected_markdown_variant": "fit",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": "raw",
+          "expected_outcome": "success",
+          "id": "article-raw-fallback",
+          "outcome_correct": true,
+          "predicted_outcome": "success",
+          "selected_markdown_variant": "raw",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": "citations",
+          "expected_outcome": "success",
+          "id": "article-citations-fallback",
+          "outcome_correct": true,
+          "predicted_outcome": "success",
+          "selected_markdown_variant": "citations",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": "direct",
+          "expected_outcome": "success",
+          "id": "article-direct-string",
+          "outcome_correct": true,
+          "predicted_outcome": "success",
+          "selected_markdown_variant": "direct",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "consent",
+          "id": "cookie-consent-wall",
+          "outcome_correct": true,
+          "predicted_outcome": "consent",
+          "selected_markdown_variant": "fit",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "authentication",
+          "id": "authentication-wall",
+          "outcome_correct": true,
+          "predicted_outcome": "authentication",
+          "selected_markdown_variant": "fit",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "captcha",
+          "id": "captcha-wall",
+          "outcome_correct": true,
+          "predicted_outcome": "captcha",
+          "selected_markdown_variant": "fit",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "subscription",
+          "id": "subscription-wall",
+          "outcome_correct": true,
+          "predicted_outcome": "subscription",
+          "selected_markdown_variant": "fit",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "access_denied",
+          "id": "access-denied",
+          "outcome_correct": true,
+          "predicted_outcome": "access_denied",
+          "selected_markdown_variant": "fit",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "empty_content",
+          "id": "empty-success",
+          "outcome_correct": true,
+          "predicted_outcome": "empty_content",
+          "selected_markdown_variant": null,
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "extraction_failure",
+          "id": "crawler-failure",
+          "outcome_correct": true,
+          "predicted_outcome": "extraction_failure",
+          "selected_markdown_variant": null,
+          "wall_content_rejected": true
+        }
+      ],
+      "latency": {
+        "failure_counts": {
+          "crawl_extraction": 1
+        },
+        "operation_counts": {
+          "crawl_extraction": 11,
+          "total": 11
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 11,
+            "p50_ms": 0.1,
+            "p95_ms": 0.1
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 11,
+            "p50_ms": 0.1,
+            "p95_ms": 0.1
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "classified_outcomes": [
+          "access_denied",
+          "authentication",
+          "captcha",
+          "consent",
+          "empty_content",
+          "extraction_failure",
+          "subscription",
+          "success"
+        ],
+        "empty_success_pages": 1,
+        "fixture_crawl_failures": 1,
+        "misclassified_cases": 0,
+        "wall_pages_accepted_as_success": 0
+      }
+    },
+    "explicit_raw_first": {
+      "accuracy": {
+        "markdown_variant_accuracy": 0.75,
+        "outcome_classification_accuracy": 1.0,
+        "wall_rejection_rate": 1.0
+      },
+      "cases": [
+        {
+          "expected_markdown_variant": "fit",
+          "expected_outcome": "success",
+          "id": "article-fit-preferred",
+          "outcome_correct": true,
+          "predicted_outcome": "success",
+          "selected_markdown_variant": "raw",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": "raw",
+          "expected_outcome": "success",
+          "id": "article-raw-fallback",
+          "outcome_correct": true,
+          "predicted_outcome": "success",
+          "selected_markdown_variant": "raw",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": "citations",
+          "expected_outcome": "success",
+          "id": "article-citations-fallback",
+          "outcome_correct": true,
+          "predicted_outcome": "success",
+          "selected_markdown_variant": "citations",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": "direct",
+          "expected_outcome": "success",
+          "id": "article-direct-string",
+          "outcome_correct": true,
+          "predicted_outcome": "success",
+          "selected_markdown_variant": "direct",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "consent",
+          "id": "cookie-consent-wall",
+          "outcome_correct": true,
+          "predicted_outcome": "consent",
+          "selected_markdown_variant": "raw",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "authentication",
+          "id": "authentication-wall",
+          "outcome_correct": true,
+          "predicted_outcome": "authentication",
+          "selected_markdown_variant": "raw",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "captcha",
+          "id": "captcha-wall",
+          "outcome_correct": true,
+          "predicted_outcome": "captcha",
+          "selected_markdown_variant": "raw",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "subscription",
+          "id": "subscription-wall",
+          "outcome_correct": true,
+          "predicted_outcome": "subscription",
+          "selected_markdown_variant": "raw",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "access_denied",
+          "id": "access-denied",
+          "outcome_correct": true,
+          "predicted_outcome": "access_denied",
+          "selected_markdown_variant": "raw",
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "empty_content",
+          "id": "empty-success",
+          "outcome_correct": true,
+          "predicted_outcome": "empty_content",
+          "selected_markdown_variant": null,
+          "wall_content_rejected": true
+        },
+        {
+          "expected_markdown_variant": null,
+          "expected_outcome": "extraction_failure",
+          "id": "crawler-failure",
+          "outcome_correct": true,
+          "predicted_outcome": "extraction_failure",
+          "selected_markdown_variant": null,
+          "wall_content_rejected": true
+        }
+      ],
+      "latency": {
+        "failure_counts": {
+          "crawl_extraction": 1
+        },
+        "operation_counts": {
+          "crawl_extraction": 11,
+          "total": 11
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 11,
+            "p50_ms": 0.1,
+            "p95_ms": 0.1
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 11,
+            "p50_ms": 0.1,
+            "p95_ms": 0.1
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "classified_outcomes": [
+          "access_denied",
+          "authentication",
+          "captcha",
+          "consent",
+          "empty_content",
+          "extraction_failure",
+          "subscription",
+          "success"
+        ],
+        "empty_success_pages": 1,
+        "fixture_crawl_failures": 1,
+        "misclassified_cases": 0,
+        "wall_pages_accepted_as_success": 0
+      }
+    }
+  },
+  "lifecycle_policies": {
+    "fresh_per_url": {
+      "accuracy": {
+        "expected_outcome_preservation": null
+      },
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "crawl_extraction": 11,
+          "total": 11
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 11,
+            "p50_ms": 29.0,
+            "p95_ms": 58.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 11,
+            "p50_ms": 29.0,
+            "p95_ms": 58.0
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "browser_actions": "read_only_fixture_replay",
+        "browser_instances": 11,
+        "persistent_profile_used": false,
+        "personal_profile_used": false,
+        "profile_mode": "ephemeral",
+        "scope": "per_url"
+      }
+    },
+    "scoped_ephemeral": {
+      "accuracy": {
+        "expected_outcome_preservation": null
+      },
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "crawl_extraction": 11,
+          "total": 11
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 11,
+            "p50_ms": 6.0,
+            "p95_ms": 38.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 11,
+            "p50_ms": 6.0,
+            "p95_ms": 38.0
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "reliability": {
+        "browser_actions": "read_only_fixture_replay",
+        "browser_instances": 1,
+        "persistent_profile_used": false,
+        "personal_profile_used": false,
+        "profile_mode": "ephemeral",
+        "scope": "benchmark_batch"
+      }
+    }
+  },
+  "live_integrations_executed": [],
+  "run_mode": "offline_stage3_crawl_extraction_replay",
+  "schema_version": "1.0"
+}

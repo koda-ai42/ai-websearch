@@ -1,0 +1,80 @@
+{
+  "accuracy": {
+    "crawl_outcome_accuracy": 0.6,
+    "evidence_gate_accuracy": 0.75,
+    "false_sufficient_count": 1,
+    "legitimate_acceptance_rate": 1.0,
+    "retained_candidate_precision": 0.23076923076923078,
+    "wall_rejection_rate": 0.3333333333333333
+  },
+  "corpus_version": "2026-08-02.v1",
+  "crawl_cases": [
+    {"correct": false, "expected": "cookie_consent", "id": "long-consent-only", "observed": "success"},
+    {"correct": true, "expected": "cookie_consent", "id": "thin-consent-only", "observed": "cookie_consent"},
+    {"correct": true, "expected": "success", "id": "article-with-consent-footer", "observed": "success"},
+    {"correct": false, "expected": "access_denied", "id": "navigation-shell", "observed": "success"},
+    {"correct": true, "expected": "success", "id": "substantive-public-article", "observed": "success"}
+  ],
+  "evidence_cases": [
+    {
+      "bad_candidates_retained": 2,
+      "candidates_after": 2,
+      "candidates_before": 2,
+      "correct": false,
+      "expected_sufficient": false,
+      "filter_rejections": {"candidate_bound": 0, "low_query_coverage": 0, "too_short": 0},
+      "id": "dual-channel-consent-boilerplate",
+      "observed_sufficient": true,
+      "reason": "sufficient_evidence"
+    },
+    {
+      "bad_candidates_retained": 0,
+      "candidates_after": 1,
+      "candidates_before": 1,
+      "correct": true,
+      "expected_sufficient": true,
+      "filter_rejections": {"candidate_bound": 0, "low_query_coverage": 0, "too_short": 0},
+      "id": "simple-answer-bearing-source",
+      "observed_sufficient": true,
+      "reason": "sufficient_evidence"
+    },
+    {
+      "bad_candidates_retained": 0,
+      "candidates_after": 1,
+      "candidates_before": 1,
+      "correct": true,
+      "expected_sufficient": false,
+      "filter_rejections": {"candidate_bound": 0, "low_query_coverage": 0, "too_short": 0},
+      "id": "complex-single-source",
+      "observed_sufficient": false,
+      "reason": "complex_query_needs_source_diversity"
+    },
+    {
+      "bad_candidates_retained": 8,
+      "candidates_after": 9,
+      "candidates_before": 9,
+      "correct": true,
+      "expected_sufficient": true,
+      "filter_rejections": {"candidate_bound": 0, "low_query_coverage": 0, "too_short": 0},
+      "id": "minimum-pool-must-not-force-garbage",
+      "observed_sufficient": true,
+      "reason": "sufficient_evidence"
+    }
+  ],
+  "latency": {"crawl_cases_evaluated": 5, "evidence_cases_evaluated": 4, "measured": false},
+  "limitations": [
+    "Synthetic text exercises production policy helpers without network or browser execution.",
+    "No embedding or CrossEncoder inference is performed.",
+    "Latency fields are deterministic case counts, not wall-clock measurements."
+  ],
+  "reliability": {
+    "browser_execution": false,
+    "consent_or_shell_cases_accepted": 2,
+    "database_access": false,
+    "known_bad_candidates_retained": 10,
+    "model_inference": false,
+    "network_access": false
+  },
+  "run_mode": "offline_production_policy",
+  "schema_version": "1.0"
+}

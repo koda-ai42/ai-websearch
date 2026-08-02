@@ -1,0 +1,39 @@
+{
+  "accuracy": {
+    "broken_chunk_starts": 0,
+    "orphaned_section_fragments": 0,
+    "section_boundary_accuracy": 1.0
+  },
+  "chunking": {
+    "broken_starts": [],
+    "chunks": [
+      "France have played in several major tournaments and this background paragraph intentionally fills the preceding chunk with enough ordinary prose to exercise the overlap boundary. The article describes prior finals, qualification, coaching history, and recent results without adding another fixture list.",
+      "## France's UEFA Nations League fixtures: Group A1\n**25 September**: Türkiye vs France (20:45)\n**28 September**: Belgium vs France (20:45)\n**2 October**: France vs Italy (20:45)\n**5 October**: France vs Belgium (20:45)\n**12 November**: Italy vs France (20:45)\n**15 November**: France vs Türkiye (20:45)\nAll times CET.",
+      "## Selected for you\nWorld Cup results by team and other related articles are available from the navigation area."
+    ],
+    "orphaned_section_fragments": []
+  },
+  "corpus_version": "2026-08-02.v1",
+  "latency": {
+    "chunks_produced": 3,
+    "measured": false,
+    "section_checks_evaluated": 2
+  },
+  "limitations": [
+    "The fixture is synthetic and derived from the observed UEFA page structure.",
+    "No network, browser, embedding model, CrossEncoder, llama.cpp, or answer model runs.",
+    "Latency fields are deterministic operation counts, not wall-clock measurements."
+  ],
+  "reliability": {
+    "answer_contract_controls": {
+      "citation_and_fetch_required": true,
+      "original_query_enforced": true,
+      "original_query_required": true,
+      "scope_instruction_present": true,
+      "transaction_validator_available": true
+    },
+    "consent_markers_remaining": []
+  },
+  "run_mode": "offline_production_policy",
+  "schema_version": "1.0"
+}

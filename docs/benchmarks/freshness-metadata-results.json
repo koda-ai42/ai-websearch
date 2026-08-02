@@ -1,0 +1,150 @@
+{
+  "latency": {
+    "cases_evaluated": 9,
+    "measured": false
+  },
+  "limitations": [
+    "HTML and dates are synthetic; no SearXNG or browser request is executed.",
+    "Freshness ranking effects require a larger human-judged retrieval corpus."
+  ],
+  "policies": {
+    "meta_time_year": {
+      "accuracy": {
+        "date_provenance_accuracy": 0.8,
+        "freshness_window_accuracy": 0.5
+      },
+      "date_cases": [
+        {
+          "correct": false,
+          "expected_source": "json_ld",
+          "id": "json-ld",
+          "observed_source": null
+        },
+        {
+          "correct": true,
+          "expected_source": "meta",
+          "id": "meta",
+          "observed_source": "meta"
+        },
+        {
+          "correct": true,
+          "expected_source": "time",
+          "id": "time",
+          "observed_source": "time"
+        },
+        {
+          "correct": true,
+          "expected_source": "meta",
+          "id": "future-json-valid-meta",
+          "observed_source": "meta"
+        },
+        {
+          "correct": true,
+          "expected_source": null,
+          "id": "missing",
+          "observed_source": null
+        }
+      ],
+      "reliability": {
+        "future_dates_rejected": false,
+        "search_hints_distinguishable": false
+      },
+      "window_cases": [
+        {
+          "correct": false,
+          "expected": "day",
+          "id": "window-0",
+          "observed": "year"
+        },
+        {
+          "correct": false,
+          "expected": "month",
+          "id": "window-1",
+          "observed": "year"
+        },
+        {
+          "correct": true,
+          "expected": "year",
+          "id": "window-2",
+          "observed": "year"
+        },
+        {
+          "correct": true,
+          "expected": null,
+          "id": "window-3",
+          "observed": null
+        }
+      ]
+    },
+    "provenance_aware": {
+      "accuracy": {
+        "date_provenance_accuracy": 1.0,
+        "freshness_window_accuracy": 1.0
+      },
+      "date_cases": [
+        {
+          "correct": true,
+          "expected_source": "json_ld",
+          "id": "json-ld",
+          "observed_source": "json_ld"
+        },
+        {
+          "correct": true,
+          "expected_source": "meta",
+          "id": "meta",
+          "observed_source": "meta"
+        },
+        {
+          "correct": true,
+          "expected_source": "time",
+          "id": "time",
+          "observed_source": "time"
+        },
+        {
+          "correct": true,
+          "expected_source": "meta",
+          "id": "future-json-valid-meta",
+          "observed_source": "meta"
+        },
+        {
+          "correct": true,
+          "expected_source": null,
+          "id": "missing",
+          "observed_source": null
+        }
+      ],
+      "reliability": {
+        "future_dates_rejected": true,
+        "search_hints_distinguishable": true
+      },
+      "window_cases": [
+        {
+          "correct": true,
+          "expected": "day",
+          "id": "window-0",
+          "observed": "day"
+        },
+        {
+          "correct": true,
+          "expected": "month",
+          "id": "window-1",
+          "observed": "month"
+        },
+        {
+          "correct": true,
+          "expected": "year",
+          "id": "window-2",
+          "observed": "year"
+        },
+        {
+          "correct": true,
+          "expected": null,
+          "id": "window-3",
+          "observed": null
+        }
+      ]
+    }
+  },
+  "run_mode": "offline_freshness_metadata_policy",
+  "schema_version": "1.0"
+}

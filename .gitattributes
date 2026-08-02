@@ -1,0 +1,6 @@
+/.env export-ignore
+/data export-ignore
+/.runtime export-ignore
+/.crawl4ai export-ignore
+*.log export-ignore
+*.sqlite3 export-ignore

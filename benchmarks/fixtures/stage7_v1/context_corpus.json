@@ -1,0 +1,57 @@
+{
+  "version": "2026-07-15.stage7.v1",
+  "render_accounting": {
+    "payload_fixed_tokens": 260,
+    "payload_chunk_overhead_tokens": 70,
+    "payload_fixed_chars": 1040,
+    "payload_chunk_overhead_chars": 280,
+    "phase1_fixed_chars": 140,
+    "phase1_chunk_overhead_chars": 130
+  },
+  "cases": [
+    {
+      "id":"focused_fact","token_budget":5000,"relevant_evidence_ids":["answer"],"conflict_chunk_ids":[],"corroborating_chunk_ids":["ff1","ff2"],
+      "chunks":[
+        {"id":"ff1","score":0.96,"source_id":"official","evidence_id":"answer","stance_group":"answer","stance":"supports","corroboration_group":"answer","tokens":180,"chars":720},
+        {"id":"ff2","score":0.88,"source_id":"independent","evidence_id":"answer","stance_group":"answer","stance":"supports","corroboration_group":"answer","tokens":190,"chars":760}
+      ],
+      "noise_tail":{"count":28,"score_start":0.60,"score_step":0.01,"tokens":120,"chars":480,"source_cycle":8}
+    },
+    {
+      "id":"multi_fact","token_budget":2600,"relevant_evidence_ids":["a","b","c","d","e"],"conflict_chunk_ids":[],"corroborating_chunk_ids":[],
+      "chunks":[
+        {"id":"mf1","score":0.95,"source_id":"s1","evidence_id":"a","stance_group":"a","stance":"supports","corroboration_group":null,"tokens":210,"chars":840},
+        {"id":"mf2","score":0.91,"source_id":"s2","evidence_id":"b","stance_group":"b","stance":"supports","corroboration_group":null,"tokens":220,"chars":880},
+        {"id":"mf3","score":0.87,"source_id":"s3","evidence_id":"c","stance_group":"c","stance":"supports","corroboration_group":null,"tokens":230,"chars":920},
+        {"id":"mf4","score":0.82,"source_id":"s4","evidence_id":"d","stance_group":"d","stance":"supports","corroboration_group":null,"tokens":240,"chars":960},
+        {"id":"mf5","score":0.77,"source_id":"s5","evidence_id":"e","stance_group":"e","stance":"supports","corroboration_group":null,"tokens":250,"chars":1000}
+      ],
+      "noise_tail":{"count":12,"score_start":0.70,"score_step":0.02,"tokens":130,"chars":520,"source_cycle":6}
+    },
+    {
+      "id":"explicit_conflict","token_budget":1800,"relevant_evidence_ids":["cause","remedy"],"conflict_chunk_ids":["cf3"],"corroborating_chunk_ids":["cf1","cf2"],
+      "chunks":[
+        {"id":"cf1","score":0.96,"source_id":"report","evidence_id":"cause","stance_group":"cause","stance":"certificate","corroboration_group":"cause","tokens":230,"chars":920},
+        {"id":"cf2","score":0.90,"source_id":"audit","evidence_id":"cause","stance_group":"cause","stance":"certificate","corroboration_group":"cause","tokens":240,"chars":960},
+        {"id":"cf4","score":0.86,"source_id":"report","evidence_id":"remedy","stance_group":"remedy","stance":"rotation","corroboration_group":null,"tokens":220,"chars":880},
+        {"id":"cf5","score":0.82,"source_id":"summary","evidence_id":null,"stance_group":null,"stance":null,"corroboration_group":null,"tokens":180,"chars":720},
+        {"id":"cf3","score":0.64,"source_id":"vendor","evidence_id":"cause","stance_group":"cause","stance":"network","corroboration_group":null,"tokens":250,"chars":1000}
+      ],
+      "noise_tail":{"count":8,"score_start":0.80,"score_step":0.02,"tokens":140,"chars":560,"source_cycle":4}
+    },
+    {
+      "id":"low_confidence_no_answer","token_budget":1600,"relevant_evidence_ids":[],"conflict_chunk_ids":[],"corroborating_chunk_ids":[],
+      "chunks":[],
+      "noise_tail":{"count":14,"score_start":0.61,"score_step":0.015,"tokens":150,"chars":600,"source_cycle":7}
+    },
+    {
+      "id":"budget_pressure","token_budget":900,"relevant_evidence_ids":["one","two","three","four"],"conflict_chunk_ids":[],"corroborating_chunk_ids":[],
+      "chunks":[
+        {"id":"bp1","score":0.94,"source_id":"b1","evidence_id":"one","stance_group":"one","stance":"supports","corroboration_group":null,"tokens":300,"chars":1800},
+        {"id":"bp2","score":0.90,"source_id":"b2","evidence_id":"two","stance_group":"two","stance":"supports","corroboration_group":null,"tokens":300,"chars":1800},
+        {"id":"bp3","score":0.86,"source_id":"b3","evidence_id":"three","stance_group":"three","stance":"supports","corroboration_group":null,"tokens":300,"chars":1800},
+        {"id":"bp4","score":0.82,"source_id":"b4","evidence_id":"four","stance_group":"four","stance":"supports","corroboration_group":null,"tokens":300,"chars":1800}
+      ]
+    }
+  ]
+}

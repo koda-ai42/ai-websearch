@@ -1,0 +1,872 @@
+{
+  "corpus": {
+    "path": "benchmarks/fixtures/v1/corpus.json",
+    "version": "2026-07-14.v1"
+  },
+  "evaluation_protocol": {
+    "citation_support": "Expected citation URLs represented by selected evidence sources; cases with no citation requirement are null and excluded from the aggregate.",
+    "final_answer_correctness": "Deterministic selection-readiness proxy: all required answer chunks selected; no LLM judge.",
+    "latency": "Recorded deterministic fixture durations, not live wall-clock measurements.",
+    "peak_rss_bytes": "Not measured during offline replay; reported as null."
+  },
+  "live_integrations_executed": [],
+  "pipelines": {
+    "current": {
+      "accuracy": {
+        "answer_bearing_chunk_recall": 0.7777777777777778,
+        "chunk_precision": 0.6111111111111112,
+        "chunk_recall": 0.7777777777777778,
+        "citation_support": 0.875,
+        "citation_support_applicable_cases": 8,
+        "duplicate_rate": 0.0,
+        "final_answer_correctness_proxy": 0.8888888888888888,
+        "mean_unique_canonical_sources": 3.2222222222222223,
+        "mean_unique_domains": 2.7777777777777777,
+        "mrr": 0.5010582010582011,
+        "ndcg": 0.5945684326821481,
+        "packed_evidence_precision": 0.6111111111111112,
+        "relevant_page_recall": 0.7777777777777778,
+        "search_precision": 0.48055555555555557,
+        "search_recall": 0.8888888888888888,
+        "source_diversity": 1.0
+      },
+      "cases": [
+        {
+          "answer_bearing_chunk_recall": 0.0,
+          "chunk_precision": 0.0,
+          "chunk_recall": 0.0,
+          "citation_support": 0.0,
+          "duplicate_rate": 0.0,
+          "final_answer_correctness_proxy": 0.0,
+          "id": "fact-planet",
+          "mrr": 0.14285714285714285,
+          "ndcg": 0.3333333333333333,
+          "packed_evidence_precision": 0.0,
+          "relevant_page_recall": 0.0,
+          "search_precision": 0.125,
+          "search_recall": 1.0,
+          "source_diversity": 1.0,
+          "unique_canonical_sources": 8,
+          "unique_domains": 6
+        },
+        {
+          "answer_bearing_chunk_recall": 1.0,
+          "chunk_precision": 1.0,
+          "chunk_recall": 1.0,
+          "citation_support": 1.0,
+          "duplicate_rate": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "docs-widget",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "packed_evidence_precision": 1.0,
+          "relevant_page_recall": 1.0,
+          "search_precision": 1.0,
+          "search_recall": 1.0,
+          "source_diversity": 1.0,
+          "unique_canonical_sources": 1,
+          "unique_domains": 1
+        },
+        {
+          "answer_bearing_chunk_recall": 1.0,
+          "chunk_precision": 0.5,
+          "chunk_recall": 1.0,
+          "citation_support": 1.0,
+          "duplicate_rate": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "news-release",
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "packed_evidence_precision": 0.5,
+          "relevant_page_recall": 1.0,
+          "search_precision": 0.3333333333333333,
+          "search_recall": 1.0,
+          "source_diversity": 1.0,
+          "unique_canonical_sources": 3,
+          "unique_domains": 3
+        },
+        {
+          "answer_bearing_chunk_recall": 1.0,
+          "chunk_precision": 0.5,
+          "chunk_recall": 1.0,
+          "citation_support": 1.0,
+          "duplicate_rate": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "consumer-kettle",
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "packed_evidence_precision": 0.5,
+          "relevant_page_recall": 1.0,
+          "search_precision": 0.3333333333333333,
+          "search_recall": 1.0,
+          "source_diversity": 1.0,
+          "unique_canonical_sources": 3,
+          "unique_domains": 2
+        },
+        {
+          "answer_bearing_chunk_recall": 1.0,
+          "chunk_precision": 1.0,
+          "chunk_recall": 1.0,
+          "citation_support": 1.0,
+          "duplicate_rate": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "multihop-river",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "packed_evidence_precision": 1.0,
+          "relevant_page_recall": 1.0,
+          "search_precision": 1.0,
+          "search_recall": 1.0,
+          "source_diversity": 1.0,
+          "unique_canonical_sources": 2,
+          "unique_domains": 2
+        },
+        {
+          "answer_bearing_chunk_recall": 1.0,
+          "chunk_precision": 0.5,
+          "chunk_recall": 1.0,
+          "citation_support": 1.0,
+          "duplicate_rate": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "ambiguous-mercury",
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "packed_evidence_precision": 0.5,
+          "relevant_page_recall": 1.0,
+          "search_precision": 0.3333333333333333,
+          "search_recall": 1.0,
+          "source_diversity": 1.0,
+          "unique_canonical_sources": 3,
+          "unique_domains": 2
+        },
+        {
+          "answer_bearing_chunk_recall": 0.0,
+          "chunk_precision": 0.0,
+          "chunk_recall": 0.0,
+          "citation_support": null,
+          "duplicate_rate": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "no-answer-secret",
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "packed_evidence_precision": 0.0,
+          "relevant_page_recall": 0.0,
+          "search_precision": 0.0,
+          "search_recall": 0.0,
+          "source_diversity": 1.0,
+          "unique_canonical_sources": 2,
+          "unique_domains": 2
+        },
+        {
+          "answer_bearing_chunk_recall": 1.0,
+          "chunk_precision": 1.0,
+          "chunk_recall": 1.0,
+          "citation_support": 1.0,
+          "duplicate_rate": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "conflict-population",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "packed_evidence_precision": 1.0,
+          "relevant_page_recall": 1.0,
+          "search_precision": 1.0,
+          "search_recall": 1.0,
+          "source_diversity": 1.0,
+          "unique_canonical_sources": 2,
+          "unique_domains": 2
+        },
+        {
+          "answer_bearing_chunk_recall": 1.0,
+          "chunk_precision": 1.0,
+          "chunk_recall": 1.0,
+          "citation_support": 1.0,
+          "duplicate_rate": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "crawl-access-matrix",
+          "mrr": 0.2,
+          "ndcg": 0.38685280723454163,
+          "packed_evidence_precision": 1.0,
+          "relevant_page_recall": 1.0,
+          "search_precision": 0.2,
+          "search_recall": 1.0,
+          "source_diversity": 1.0,
+          "unique_canonical_sources": 5,
+          "unique_domains": 5
+        }
+      ],
+      "latency": {
+        "cold": {
+          "failure_counts": {
+            "crawl_extraction": 8,
+            "llama_props": 1,
+            "llama_tokenize": 10,
+            "search_request": 1
+          },
+          "operation_counts": {
+            "chunking": 18,
+            "cleaning": 18,
+            "crawl_extraction": 26,
+            "database_write": 18,
+            "diversity_selection": 9,
+            "embedding_encode": 18,
+            "embedding_load": 1,
+            "fts": 9,
+            "llama_props": 9,
+            "llama_tokenize": 90,
+            "normalization_fusion": 9,
+            "query_planning": 9,
+            "rendering": 9,
+            "search_merge_dedup": 9,
+            "search_request": 27,
+            "total": 9,
+            "vector_scan": 9
+          },
+          "peak_rss_bytes": null,
+          "stages": {
+            "chunking": {
+              "count": 18,
+              "p50_ms": 0.06,
+              "p95_ms": 0.06
+            },
+            "cleaning": {
+              "count": 18,
+              "p50_ms": 0.04,
+              "p95_ms": 0.04
+            },
+            "crawl_extraction": {
+              "count": 26,
+              "p50_ms": 12.0,
+              "p95_ms": 12.0
+            },
+            "database_write": {
+              "count": 18,
+              "p50_ms": 0.2,
+              "p95_ms": 0.2
+            },
+            "diversity_selection": {
+              "count": 9,
+              "p50_ms": 0.04,
+              "p95_ms": 0.04
+            },
+            "embedding_encode": {
+              "count": 18,
+              "p50_ms": 0.4,
+              "p95_ms": 0.4
+            },
+            "embedding_load": {
+              "count": 1,
+              "p50_ms": 3.0,
+              "p95_ms": 3.0
+            },
+            "fts": {
+              "count": 9,
+              "p50_ms": 0.3,
+              "p95_ms": 0.3
+            },
+            "llama_props": {
+              "count": 9,
+              "p50_ms": 1.0,
+              "p95_ms": 1.0
+            },
+            "llama_tokenize": {
+              "count": 90,
+              "p50_ms": 0.7,
+              "p95_ms": 0.7
+            },
+            "normalization_fusion": {
+              "count": 9,
+              "p50_ms": 0.05,
+              "p95_ms": 0.05
+            },
+            "query_planning": {
+              "count": 9,
+              "p50_ms": 0.05,
+              "p95_ms": 0.05
+            },
+            "rendering": {
+              "count": 9,
+              "p50_ms": 0.08,
+              "p95_ms": 0.08
+            },
+            "search_merge_dedup": {
+              "count": 9,
+              "p50_ms": 0.08,
+              "p95_ms": 0.08
+            },
+            "search_request": {
+              "count": 27,
+              "p50_ms": 4.0,
+              "p95_ms": 4.0
+            },
+            "total": {
+              "count": 9,
+              "p50_ms": 58.5,
+              "p95_ms": 87.6
+            },
+            "vector_scan": {
+              "count": 9,
+              "p50_ms": 0.5,
+              "p95_ms": 0.5
+            }
+          }
+        },
+        "warm": {
+          "failure_counts": {
+            "crawl_extraction": 8,
+            "llama_tokenize": 10,
+            "search_request": 1
+          },
+          "operation_counts": {
+            "chunking": 18,
+            "cleaning": 18,
+            "crawl_extraction": 26,
+            "database_write": 18,
+            "diversity_selection": 9,
+            "embedding_encode": 18,
+            "fts": 9,
+            "llama_tokenize": 90,
+            "normalization_fusion": 9,
+            "query_planning": 9,
+            "rendering": 9,
+            "search_merge_dedup": 9,
+            "search_request": 27,
+            "total": 9,
+            "vector_scan": 9
+          },
+          "peak_rss_bytes": null,
+          "stages": {
+            "chunking": {
+              "count": 18,
+              "p50_ms": 0.06,
+              "p95_ms": 0.06
+            },
+            "cleaning": {
+              "count": 18,
+              "p50_ms": 0.04,
+              "p95_ms": 0.04
+            },
+            "crawl_extraction": {
+              "count": 26,
+              "p50_ms": 12.0,
+              "p95_ms": 12.0
+            },
+            "database_write": {
+              "count": 18,
+              "p50_ms": 0.2,
+              "p95_ms": 0.2
+            },
+            "diversity_selection": {
+              "count": 9,
+              "p50_ms": 0.04,
+              "p95_ms": 0.04
+            },
+            "embedding_encode": {
+              "count": 18,
+              "p50_ms": 0.4,
+              "p95_ms": 0.4
+            },
+            "embedding_load": {
+              "count": 0,
+              "p50_ms": 0.0,
+              "p95_ms": 0.0
+            },
+            "fts": {
+              "count": 9,
+              "p50_ms": 0.3,
+              "p95_ms": 0.3
+            },
+            "llama_props": {
+              "count": 0,
+              "p50_ms": 0.0,
+              "p95_ms": 0.0
+            },
+            "llama_tokenize": {
+              "count": 90,
+              "p50_ms": 0.7,
+              "p95_ms": 0.7
+            },
+            "normalization_fusion": {
+              "count": 9,
+              "p50_ms": 0.05,
+              "p95_ms": 0.05
+            },
+            "query_planning": {
+              "count": 9,
+              "p50_ms": 0.05,
+              "p95_ms": 0.05
+            },
+            "rendering": {
+              "count": 9,
+              "p50_ms": 0.08,
+              "p95_ms": 0.08
+            },
+            "search_merge_dedup": {
+              "count": 9,
+              "p50_ms": 0.08,
+              "p95_ms": 0.08
+            },
+            "search_request": {
+              "count": 27,
+              "p50_ms": 4.0,
+              "p95_ms": 4.0
+            },
+            "total": {
+              "count": 9,
+              "p50_ms": 57.5,
+              "p95_ms": 83.6
+            },
+            "vector_scan": {
+              "count": 9,
+              "p50_ms": 0.5,
+              "p95_ms": 0.5
+            }
+          }
+        }
+      },
+      "reliability": {
+        "crawl_outcomes": {
+          "access_denied": 2,
+          "authentication": 1,
+          "captcha": 1,
+          "consent": 1,
+          "empty_content": 1,
+          "extraction_failure": 1,
+          "subscription": 1,
+          "success": 18
+        },
+        "good_content_preservation_rate": 0.0,
+        "llama_detection_failure_rate": 0.1111111111111111,
+        "llama_tokenization_failure_rate": 0.1111111111111111,
+        "partial_result_rate": 0.5555555555555556,
+        "per_stage_failures": {
+          "crawl_extraction": 8,
+          "llama_props": 1,
+          "llama_tokenize": 10,
+          "search_request": 1
+        }
+      }
+    },
+    "phase1": {
+      "accuracy": {
+        "answer_bearing_chunk_recall": 0.8888888888888888,
+        "chunk_precision": 0.7777777777777778,
+        "chunk_recall": 0.8888888888888888,
+        "citation_support": 1.0,
+        "citation_support_applicable_cases": 8,
+        "duplicate_rate": 0.0,
+        "final_answer_correctness_proxy": 1.0,
+        "mean_unique_canonical_sources": 1.7777777777777777,
+        "mean_unique_domains": 1.7777777777777777,
+        "mrr": 0.8888888888888888,
+        "ndcg": 0.8888888888888888,
+        "packed_evidence_precision": 0.7777777777777778,
+        "relevant_page_recall": 0.8888888888888888,
+        "search_precision": 0.6944444444444444,
+        "search_recall": 0.8888888888888888,
+        "source_diversity": 1.0
+      },
+      "cases": [
+        {
+          "answer_bearing_chunk_recall": 1.0,
+          "chunk_precision": 0.5,
+          "chunk_recall": 1.0,
+          "citation_support": 1.0,
+          "duplicate_rate": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "fact-planet",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "packed_evidence_precision": 0.5,
+          "relevant_page_recall": 1.0,
+          "search_precision": 0.5,
+          "search_recall": 1.0,
+          "source_diversity": 1.0,
+          "unique_canonical_sources": 2,
+          "unique_domains": 2
+        },
+        {
+          "answer_bearing_chunk_recall": 1.0,
+          "chunk_precision": 1.0,
+          "chunk_recall": 1.0,
+          "citation_support": 1.0,
+          "duplicate_rate": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "docs-widget",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "packed_evidence_precision": 1.0,
+          "relevant_page_recall": 1.0,
+          "search_precision": 1.0,
+          "search_recall": 1.0,
+          "source_diversity": 1.0,
+          "unique_canonical_sources": 1,
+          "unique_domains": 1
+        },
+        {
+          "answer_bearing_chunk_recall": 1.0,
+          "chunk_precision": 1.0,
+          "chunk_recall": 1.0,
+          "citation_support": 1.0,
+          "duplicate_rate": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "news-release",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "packed_evidence_precision": 1.0,
+          "relevant_page_recall": 1.0,
+          "search_precision": 1.0,
+          "search_recall": 1.0,
+          "source_diversity": 1.0,
+          "unique_canonical_sources": 1,
+          "unique_domains": 1
+        },
+        {
+          "answer_bearing_chunk_recall": 1.0,
+          "chunk_precision": 1.0,
+          "chunk_recall": 1.0,
+          "citation_support": 1.0,
+          "duplicate_rate": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "consumer-kettle",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "packed_evidence_precision": 1.0,
+          "relevant_page_recall": 1.0,
+          "search_precision": 1.0,
+          "search_recall": 1.0,
+          "source_diversity": 1.0,
+          "unique_canonical_sources": 1,
+          "unique_domains": 1
+        },
+        {
+          "answer_bearing_chunk_recall": 1.0,
+          "chunk_precision": 1.0,
+          "chunk_recall": 1.0,
+          "citation_support": 1.0,
+          "duplicate_rate": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "multihop-river",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "packed_evidence_precision": 1.0,
+          "relevant_page_recall": 1.0,
+          "search_precision": 1.0,
+          "search_recall": 1.0,
+          "source_diversity": 1.0,
+          "unique_canonical_sources": 2,
+          "unique_domains": 2
+        },
+        {
+          "answer_bearing_chunk_recall": 1.0,
+          "chunk_precision": 0.5,
+          "chunk_recall": 1.0,
+          "citation_support": 1.0,
+          "duplicate_rate": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "ambiguous-mercury",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "packed_evidence_precision": 0.5,
+          "relevant_page_recall": 1.0,
+          "search_precision": 0.5,
+          "search_recall": 1.0,
+          "source_diversity": 1.0,
+          "unique_canonical_sources": 2,
+          "unique_domains": 2
+        },
+        {
+          "answer_bearing_chunk_recall": 0.0,
+          "chunk_precision": 0.0,
+          "chunk_recall": 0.0,
+          "citation_support": null,
+          "duplicate_rate": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "no-answer-secret",
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "packed_evidence_precision": 0.0,
+          "relevant_page_recall": 0.0,
+          "search_precision": 0.0,
+          "search_recall": 0.0,
+          "source_diversity": 1.0,
+          "unique_canonical_sources": 1,
+          "unique_domains": 1
+        },
+        {
+          "answer_bearing_chunk_recall": 1.0,
+          "chunk_precision": 1.0,
+          "chunk_recall": 1.0,
+          "citation_support": 1.0,
+          "duplicate_rate": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "conflict-population",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "packed_evidence_precision": 1.0,
+          "relevant_page_recall": 1.0,
+          "search_precision": 1.0,
+          "search_recall": 1.0,
+          "source_diversity": 1.0,
+          "unique_canonical_sources": 2,
+          "unique_domains": 2
+        },
+        {
+          "answer_bearing_chunk_recall": 1.0,
+          "chunk_precision": 1.0,
+          "chunk_recall": 1.0,
+          "citation_support": 1.0,
+          "duplicate_rate": 0.0,
+          "final_answer_correctness_proxy": 1.0,
+          "id": "crawl-access-matrix",
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "packed_evidence_precision": 1.0,
+          "relevant_page_recall": 1.0,
+          "search_precision": 0.25,
+          "search_recall": 1.0,
+          "source_diversity": 1.0,
+          "unique_canonical_sources": 4,
+          "unique_domains": 4
+        }
+      ],
+      "latency": {
+        "cold": {
+          "failure_counts": {
+            "crawl_extraction": 3
+          },
+          "operation_counts": {
+            "chunking": 13,
+            "cleaning": 13,
+            "crawl_extraction": 16,
+            "database_write": 13,
+            "diversity_selection": 9,
+            "embedding_encode": 13,
+            "embedding_load": 1,
+            "fts": 9,
+            "normalization_fusion": 9,
+            "query_planning": 9,
+            "rendering": 9,
+            "search_merge_dedup": 9,
+            "search_request": 9,
+            "total": 9,
+            "vector_scan": 9
+          },
+          "peak_rss_bytes": null,
+          "stages": {
+            "chunking": {
+              "count": 13,
+              "p50_ms": 0.06,
+              "p95_ms": 0.06
+            },
+            "cleaning": {
+              "count": 13,
+              "p50_ms": 0.04,
+              "p95_ms": 0.04
+            },
+            "crawl_extraction": {
+              "count": 16,
+              "p50_ms": 12.0,
+              "p95_ms": 12.0
+            },
+            "database_write": {
+              "count": 13,
+              "p50_ms": 0.2,
+              "p95_ms": 0.2
+            },
+            "diversity_selection": {
+              "count": 9,
+              "p50_ms": 0.04,
+              "p95_ms": 0.04
+            },
+            "embedding_encode": {
+              "count": 13,
+              "p50_ms": 0.4,
+              "p95_ms": 0.4
+            },
+            "embedding_load": {
+              "count": 1,
+              "p50_ms": 3.0,
+              "p95_ms": 3.0
+            },
+            "fts": {
+              "count": 9,
+              "p50_ms": 0.3,
+              "p95_ms": 0.3
+            },
+            "llama_props": {
+              "count": 0,
+              "p50_ms": 0.0,
+              "p95_ms": 0.0
+            },
+            "llama_tokenize": {
+              "count": 0,
+              "p50_ms": 0.0,
+              "p95_ms": 0.0
+            },
+            "normalization_fusion": {
+              "count": 9,
+              "p50_ms": 0.05,
+              "p95_ms": 0.05
+            },
+            "query_planning": {
+              "count": 9,
+              "p50_ms": 0.05,
+              "p95_ms": 0.05
+            },
+            "rendering": {
+              "count": 9,
+              "p50_ms": 0.08,
+              "p95_ms": 0.08
+            },
+            "search_merge_dedup": {
+              "count": 9,
+              "p50_ms": 0.08,
+              "p95_ms": 0.08
+            },
+            "search_request": {
+              "count": 9,
+              "p50_ms": 4.0,
+              "p95_ms": 4.0
+            },
+            "total": {
+              "count": 9,
+              "p50_ms": 29.5,
+              "p95_ms": 53.8
+            },
+            "vector_scan": {
+              "count": 9,
+              "p50_ms": 0.5,
+              "p95_ms": 0.5
+            }
+          }
+        },
+        "warm": {
+          "failure_counts": {
+            "crawl_extraction": 3
+          },
+          "operation_counts": {
+            "chunking": 13,
+            "cleaning": 13,
+            "crawl_extraction": 16,
+            "database_write": 13,
+            "diversity_selection": 9,
+            "embedding_encode": 13,
+            "fts": 9,
+            "normalization_fusion": 9,
+            "query_planning": 9,
+            "rendering": 9,
+            "search_merge_dedup": 9,
+            "search_request": 9,
+            "total": 9,
+            "vector_scan": 9
+          },
+          "peak_rss_bytes": null,
+          "stages": {
+            "chunking": {
+              "count": 13,
+              "p50_ms": 0.06,
+              "p95_ms": 0.06
+            },
+            "cleaning": {
+              "count": 13,
+              "p50_ms": 0.04,
+              "p95_ms": 0.04
+            },
+            "crawl_extraction": {
+              "count": 16,
+              "p50_ms": 12.0,
+              "p95_ms": 12.0
+            },
+            "database_write": {
+              "count": 13,
+              "p50_ms": 0.2,
+              "p95_ms": 0.2
+            },
+            "diversity_selection": {
+              "count": 9,
+              "p50_ms": 0.04,
+              "p95_ms": 0.04
+            },
+            "embedding_encode": {
+              "count": 13,
+              "p50_ms": 0.4,
+              "p95_ms": 0.4
+            },
+            "embedding_load": {
+              "count": 0,
+              "p50_ms": 0.0,
+              "p95_ms": 0.0
+            },
+            "fts": {
+              "count": 9,
+              "p50_ms": 0.3,
+              "p95_ms": 0.3
+            },
+            "llama_props": {
+              "count": 0,
+              "p50_ms": 0.0,
+              "p95_ms": 0.0
+            },
+            "llama_tokenize": {
+              "count": 0,
+              "p50_ms": 0.0,
+              "p95_ms": 0.0
+            },
+            "normalization_fusion": {
+              "count": 9,
+              "p50_ms": 0.05,
+              "p95_ms": 0.05
+            },
+            "query_planning": {
+              "count": 9,
+              "p50_ms": 0.05,
+              "p95_ms": 0.05
+            },
+            "rendering": {
+              "count": 9,
+              "p50_ms": 0.08,
+              "p95_ms": 0.08
+            },
+            "search_merge_dedup": {
+              "count": 9,
+              "p50_ms": 0.08,
+              "p95_ms": 0.08
+            },
+            "search_request": {
+              "count": 9,
+              "p50_ms": 4.0,
+              "p95_ms": 4.0
+            },
+            "total": {
+              "count": 9,
+              "p50_ms": 26.5,
+              "p95_ms": 53.8
+            },
+            "vector_scan": {
+              "count": 9,
+              "p50_ms": 0.5,
+              "p95_ms": 0.5
+            }
+          }
+        }
+      },
+      "reliability": {
+        "crawl_outcomes": {
+          "captcha": 1,
+          "empty_content": 1,
+          "extraction_failure": 1,
+          "success": 13
+        },
+        "good_content_preservation_rate": 0.0,
+        "llama_detection_failure_rate": 0.0,
+        "llama_tokenization_failure_rate": 0.0,
+        "partial_result_rate": 0.1111111111111111,
+        "per_stage_failures": {
+          "crawl_extraction": 3
+        }
+      }
+    }
+  },
+  "run_mode": "offline_replay",
+  "schema_version": "1.0"
+}

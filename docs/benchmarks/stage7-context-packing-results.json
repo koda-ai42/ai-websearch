@@ -1,0 +1,2180 @@
+{
+  "cap_analysis": {
+    "best_cap_policy_recall": 0.6625,
+    "evaluated_caps": [
+      6,
+      8,
+      10
+    ],
+    "fixture_derived_balanced_cap": 6,
+    "production_decision": false,
+    "selection_rule": "Smallest evaluated cap matching the highest mean answer-evidence recall among cap-only policies."
+  },
+  "corpus": {
+    "path": "benchmarks/fixtures/stage7_v1/context_corpus.json",
+    "version": "2026-07-15.stage7.v1"
+  },
+  "evaluation_protocol": {
+    "budget_role": "The token budget is a hard safety ceiling; unused budget is descriptive and never an accuracy reward or failure.",
+    "current_model": "Balanced limits derived from applied_web_tokens using production chunk/source formulas, capped at 25 chunks and 10 sources, with full-payload token accounting.",
+    "database_access": "No database is opened by Stage 7 replay.",
+    "latency": "Deterministic fixture durations and operation counts, not live packing measurements.",
+    "phase1_model": "Eight chunks, two per source, and a 12,000-character ceiling charged for fixed context, headers, and evidence bodies.",
+    "scope": "Synthetic balanced context selection and packing policy comparison only.",
+    "token_counts": "Frozen full-payload and per-chunk rendering annotations model exact counts; llama.cpp /tokenize is not called."
+  },
+  "live_integrations_executed": [],
+  "policies": {
+    "balanced_cap_10": {
+      "accuracy": {
+        "abstention_success": 0.0,
+        "abstention_success_applicable_cases": 1,
+        "answer_chunk_precision": 0.85,
+        "answer_chunk_precision_applicable_cases": 4,
+        "answer_evidence_recall": 0.6625,
+        "answer_evidence_recall_applicable_cases": 4,
+        "answer_readiness": 0.25,
+        "answer_readiness_applicable_cases": 4,
+        "conflict_coverage": 0.0,
+        "conflict_coverage_applicable_cases": 1,
+        "corroboration_coverage": 1.0,
+        "corroboration_coverage_applicable_cases": 2
+      },
+      "cases": [
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 0.4,
+          "answer_evidence_recall": 1.0,
+          "answer_readiness": true,
+          "characters_packed": 5360,
+          "chunks_packed": 5,
+          "conflict_coverage": null,
+          "corroboration_coverage": 1.0,
+          "effective_max_chunks": 7,
+          "effective_max_sources": 3,
+          "id": "focused_fact",
+          "selected_ids": [
+            "ff1",
+            "ff2",
+            "focused_fact-noise-01",
+            "focused_fact-noise-09",
+            "focused_fact-noise-17"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 1340,
+          "truncated_chunks": 0,
+          "unused_token_budget": 3660
+        },
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 1.0,
+          "answer_evidence_recall": 0.4,
+          "answer_readiness": false,
+          "characters_packed": 3320,
+          "chunks_packed": 2,
+          "conflict_coverage": null,
+          "corroboration_coverage": null,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "multi_fact",
+          "selected_ids": [
+            "mf1",
+            "mf2"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 830,
+          "truncated_chunks": 0,
+          "unused_token_budget": 1770
+        },
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 1.0,
+          "answer_evidence_recall": 1.0,
+          "answer_readiness": false,
+          "characters_packed": 4640,
+          "chunks_packed": 3,
+          "conflict_coverage": 0.0,
+          "corroboration_coverage": 1.0,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "explicit_conflict",
+          "selected_ids": [
+            "cf1",
+            "cf2",
+            "cf4"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 1160,
+          "truncated_chunks": 0,
+          "unused_token_budget": 640
+        },
+        {
+          "abstention_success": false,
+          "answer_chunk_precision": null,
+          "answer_evidence_recall": null,
+          "answer_readiness": null,
+          "characters_packed": 4560,
+          "chunks_packed": 4,
+          "conflict_coverage": null,
+          "corroboration_coverage": null,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "low_confidence_no_answer",
+          "selected_ids": [
+            "low_confidence_no_answer-noise-01",
+            "low_confidence_no_answer-noise-02",
+            "low_confidence_no_answer-noise-08",
+            "low_confidence_no_answer-noise-09"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 1140,
+          "truncated_chunks": 0,
+          "unused_token_budget": 460
+        },
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 1.0,
+          "answer_evidence_recall": 0.25,
+          "answer_readiness": false,
+          "characters_packed": 3120,
+          "chunks_packed": 1,
+          "conflict_coverage": null,
+          "corroboration_coverage": null,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "budget_pressure",
+          "selected_ids": [
+            "bp1"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 630,
+          "truncated_chunks": 0,
+          "unused_token_budget": 270
+        }
+      ],
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "rendering": 5
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 5,
+            "p50_ms": 2.3200000000000003,
+            "p95_ms": 2.73
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "packing": {
+        "mean_characters_packed": 4200.0,
+        "mean_chunks_packed": 3.0,
+        "mean_tokens_packed": 1020.0,
+        "mean_unused_token_budget": 1360.0
+      },
+      "reliability": {
+        "fixture_exact_token_counts": true,
+        "live_llama_tokenize_executed": false,
+        "operation_counts": {
+          "candidate_checks": 71,
+          "chunks_packed": 15,
+          "source_limit_rejections": 55,
+          "token_ceiling_rejections": 1,
+          "truncated_chunks": 0
+        },
+        "token_budget_violations": 0
+      }
+    },
+    "balanced_cap_6": {
+      "accuracy": {
+        "abstention_success": 0.0,
+        "abstention_success_applicable_cases": 1,
+        "answer_chunk_precision": 1.0,
+        "answer_chunk_precision_applicable_cases": 4,
+        "answer_evidence_recall": 0.6625,
+        "answer_evidence_recall_applicable_cases": 4,
+        "answer_readiness": 0.25,
+        "answer_readiness_applicable_cases": 4,
+        "conflict_coverage": 0.0,
+        "conflict_coverage_applicable_cases": 1,
+        "corroboration_coverage": 1.0,
+        "corroboration_coverage_applicable_cases": 2
+      },
+      "cases": [
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 1.0,
+          "answer_evidence_recall": 1.0,
+          "answer_readiness": true,
+          "characters_packed": 3080,
+          "chunks_packed": 2,
+          "conflict_coverage": null,
+          "corroboration_coverage": 1.0,
+          "effective_max_chunks": 6,
+          "effective_max_sources": 2,
+          "id": "focused_fact",
+          "selected_ids": [
+            "ff1",
+            "ff2"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 770,
+          "truncated_chunks": 0,
+          "unused_token_budget": 4230
+        },
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 1.0,
+          "answer_evidence_recall": 0.4,
+          "answer_readiness": false,
+          "characters_packed": 3320,
+          "chunks_packed": 2,
+          "conflict_coverage": null,
+          "corroboration_coverage": null,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "multi_fact",
+          "selected_ids": [
+            "mf1",
+            "mf2"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 830,
+          "truncated_chunks": 0,
+          "unused_token_budget": 1770
+        },
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 1.0,
+          "answer_evidence_recall": 1.0,
+          "answer_readiness": false,
+          "characters_packed": 4640,
+          "chunks_packed": 3,
+          "conflict_coverage": 0.0,
+          "corroboration_coverage": 1.0,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "explicit_conflict",
+          "selected_ids": [
+            "cf1",
+            "cf2",
+            "cf4"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 1160,
+          "truncated_chunks": 0,
+          "unused_token_budget": 640
+        },
+        {
+          "abstention_success": false,
+          "answer_chunk_precision": null,
+          "answer_evidence_recall": null,
+          "answer_readiness": null,
+          "characters_packed": 4560,
+          "chunks_packed": 4,
+          "conflict_coverage": null,
+          "corroboration_coverage": null,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "low_confidence_no_answer",
+          "selected_ids": [
+            "low_confidence_no_answer-noise-01",
+            "low_confidence_no_answer-noise-02",
+            "low_confidence_no_answer-noise-08",
+            "low_confidence_no_answer-noise-09"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 1140,
+          "truncated_chunks": 0,
+          "unused_token_budget": 460
+        },
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 1.0,
+          "answer_evidence_recall": 0.25,
+          "answer_readiness": false,
+          "characters_packed": 3120,
+          "chunks_packed": 1,
+          "conflict_coverage": null,
+          "corroboration_coverage": null,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "budget_pressure",
+          "selected_ids": [
+            "bp1"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 630,
+          "truncated_chunks": 0,
+          "unused_token_budget": 270
+        }
+      ],
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "rendering": 5
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 5,
+            "p50_ms": 1.6800000000000002,
+            "p95_ms": 2.3499999999999996
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "packing": {
+        "mean_characters_packed": 3744.0,
+        "mean_chunks_packed": 2.4,
+        "mean_tokens_packed": 906.0,
+        "mean_unused_token_budget": 1474.0
+      },
+      "reliability": {
+        "fixture_exact_token_counts": true,
+        "live_llama_tokenize_executed": false,
+        "operation_counts": {
+          "candidate_checks": 71,
+          "chunks_packed": 12,
+          "source_limit_rejections": 58,
+          "token_ceiling_rejections": 1,
+          "truncated_chunks": 0
+        },
+        "token_budget_violations": 0
+      }
+    },
+    "balanced_cap_8": {
+      "accuracy": {
+        "abstention_success": 0.0,
+        "abstention_success_applicable_cases": 1,
+        "answer_chunk_precision": 0.85,
+        "answer_chunk_precision_applicable_cases": 4,
+        "answer_evidence_recall": 0.6625,
+        "answer_evidence_recall_applicable_cases": 4,
+        "answer_readiness": 0.25,
+        "answer_readiness_applicable_cases": 4,
+        "conflict_coverage": 0.0,
+        "conflict_coverage_applicable_cases": 1,
+        "corroboration_coverage": 1.0,
+        "corroboration_coverage_applicable_cases": 2
+      },
+      "cases": [
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 0.4,
+          "answer_evidence_recall": 1.0,
+          "answer_readiness": true,
+          "characters_packed": 5360,
+          "chunks_packed": 5,
+          "conflict_coverage": null,
+          "corroboration_coverage": 1.0,
+          "effective_max_chunks": 7,
+          "effective_max_sources": 3,
+          "id": "focused_fact",
+          "selected_ids": [
+            "ff1",
+            "ff2",
+            "focused_fact-noise-01",
+            "focused_fact-noise-09",
+            "focused_fact-noise-17"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 1340,
+          "truncated_chunks": 0,
+          "unused_token_budget": 3660
+        },
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 1.0,
+          "answer_evidence_recall": 0.4,
+          "answer_readiness": false,
+          "characters_packed": 3320,
+          "chunks_packed": 2,
+          "conflict_coverage": null,
+          "corroboration_coverage": null,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "multi_fact",
+          "selected_ids": [
+            "mf1",
+            "mf2"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 830,
+          "truncated_chunks": 0,
+          "unused_token_budget": 1770
+        },
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 1.0,
+          "answer_evidence_recall": 1.0,
+          "answer_readiness": false,
+          "characters_packed": 4640,
+          "chunks_packed": 3,
+          "conflict_coverage": 0.0,
+          "corroboration_coverage": 1.0,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "explicit_conflict",
+          "selected_ids": [
+            "cf1",
+            "cf2",
+            "cf4"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 1160,
+          "truncated_chunks": 0,
+          "unused_token_budget": 640
+        },
+        {
+          "abstention_success": false,
+          "answer_chunk_precision": null,
+          "answer_evidence_recall": null,
+          "answer_readiness": null,
+          "characters_packed": 4560,
+          "chunks_packed": 4,
+          "conflict_coverage": null,
+          "corroboration_coverage": null,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "low_confidence_no_answer",
+          "selected_ids": [
+            "low_confidence_no_answer-noise-01",
+            "low_confidence_no_answer-noise-02",
+            "low_confidence_no_answer-noise-08",
+            "low_confidence_no_answer-noise-09"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 1140,
+          "truncated_chunks": 0,
+          "unused_token_budget": 460
+        },
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 1.0,
+          "answer_evidence_recall": 0.25,
+          "answer_readiness": false,
+          "characters_packed": 3120,
+          "chunks_packed": 1,
+          "conflict_coverage": null,
+          "corroboration_coverage": null,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "budget_pressure",
+          "selected_ids": [
+            "bp1"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 630,
+          "truncated_chunks": 0,
+          "unused_token_budget": 270
+        }
+      ],
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "rendering": 5
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 5,
+            "p50_ms": 2.3200000000000003,
+            "p95_ms": 2.73
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "packing": {
+        "mean_characters_packed": 4200.0,
+        "mean_chunks_packed": 3.0,
+        "mean_tokens_packed": 1020.0,
+        "mean_unused_token_budget": 1360.0
+      },
+      "reliability": {
+        "fixture_exact_token_counts": true,
+        "live_llama_tokenize_executed": false,
+        "operation_counts": {
+          "candidate_checks": 71,
+          "chunks_packed": 15,
+          "source_limit_rejections": 55,
+          "token_ceiling_rejections": 1,
+          "truncated_chunks": 0
+        },
+        "token_budget_violations": 0
+      }
+    },
+    "combined_candidate_cap_6": {
+      "accuracy": {
+        "abstention_success": 1.0,
+        "abstention_success_applicable_cases": 1,
+        "answer_chunk_precision": 1.0,
+        "answer_chunk_precision_applicable_cases": 4,
+        "answer_evidence_recall": 0.6625,
+        "answer_evidence_recall_applicable_cases": 4,
+        "answer_readiness": 0.5,
+        "answer_readiness_applicable_cases": 4,
+        "conflict_coverage": 1.0,
+        "conflict_coverage_applicable_cases": 1,
+        "corroboration_coverage": 0.75,
+        "corroboration_coverage_applicable_cases": 2
+      },
+      "cases": [
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 1.0,
+          "answer_evidence_recall": 1.0,
+          "answer_readiness": true,
+          "characters_packed": 3080,
+          "chunks_packed": 2,
+          "conflict_coverage": null,
+          "corroboration_coverage": 1.0,
+          "effective_max_chunks": 6,
+          "effective_max_sources": 2,
+          "id": "focused_fact",
+          "selected_ids": [
+            "ff1",
+            "ff2"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 770,
+          "truncated_chunks": 0,
+          "unused_token_budget": 4230
+        },
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 1.0,
+          "answer_evidence_recall": 0.4,
+          "answer_readiness": false,
+          "characters_packed": 3320,
+          "chunks_packed": 2,
+          "conflict_coverage": null,
+          "corroboration_coverage": null,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "multi_fact",
+          "selected_ids": [
+            "mf1",
+            "mf2"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 830,
+          "truncated_chunks": 0,
+          "unused_token_budget": 1770
+        },
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 1.0,
+          "answer_evidence_recall": 1.0,
+          "answer_readiness": true,
+          "characters_packed": 4680,
+          "chunks_packed": 3,
+          "conflict_coverage": 1.0,
+          "corroboration_coverage": 0.5,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "explicit_conflict",
+          "selected_ids": [
+            "cf1",
+            "cf3",
+            "cf4"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 1170,
+          "truncated_chunks": 0,
+          "unused_token_budget": 630
+        },
+        {
+          "abstention_success": true,
+          "answer_chunk_precision": null,
+          "answer_evidence_recall": null,
+          "answer_readiness": null,
+          "characters_packed": 1040,
+          "chunks_packed": 0,
+          "conflict_coverage": null,
+          "corroboration_coverage": null,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "low_confidence_no_answer",
+          "selected_ids": [],
+          "token_budget_respected": true,
+          "tokens_packed": 260,
+          "truncated_chunks": 0,
+          "unused_token_budget": 1340
+        },
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 1.0,
+          "answer_evidence_recall": 0.25,
+          "answer_readiness": false,
+          "characters_packed": 3120,
+          "chunks_packed": 1,
+          "conflict_coverage": null,
+          "corroboration_coverage": null,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "budget_pressure",
+          "selected_ids": [
+            "bp1"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 630,
+          "truncated_chunks": 0,
+          "unused_token_budget": 270
+        }
+      ],
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "rendering": 5
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 5,
+            "p50_ms": 1.57,
+            "p95_ms": 2.3699999999999997
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "packing": {
+        "mean_characters_packed": 3048.0,
+        "mean_chunks_packed": 1.6,
+        "mean_tokens_packed": 732.0,
+        "mean_unused_token_budget": 1648.0
+      },
+      "reliability": {
+        "fixture_exact_token_counts": true,
+        "live_llama_tokenize_executed": false,
+        "operation_counts": {
+          "below_relevance_floor": 51,
+          "candidate_checks": 76,
+          "chunks_packed": 8,
+          "no_marginal_gain": 12,
+          "source_limit_rejections": 4,
+          "token_ceiling_rejections": 1,
+          "truncated_chunks": 0
+        },
+        "token_budget_violations": 0
+      }
+    },
+    "current_balanced_25": {
+      "accuracy": {
+        "abstention_success": 0.0,
+        "abstention_success_applicable_cases": 1,
+        "answer_chunk_precision": 0.85,
+        "answer_chunk_precision_applicable_cases": 4,
+        "answer_evidence_recall": 0.6625,
+        "answer_evidence_recall_applicable_cases": 4,
+        "answer_readiness": 0.25,
+        "answer_readiness_applicable_cases": 4,
+        "conflict_coverage": 0.0,
+        "conflict_coverage_applicable_cases": 1,
+        "corroboration_coverage": 1.0,
+        "corroboration_coverage_applicable_cases": 2
+      },
+      "cases": [
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 0.4,
+          "answer_evidence_recall": 1.0,
+          "answer_readiness": true,
+          "characters_packed": 5360,
+          "chunks_packed": 5,
+          "conflict_coverage": null,
+          "corroboration_coverage": 1.0,
+          "effective_max_chunks": 7,
+          "effective_max_sources": 3,
+          "id": "focused_fact",
+          "selected_ids": [
+            "ff1",
+            "ff2",
+            "focused_fact-noise-01",
+            "focused_fact-noise-09",
+            "focused_fact-noise-17"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 1340,
+          "truncated_chunks": 0,
+          "unused_token_budget": 3660
+        },
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 1.0,
+          "answer_evidence_recall": 0.4,
+          "answer_readiness": false,
+          "characters_packed": 3320,
+          "chunks_packed": 2,
+          "conflict_coverage": null,
+          "corroboration_coverage": null,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "multi_fact",
+          "selected_ids": [
+            "mf1",
+            "mf2"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 830,
+          "truncated_chunks": 0,
+          "unused_token_budget": 1770
+        },
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 1.0,
+          "answer_evidence_recall": 1.0,
+          "answer_readiness": false,
+          "characters_packed": 4640,
+          "chunks_packed": 3,
+          "conflict_coverage": 0.0,
+          "corroboration_coverage": 1.0,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "explicit_conflict",
+          "selected_ids": [
+            "cf1",
+            "cf2",
+            "cf4"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 1160,
+          "truncated_chunks": 0,
+          "unused_token_budget": 640
+        },
+        {
+          "abstention_success": false,
+          "answer_chunk_precision": null,
+          "answer_evidence_recall": null,
+          "answer_readiness": null,
+          "characters_packed": 4560,
+          "chunks_packed": 4,
+          "conflict_coverage": null,
+          "corroboration_coverage": null,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "low_confidence_no_answer",
+          "selected_ids": [
+            "low_confidence_no_answer-noise-01",
+            "low_confidence_no_answer-noise-02",
+            "low_confidence_no_answer-noise-08",
+            "low_confidence_no_answer-noise-09"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 1140,
+          "truncated_chunks": 0,
+          "unused_token_budget": 460
+        },
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 1.0,
+          "answer_evidence_recall": 0.25,
+          "answer_readiness": false,
+          "characters_packed": 3120,
+          "chunks_packed": 1,
+          "conflict_coverage": null,
+          "corroboration_coverage": null,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "budget_pressure",
+          "selected_ids": [
+            "bp1"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 630,
+          "truncated_chunks": 0,
+          "unused_token_budget": 270
+        }
+      ],
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "rendering": 5
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 5,
+            "p50_ms": 2.3200000000000003,
+            "p95_ms": 2.73
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "packing": {
+        "mean_characters_packed": 4200.0,
+        "mean_chunks_packed": 3.0,
+        "mean_tokens_packed": 1020.0,
+        "mean_unused_token_budget": 1360.0
+      },
+      "reliability": {
+        "fixture_exact_token_counts": true,
+        "live_llama_tokenize_executed": false,
+        "operation_counts": {
+          "candidate_checks": 71,
+          "chunks_packed": 15,
+          "source_limit_rejections": 55,
+          "token_ceiling_rejections": 1,
+          "truncated_chunks": 0
+        },
+        "token_budget_violations": 0
+      }
+    },
+    "explicit_conflict_corroboration": {
+      "accuracy": {
+        "abstention_success": 0.0,
+        "abstention_success_applicable_cases": 1,
+        "answer_chunk_precision": 0.85,
+        "answer_chunk_precision_applicable_cases": 4,
+        "answer_evidence_recall": 0.6625,
+        "answer_evidence_recall_applicable_cases": 4,
+        "answer_readiness": 0.5,
+        "answer_readiness_applicable_cases": 4,
+        "conflict_coverage": 1.0,
+        "conflict_coverage_applicable_cases": 1,
+        "corroboration_coverage": 0.75,
+        "corroboration_coverage_applicable_cases": 2
+      },
+      "cases": [
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 0.4,
+          "answer_evidence_recall": 1.0,
+          "answer_readiness": true,
+          "characters_packed": 5360,
+          "chunks_packed": 5,
+          "conflict_coverage": null,
+          "corroboration_coverage": 1.0,
+          "effective_max_chunks": 7,
+          "effective_max_sources": 3,
+          "id": "focused_fact",
+          "selected_ids": [
+            "ff1",
+            "ff2",
+            "focused_fact-noise-01",
+            "focused_fact-noise-09",
+            "focused_fact-noise-17"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 1340,
+          "truncated_chunks": 0,
+          "unused_token_budget": 3660
+        },
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 1.0,
+          "answer_evidence_recall": 0.4,
+          "answer_readiness": false,
+          "characters_packed": 3320,
+          "chunks_packed": 2,
+          "conflict_coverage": null,
+          "corroboration_coverage": null,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "multi_fact",
+          "selected_ids": [
+            "mf1",
+            "mf2"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 830,
+          "truncated_chunks": 0,
+          "unused_token_budget": 1770
+        },
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 1.0,
+          "answer_evidence_recall": 1.0,
+          "answer_readiness": true,
+          "characters_packed": 4680,
+          "chunks_packed": 3,
+          "conflict_coverage": 1.0,
+          "corroboration_coverage": 0.5,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "explicit_conflict",
+          "selected_ids": [
+            "cf1",
+            "cf3",
+            "cf4"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 1170,
+          "truncated_chunks": 0,
+          "unused_token_budget": 630
+        },
+        {
+          "abstention_success": false,
+          "answer_chunk_precision": null,
+          "answer_evidence_recall": null,
+          "answer_readiness": null,
+          "characters_packed": 4560,
+          "chunks_packed": 4,
+          "conflict_coverage": null,
+          "corroboration_coverage": null,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "low_confidence_no_answer",
+          "selected_ids": [
+            "low_confidence_no_answer-noise-01",
+            "low_confidence_no_answer-noise-02",
+            "low_confidence_no_answer-noise-08",
+            "low_confidence_no_answer-noise-09"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 1140,
+          "truncated_chunks": 0,
+          "unused_token_budget": 460
+        },
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 1.0,
+          "answer_evidence_recall": 0.25,
+          "answer_readiness": false,
+          "characters_packed": 3120,
+          "chunks_packed": 1,
+          "conflict_coverage": null,
+          "corroboration_coverage": null,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "budget_pressure",
+          "selected_ids": [
+            "bp1"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 630,
+          "truncated_chunks": 0,
+          "unused_token_budget": 270
+        }
+      ],
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "rendering": 5
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 5,
+            "p50_ms": 2.3200000000000003,
+            "p95_ms": 2.73
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "packing": {
+        "mean_characters_packed": 4208.0,
+        "mean_chunks_packed": 3.0,
+        "mean_tokens_packed": 1022.0,
+        "mean_unused_token_budget": 1358.0
+      },
+      "reliability": {
+        "fixture_exact_token_counts": true,
+        "live_llama_tokenize_executed": false,
+        "operation_counts": {
+          "candidate_checks": 71,
+          "chunks_packed": 15,
+          "source_limit_rejections": 55,
+          "token_ceiling_rejections": 1,
+          "truncated_chunks": 0
+        },
+        "token_budget_violations": 0
+      }
+    },
+    "marginal_evidence_gain": {
+      "accuracy": {
+        "abstention_success": 1.0,
+        "abstention_success_applicable_cases": 1,
+        "answer_chunk_precision": 1.0,
+        "answer_chunk_precision_applicable_cases": 4,
+        "answer_evidence_recall": 0.6625,
+        "answer_evidence_recall_applicable_cases": 4,
+        "answer_readiness": 0.25,
+        "answer_readiness_applicable_cases": 4,
+        "conflict_coverage": 0.0,
+        "conflict_coverage_applicable_cases": 1,
+        "corroboration_coverage": 1.0,
+        "corroboration_coverage_applicable_cases": 2
+      },
+      "cases": [
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 1.0,
+          "answer_evidence_recall": 1.0,
+          "answer_readiness": true,
+          "characters_packed": 3080,
+          "chunks_packed": 2,
+          "conflict_coverage": null,
+          "corroboration_coverage": 1.0,
+          "effective_max_chunks": 7,
+          "effective_max_sources": 3,
+          "id": "focused_fact",
+          "selected_ids": [
+            "ff1",
+            "ff2"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 770,
+          "truncated_chunks": 0,
+          "unused_token_budget": 4230
+        },
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 1.0,
+          "answer_evidence_recall": 0.4,
+          "answer_readiness": false,
+          "characters_packed": 3320,
+          "chunks_packed": 2,
+          "conflict_coverage": null,
+          "corroboration_coverage": null,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "multi_fact",
+          "selected_ids": [
+            "mf1",
+            "mf2"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 830,
+          "truncated_chunks": 0,
+          "unused_token_budget": 1770
+        },
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 1.0,
+          "answer_evidence_recall": 1.0,
+          "answer_readiness": false,
+          "characters_packed": 4640,
+          "chunks_packed": 3,
+          "conflict_coverage": 0.0,
+          "corroboration_coverage": 1.0,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "explicit_conflict",
+          "selected_ids": [
+            "cf1",
+            "cf2",
+            "cf4"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 1160,
+          "truncated_chunks": 0,
+          "unused_token_budget": 640
+        },
+        {
+          "abstention_success": true,
+          "answer_chunk_precision": null,
+          "answer_evidence_recall": null,
+          "answer_readiness": null,
+          "characters_packed": 1040,
+          "chunks_packed": 0,
+          "conflict_coverage": null,
+          "corroboration_coverage": null,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "low_confidence_no_answer",
+          "selected_ids": [],
+          "token_budget_respected": true,
+          "tokens_packed": 260,
+          "truncated_chunks": 0,
+          "unused_token_budget": 1340
+        },
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 1.0,
+          "answer_evidence_recall": 0.25,
+          "answer_readiness": false,
+          "characters_packed": 3120,
+          "chunks_packed": 1,
+          "conflict_coverage": null,
+          "corroboration_coverage": null,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "budget_pressure",
+          "selected_ids": [
+            "bp1"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 630,
+          "truncated_chunks": 0,
+          "unused_token_budget": 270
+        }
+      ],
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "rendering": 5
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 5,
+            "p50_ms": 1.57,
+            "p95_ms": 2.3499999999999996
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "packing": {
+        "mean_characters_packed": 3040.0,
+        "mean_chunks_packed": 1.6,
+        "mean_tokens_packed": 730.0,
+        "mean_unused_token_budget": 1650.0
+      },
+      "reliability": {
+        "fixture_exact_token_counts": true,
+        "live_llama_tokenize_executed": false,
+        "operation_counts": {
+          "candidate_checks": 76,
+          "chunks_packed": 8,
+          "no_marginal_gain": 63,
+          "source_limit_rejections": 4,
+          "token_ceiling_rejections": 1,
+          "truncated_chunks": 0
+        },
+        "token_budget_violations": 0
+      }
+    },
+    "phase1_eight_12000_chars": {
+      "accuracy": {
+        "abstention_success": 0.0,
+        "abstention_success_applicable_cases": 1,
+        "answer_chunk_precision": 0.61875,
+        "answer_chunk_precision_applicable_cases": 4,
+        "answer_evidence_recall": 0.8125,
+        "answer_evidence_recall_applicable_cases": 4,
+        "answer_readiness": 0.5,
+        "answer_readiness_applicable_cases": 4,
+        "conflict_coverage": 0.0,
+        "conflict_coverage_applicable_cases": 1,
+        "corroboration_coverage": 1.0,
+        "corroboration_coverage_applicable_cases": 2
+      },
+      "cases": [
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 0.25,
+          "answer_evidence_recall": 1.0,
+          "answer_readiness": true,
+          "characters_packed": 5540,
+          "chunks_packed": 8,
+          "conflict_coverage": null,
+          "corroboration_coverage": 1.0,
+          "effective_max_chunks": 8,
+          "effective_max_sources": 1000,
+          "id": "focused_fact",
+          "selected_ids": [
+            "ff1",
+            "ff2",
+            "focused_fact-noise-01",
+            "focused_fact-noise-02",
+            "focused_fact-noise-03",
+            "focused_fact-noise-04",
+            "focused_fact-noise-05",
+            "focused_fact-noise-06"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 1910,
+          "truncated_chunks": 0,
+          "unused_token_budget": 3090
+        },
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 0.625,
+          "answer_evidence_recall": 1.0,
+          "answer_readiness": true,
+          "characters_packed": 7340,
+          "chunks_packed": 8,
+          "conflict_coverage": null,
+          "corroboration_coverage": null,
+          "effective_max_chunks": 8,
+          "effective_max_sources": 1000,
+          "id": "multi_fact",
+          "selected_ids": [
+            "mf1",
+            "mf2",
+            "mf3",
+            "mf4",
+            "mf5",
+            "multi_fact-noise-01",
+            "multi_fact-noise-02",
+            "multi_fact-noise-03"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 2360,
+          "truncated_chunks": 0,
+          "unused_token_budget": 240
+        },
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 0.6,
+          "answer_evidence_recall": 1.0,
+          "answer_readiness": false,
+          "characters_packed": 4830,
+          "chunks_packed": 5,
+          "conflict_coverage": 0.0,
+          "corroboration_coverage": 1.0,
+          "effective_max_chunks": 8,
+          "effective_max_sources": 1000,
+          "id": "explicit_conflict",
+          "selected_ids": [
+            "cf1",
+            "cf2",
+            "cf4",
+            "cf5",
+            "explicit_conflict-noise-01"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 1620,
+          "truncated_chunks": 0,
+          "unused_token_budget": 180
+        },
+        {
+          "abstention_success": false,
+          "answer_chunk_precision": null,
+          "answer_evidence_recall": null,
+          "answer_readiness": null,
+          "characters_packed": 4520,
+          "chunks_packed": 6,
+          "conflict_coverage": null,
+          "corroboration_coverage": null,
+          "effective_max_chunks": 8,
+          "effective_max_sources": 1000,
+          "id": "low_confidence_no_answer",
+          "selected_ids": [
+            "low_confidence_no_answer-noise-01",
+            "low_confidence_no_answer-noise-02",
+            "low_confidence_no_answer-noise-03",
+            "low_confidence_no_answer-noise-04",
+            "low_confidence_no_answer-noise-05",
+            "low_confidence_no_answer-noise-06"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 1580,
+          "truncated_chunks": 0,
+          "unused_token_budget": 20
+        },
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 1.0,
+          "answer_evidence_recall": 0.25,
+          "answer_readiness": false,
+          "characters_packed": 2070,
+          "chunks_packed": 1,
+          "conflict_coverage": null,
+          "corroboration_coverage": null,
+          "effective_max_chunks": 8,
+          "effective_max_sources": 1000,
+          "id": "budget_pressure",
+          "selected_ids": [
+            "bp1"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 630,
+          "truncated_chunks": 0,
+          "unused_token_budget": 270
+        }
+      ],
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "rendering": 5
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 5,
+            "p50_ms": 2.465,
+            "p95_ms": 3.75
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "packing": {
+        "mean_characters_packed": 4860.0,
+        "mean_chunks_packed": 5.6,
+        "mean_tokens_packed": 1620.0,
+        "mean_unused_token_budget": 760.0
+      },
+      "reliability": {
+        "fixture_exact_token_counts": true,
+        "live_llama_tokenize_executed": false,
+        "operation_counts": {
+          "candidate_checks": 31,
+          "chunks_packed": 28,
+          "token_ceiling_rejections": 3,
+          "truncated_chunks": 0
+        },
+        "token_budget_violations": 0
+      }
+    },
+    "relevance_floor_0_65": {
+      "accuracy": {
+        "abstention_success": 1.0,
+        "abstention_success_applicable_cases": 1,
+        "answer_chunk_precision": 1.0,
+        "answer_chunk_precision_applicable_cases": 4,
+        "answer_evidence_recall": 0.6625,
+        "answer_evidence_recall_applicable_cases": 4,
+        "answer_readiness": 0.25,
+        "answer_readiness_applicable_cases": 4,
+        "conflict_coverage": 0.0,
+        "conflict_coverage_applicable_cases": 1,
+        "corroboration_coverage": 1.0,
+        "corroboration_coverage_applicable_cases": 2
+      },
+      "cases": [
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 1.0,
+          "answer_evidence_recall": 1.0,
+          "answer_readiness": true,
+          "characters_packed": 3080,
+          "chunks_packed": 2,
+          "conflict_coverage": null,
+          "corroboration_coverage": 1.0,
+          "effective_max_chunks": 7,
+          "effective_max_sources": 3,
+          "id": "focused_fact",
+          "selected_ids": [
+            "ff1",
+            "ff2"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 770,
+          "truncated_chunks": 0,
+          "unused_token_budget": 4230
+        },
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 1.0,
+          "answer_evidence_recall": 0.4,
+          "answer_readiness": false,
+          "characters_packed": 3320,
+          "chunks_packed": 2,
+          "conflict_coverage": null,
+          "corroboration_coverage": null,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "multi_fact",
+          "selected_ids": [
+            "mf1",
+            "mf2"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 830,
+          "truncated_chunks": 0,
+          "unused_token_budget": 1770
+        },
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 1.0,
+          "answer_evidence_recall": 1.0,
+          "answer_readiness": false,
+          "characters_packed": 4640,
+          "chunks_packed": 3,
+          "conflict_coverage": 0.0,
+          "corroboration_coverage": 1.0,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "explicit_conflict",
+          "selected_ids": [
+            "cf1",
+            "cf2",
+            "cf4"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 1160,
+          "truncated_chunks": 0,
+          "unused_token_budget": 640
+        },
+        {
+          "abstention_success": true,
+          "answer_chunk_precision": null,
+          "answer_evidence_recall": null,
+          "answer_readiness": null,
+          "characters_packed": 1040,
+          "chunks_packed": 0,
+          "conflict_coverage": null,
+          "corroboration_coverage": null,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "low_confidence_no_answer",
+          "selected_ids": [],
+          "token_budget_respected": true,
+          "tokens_packed": 260,
+          "truncated_chunks": 0,
+          "unused_token_budget": 1340
+        },
+        {
+          "abstention_success": null,
+          "answer_chunk_precision": 1.0,
+          "answer_evidence_recall": 0.25,
+          "answer_readiness": false,
+          "characters_packed": 3120,
+          "chunks_packed": 1,
+          "conflict_coverage": null,
+          "corroboration_coverage": null,
+          "effective_max_chunks": 4,
+          "effective_max_sources": 2,
+          "id": "budget_pressure",
+          "selected_ids": [
+            "bp1"
+          ],
+          "token_budget_respected": true,
+          "tokens_packed": 630,
+          "truncated_chunks": 0,
+          "unused_token_budget": 270
+        }
+      ],
+      "latency": {
+        "failure_counts": {},
+        "operation_counts": {
+          "rendering": 5
+        },
+        "peak_rss_bytes": null,
+        "stages": {
+          "chunking": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "crawl_extraction": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "database_write": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "diversity_selection": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_encode": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "embedding_load": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "fts": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_props": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "llama_tokenize": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "normalization_fusion": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "query_planning": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "rendering": {
+            "count": 5,
+            "p50_ms": 1.57,
+            "p95_ms": 2.3499999999999996
+          },
+          "search_merge_dedup": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "search_request": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "total": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          },
+          "vector_scan": {
+            "count": 0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0
+          }
+        }
+      },
+      "packing": {
+        "mean_characters_packed": 3040.0,
+        "mean_chunks_packed": 1.6,
+        "mean_tokens_packed": 730.0,
+        "mean_unused_token_budget": 1650.0
+      },
+      "reliability": {
+        "fixture_exact_token_counts": true,
+        "live_llama_tokenize_executed": false,
+        "operation_counts": {
+          "below_relevance_floor": 51,
+          "candidate_checks": 76,
+          "chunks_packed": 8,
+          "source_limit_rejections": 16,
+          "token_ceiling_rejections": 1,
+          "truncated_chunks": 0
+        },
+        "token_budget_violations": 0
+      }
+    }
+  },
+  "run_mode": "offline_stage7_context_packing_replay",
+  "schema_version": "1.0"
+}

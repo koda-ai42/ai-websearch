@@ -1,0 +1,100 @@
+{
+  "latency": {
+    "cases_evaluated": 4,
+    "measured": false
+  },
+  "limitations": [
+    "Durations are deterministic fixture arithmetic, not observed wall-clock timings.",
+    "Cancellation cleanup for HTTP and Chromium remains a live integration check."
+  ],
+  "policies": {
+    "operation_timeouts_only": {
+      "accuracy": {
+        "outcome_accuracy": 0.5
+      },
+      "cases": [
+        {
+          "correct": true,
+          "elapsed_seconds": 0.4,
+          "expected": "success",
+          "id": "fast-success",
+          "observed": "success",
+          "within_deadline": true
+        },
+        {
+          "correct": false,
+          "elapsed_seconds": 2.5,
+          "expected": "deadline_exceeded",
+          "id": "transient-retry-overrun",
+          "observed": "success",
+          "within_deadline": false
+        },
+        {
+          "correct": false,
+          "elapsed_seconds": 2.0,
+          "expected": "deadline_exceeded",
+          "id": "slow-first-attempt",
+          "observed": "success",
+          "within_deadline": false
+        },
+        {
+          "correct": true,
+          "elapsed_seconds": 0.2,
+          "expected": "terminal",
+          "id": "terminal-failure",
+          "observed": "terminal",
+          "within_deadline": true
+        }
+      ],
+      "reliability": {
+        "deadline_compliance": 0.5,
+        "distinct_deadline_outcome": false
+      }
+    },
+    "remaining_request_deadline": {
+      "accuracy": {
+        "outcome_accuracy": 1.0
+      },
+      "cases": [
+        {
+          "correct": true,
+          "elapsed_seconds": 0.4,
+          "expected": "success",
+          "id": "fast-success",
+          "observed": "success",
+          "within_deadline": true
+        },
+        {
+          "correct": true,
+          "elapsed_seconds": 1.5,
+          "expected": "deadline_exceeded",
+          "id": "transient-retry-overrun",
+          "observed": "deadline_exceeded",
+          "within_deadline": true
+        },
+        {
+          "correct": true,
+          "elapsed_seconds": 0.5,
+          "expected": "deadline_exceeded",
+          "id": "slow-first-attempt",
+          "observed": "deadline_exceeded",
+          "within_deadline": true
+        },
+        {
+          "correct": true,
+          "elapsed_seconds": 0.2,
+          "expected": "terminal",
+          "id": "terminal-failure",
+          "observed": "terminal",
+          "within_deadline": true
+        }
+      ],
+      "reliability": {
+        "deadline_compliance": 1.0,
+        "distinct_deadline_outcome": true
+      }
+    }
+  },
+  "run_mode": "offline_request_deadline_policy",
+  "schema_version": "1.0"
+}

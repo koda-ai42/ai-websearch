@@ -1,0 +1,19 @@
+{
+  "date": "2026-08-01",
+  "database_snapshot": {
+    "chunks": 326,
+    "chunks_with_publication_dates": 3,
+    "duplicate_text_hash_groups": 45,
+    "canonical_urls_with_multiple_active_versions": 3
+  },
+  "fts_direction_audit": {
+    "sampled_title_term_queries": 30,
+    "queries_where_legacy_transform_reversed_bm25_order": 30
+  },
+  "source_scoring_audit": {
+    "sources_sampled": 14,
+    "distinct_scores": [0.5],
+    "finding": "The value was non-discriminating and was removed from production ranking and storage."
+  },
+  "scope": "Read-only pre-change audit of the existing local database; no live network integration was exercised."
+}
