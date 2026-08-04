@@ -103,7 +103,7 @@ async def ingest_url(url: str, topic: str | None = None) -> dict[str, Any]:
 async def research(
     query: str,
     topic: str | None = None,
-    freshness: str = "auto",
+    freshness: str | None = None,
     language: str = "en",
     context_mode: str = "balanced",
     context_budget_tokens: int | None = None,

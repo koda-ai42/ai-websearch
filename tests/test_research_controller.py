@@ -36,7 +36,7 @@ def test_auto_always_starts_rapid_and_complexity_is_still_assessed() -> None:
     assert initial_pass("auto") == "rapid"
     assert initial_pass("rapid") == "rapid"
     assert initial_pass("deep") == "deep"
-    assert query_is_complex("Analyze the pros and cons of dense versus sparse retrieval")
+    assert query_is_complex("What is alpha? Explain beta; Describe gamma")
 
 
 def test_evidence_gate_stops_on_relevant_dual_channel_result() -> None:
@@ -70,7 +70,7 @@ def test_low_coverage_dual_channel_requires_source_diversity() -> None:
 
 def test_complex_evidence_gate_requires_source_diversity() -> None:
     result = assess_evidence(
-        "Compare alpha versus beta and evaluate trade-offs",
+        "What is alpha? Explain beta; Describe gamma",
         [_chunk(1, "Alpha and beta have several trade-offs.")],
     )
     assert not result.sufficient
@@ -78,7 +78,7 @@ def test_complex_evidence_gate_requires_source_diversity() -> None:
 
 
 def test_final_packed_selection_replaces_prepack_answerability() -> None:
-    query = "Compare alpha versus beta and evaluate trade-offs"
+    query = "What is alpha? Explain beta; Describe gamma"
     metadata = {
         "stop_reason": "sufficient_evidence",
         "evidence_assessment": {

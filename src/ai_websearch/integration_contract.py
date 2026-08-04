@@ -11,6 +11,7 @@ ANSWER_AGENT_INSTRUCTIONS = (
     "reports answerability.answerable=false, state that the available evidence is insufficient. "
     "Otherwise use only packed evidence and include a provided Markdown citation and its exact "
     "fetched date."
+    "If the question is time-related, do not infer the relevant items from ordering alone but use timestamps and time cues"
 )
 
 

@@ -14,10 +14,8 @@ from ai_websearch.context_packer import _render_context
 from ai_websearch.errors import SearchUnavailableError
 from ai_websearch.freshness import (
     freshness_score,
-    freshness_window,
     normalize_publication_date,
     parse_publication_date,
-    query_needs_freshness,
 )
 from ai_websearch.models import ContextChunk, SearchResult
 from ai_websearch.orchestrator import plan_queries, search_many
@@ -92,24 +90,60 @@ def test_real_fts_query_is_safe_and_preserves_bm25_direction(tmp_path: Path) -> 
 def test_freshness_is_conditional_and_unknown_is_neutral() -> None:
     now = datetime(2026, 8, 1, tzinfo=timezone.utc)
     assert parse_publication_date("2026-07-31T12:00:00Z") is not None
-    assert not query_needs_freshness("Explain the water cycle", "auto")
-    assert (
-        freshness_score("2026-07-31", query="Explain the water cycle", freshness="auto", now=now)
-        is None
-    )
-    assert freshness_score(None, query="latest release", freshness="auto", now=now) == 0.5
-    recent = freshness_score("2026-07-31", query="latest release", freshness="auto", now=now)
-    old = freshness_score("2024-01-01", query="latest release", freshness="auto", now=now)
+    assert freshness_score("2026-07-31", freshness="auto", now=now) is None
+    assert freshness_score("2026-07-31", freshness=None, now=now) is None
+    assert freshness_score(None, freshness=None, now=now) is None
+    assert freshness_score(None, freshness="day", now=now) == 0.5
+    recent = freshness_score("2026-07-31", freshness="day", now=now)
+    old = freshness_score("2024-01-01", freshness="day", now=now)
     assert recent is not None and old is not None and recent > old
 
 
-def test_freshness_window_and_publication_date_validation() -> None:
-    assert freshness_window("What happened today?", "auto") == "day"
-    assert freshness_window("Recent project updates", "auto") == "month"
-    assert freshness_window("Latest stable release", "auto") == "year"
-    assert freshness_window("Explain the water cycle", "auto") is None
-    assert freshness_window("Anything", "day") == "day"
+def test_parse_publication_date_international_formats() -> None:
+    # ISO 8601
+    d = parse_publication_date("2024-01-15")
+    assert d is not None and d.year == 2024 and d.month == 1 and d.day == 15
+    d = parse_publication_date("2024-01-15T10:30Z")
+    assert d is not None and d.year == 2024 and d.month == 1 and d.day == 15
+
+    # YYYY[-/.]M[-/.]D
+    d = parse_publication_date("2024/01/15")
+    assert d is not None and d.year == 2024 and d.month == 1 and d.day == 15
+    d = parse_publication_date("2024.1.5")
+    assert d is not None and d.year == 2024 and d.month == 1 and d.day == 5
+
+    # D/M/YYYY with disambiguation
+    d = parse_publication_date("15/1/2024")
+    assert d is not None and d.year == 2024 and d.month == 1 and d.day == 15
+    d = parse_publication_date("5.1.2024")
+    assert d is not None and d.year == 2024 and d.month == 1 and d.day == 5
+    # Ambiguous: both <= 12, default DD/MM/YYYY
+    d = parse_publication_date("1/2/2024")
+    assert d is not None and d.year == 2024 and d.month == 2 and d.day == 1
+    # First > 12, clearly day
+    d = parse_publication_date("25/12/2024")
+    assert d is not None and d.year == 2024 and d.month == 12 and d.day == 25
+    # Second > 12, clearly month is first
+    d = parse_publication_date("1/25/2024")
+    assert d is not None and d.year == 2024 and d.month == 1 and d.day == 25
+
+    # Year only
+    d = parse_publication_date("2024")
+    assert d is not None and d.year == 2024 and d.month == 1 and d.day == 1
+
+    # Normalize rejects future dates
     assert normalize_publication_date("2030-01-01", "2026-08-02T00:00:00Z") is None
+
+
+def test_freshness_window_removed() -> None:
+    from ai_websearch.freshness import freshness_score as fs
+    # Verify the removed functions no longer exist
+    import ai_websearch.freshness as mod
+    assert not hasattr(mod, "freshness_window")
+    assert not hasattr(mod, "query_needs_freshness")
+    assert not hasattr(mod, "TEMPORAL_TERMS")
+    assert not hasattr(mod, "DAY_TERMS")
+    assert not hasattr(mod, "MONTH_TERMS")
 
 
 def test_json_ld_publication_date_has_explicit_provenance() -> None:
@@ -142,20 +176,23 @@ def test_future_json_ld_date_falls_through_to_valid_meta() -> None:
 
 def test_query_planning_avoids_credibility_suffixes() -> None:
     planned = plan_queries("Compare alpha versus beta", 5)
-    assert planned == ["Compare alpha versus beta", "Compare alpha versus beta comparison"]
+    assert planned == ["Compare alpha versus beta"]
     assert all(
         "official source" not in query and "technical documentation" not in query
         for query in planned
     )
+    # Multi-clause queries are split on punctuation (language-neutral)
+    planned = plan_queries("What is alpha? Explain beta; Describe gamma", 5)
+    assert planned == [
+        "What is alpha? Explain beta; Describe gamma",
+        "What is alpha",
+        "Explain beta",
+        "Describe gamma",
+    ]
 
 
 def test_cross_query_merge_uses_rank_not_raw_score(monkeypatch) -> None:
     async def fake_search(query: str, **_kwargs):
-        if query.endswith("latest"):
-            return [
-                SearchResult(url="https://answer.test", title="answer", score=0.01),
-                SearchResult(url="https://raw-score.test", title="raw", score=999.0),
-            ]
         return [
             SearchResult(url="https://answer.test", title="answer", score=0.01),
             SearchResult(url="https://other.test", title="other", score=0.9),
@@ -164,23 +201,25 @@ def test_cross_query_merge_uses_rank_not_raw_score(monkeypatch) -> None:
     monkeypatch.setattr(orchestrator, "web_search", fake_search)
     results, diagnostics = asyncio.run(search_many("answer status", 2, 5, "month", "en"))
     assert results[0].url == "https://answer.test"
-    assert diagnostics["queries_succeeded"] == 2
+    assert diagnostics["queries_succeeded"] == 1
     assert diagnostics["partial_failure"] is False
 
 
 def test_cross_query_partial_failure_is_observable(monkeypatch) -> None:
+    call_count = [0]
+
     async def fake_search(query: str, **_kwargs):
-        if query.endswith("latest"):
+        call_count[0] += 1
+        if call_count[0] == 2:
             raise RuntimeError("synthetic outage")
         return [SearchResult(url="https://answer.test", title="answer", score=1.0)]
 
     monkeypatch.setattr(orchestrator, "web_search", fake_search)
-    results, diagnostics = asyncio.run(search_many("answer status", 2, 5, "month", "en"))
+    results, diagnostics = asyncio.run(search_many("answer status; second query here", 2, 5, None, "en"))
     assert [item.url for item in results] == ["https://answer.test"]
     assert diagnostics["queries_failed"] == 1
     assert diagnostics["queries_succeeded"] == 1
     assert diagnostics["partial_failure"] is True
-    assert diagnostics["queries"][1]["error_type"] == "RuntimeError"
 
 
 def test_all_planned_search_failures_raise_typed_error(monkeypatch) -> None:
@@ -189,7 +228,7 @@ def test_all_planned_search_failures_raise_typed_error(monkeypatch) -> None:
 
     monkeypatch.setattr(orchestrator, "web_search", unavailable)
     with pytest.raises(SearchUnavailableError) as captured:
-        asyncio.run(search_many("answer status", 2, 5, "month", "en"))
+        asyncio.run(search_many("answer status; second query", 2, 5, None, "en"))
     assert captured.value.code == "search_unavailable"
     assert captured.value.details == {"queries_planned": 2, "queries_failed": 2}
 

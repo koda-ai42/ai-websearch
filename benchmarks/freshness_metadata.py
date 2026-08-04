@@ -4,11 +4,7 @@ from pathlib import Path
 
 from bs4 import BeautifulSoup
 
-from ai_websearch.freshness import (
-    freshness_window,
-    normalize_publication_date,
-    query_needs_freshness,
-)
+from ai_websearch.freshness import normalize_publication_date
 from ai_websearch.scrape import _published
 
 FETCHED_AT = "2026-08-02T00:00:00Z"
@@ -35,12 +31,6 @@ DATE_CASES = (
     },
     {"id": "missing", "html": "<article>No date metadata.</article>", "expected_source": None},
 )
-WINDOW_CASES = (
-    {"query": "What happened today?", "expected": "day"},
-    {"query": "Recent project updates", "expected": "month"},
-    {"query": "Latest stable release", "expected": "year"},
-    {"query": "Explain the water cycle", "expected": None},
-)
 
 
 def _old_published(html: str) -> tuple[str | None, str | None]:
@@ -59,19 +49,11 @@ def _old_published(html: str) -> tuple[str | None, str | None]:
     return None, None
 
 
-def _old_window(query: str) -> str | None:
-    return "year" if query_needs_freshness(query, "auto") else None
-
-
 def run_freshness_metadata_benchmark(_path: Path | None = None) -> dict:
     policies = {}
-    for name, date_reader, window_reader in (
-        ("meta_time_year", _old_published, _old_window),
-        (
-            "provenance_aware",
-            lambda html: _published(html, FETCHED_AT),
-            lambda query: freshness_window(query, "auto"),
-        ),
+    for name, date_reader in (
+        ("meta_time_year", _old_published),
+        ("provenance_aware", lambda html: _published(html, FETCHED_AT)),
     ):
         date_rows = []
         for case in DATE_CASES:
@@ -84,36 +66,22 @@ def run_freshness_metadata_benchmark(_path: Path | None = None) -> dict:
                     "correct": source == case["expected_source"],
                 }
             )
-        window_rows = []
-        for index, case in enumerate(WINDOW_CASES):
-            observed = window_reader(case["query"])
-            window_rows.append(
-                {
-                    "id": f"window-{index}",
-                    "expected": case["expected"],
-                    "observed": observed,
-                    "correct": observed == case["expected"],
-                }
-            )
         policies[name] = {
             "accuracy": {
                 "date_provenance_accuracy": sum(row["correct"] for row in date_rows)
                 / len(date_rows),
-                "freshness_window_accuracy": sum(row["correct"] for row in window_rows)
-                / len(window_rows),
             },
             "reliability": {
                 "future_dates_rejected": name == "provenance_aware",
                 "search_hints_distinguishable": name == "provenance_aware",
             },
             "date_cases": date_rows,
-            "window_cases": window_rows,
         }
     return {
         "schema_version": "1.0",
         "run_mode": "offline_freshness_metadata_policy",
         "policies": policies,
-        "latency": {"measured": False, "cases_evaluated": len(DATE_CASES) + len(WINDOW_CASES)},
+        "latency": {"measured": False, "cases_evaluated": len(DATE_CASES)},
         "limitations": [
             "HTML and dates are synthetic; no SearXNG or browser request is executed.",
             "Freshness ranking effects require a larger human-judged retrieval corpus.",

@@ -88,7 +88,7 @@ async def retrieve(
     topic: str | None = None,
     top_k: int = 8,
     candidate_k: int | None = None,
-    freshness: str | None = "auto",
+    freshness: str | None = None,
 ) -> list[ContextChunk]:
     top_k = max(1, min(top_k, 1000))
     candidate_k = max(top_k, min(candidate_k or max(50, top_k * 5), 2000))
@@ -117,7 +117,6 @@ async def retrieve(
         candidate_row = row_lookup.get(chunk_id)
         fresh = freshness_score(
             candidate_row["published_at"] if candidate_row else None,
-            query=query,
             freshness=freshness,
         )
         freshness_values[chunk_id] = fresh
@@ -207,7 +206,7 @@ async def retrieve_and_rerank(
     top_k: int = 8,
     candidate_k: int | None = None,
     reranking_candidates: int | None = None,
-    freshness: str | None = "auto",
+    freshness: str | None = None,
 ) -> tuple[list[ContextChunk], dict]:
     candidates = await retrieve(query, topic, top_k, candidate_k, freshness)
     effective_limit = min(len(candidates), reranking_candidates or settings.reranking_candidates)

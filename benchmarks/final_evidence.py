@@ -25,7 +25,7 @@ def run_final_evidence_benchmark(_path: Path | None = None) -> dict:
     cases = [
         {
             "id": "complex-source-trim",
-            "query": "Compare alpha versus beta and evaluate trade-offs",
+            "query": "What is alpha? Explain beta; Describe gamma",
             "candidates": [
                 _chunk(1, "Alpha and beta have measured performance trade-offs."),
                 _chunk(2, "Independent testing compares alpha and beta reliability trade-offs."),
@@ -49,7 +49,7 @@ def run_final_evidence_benchmark(_path: Path | None = None) -> dict:
         },
         {
             "id": "diverse-comparison-retained",
-            "query": "Compare red versus blue and evaluate trade-offs",
+            "query": "What is red? Explain blue; Compare both",
             "candidates": [
                 _chunk(5, "Red and blue have measured cost trade-offs."),
                 _chunk(6, "Independent evidence compares red and blue reliability trade-offs."),

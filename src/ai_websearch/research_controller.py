@@ -6,41 +6,6 @@ from dataclasses import dataclass
 from .content_quality import assess_content_quality
 from .models import ContextChunk
 
-QUESTION_STOPWORDS = {
-    "about",
-    "after",
-    "also",
-    "are",
-    "can",
-    "could",
-    "does",
-    "for",
-    "from",
-    "have",
-    "how",
-    "into",
-    "its",
-    "should",
-    "that",
-    "the",
-    "their",
-    "then",
-    "this",
-    "what",
-    "when",
-    "where",
-    "which",
-    "who",
-    "why",
-    "with",
-    "would",
-}
-COMPLEX_MARKERS = re.compile(
-    r"\b(compare|versus|trade-?offs?|analy[sz]e|evaluate|synthesi[sz]e|multi-step|"
-    r"advantages and disadvantages|pros and cons)\b",
-    re.I,
-)
-
 
 @dataclass(frozen=True)
 class EvidenceAssessment:
@@ -62,8 +27,8 @@ class EvidenceAssessment:
 
 def query_is_complex(query: str) -> bool:
     words = re.findall(r"[^\W_]+", query.casefold(), flags=re.UNICODE)
-    question_clauses = len([part for part in re.split(r"[;?]+", query) if len(part.split()) >= 3])
-    return bool(COMPLEX_MARKERS.search(query) or question_clauses > 1 or len(words) > 28)
+    clauses = [p for p in re.split(r"[;?]+", query) if len(p.split()) >= 2]
+    return len(clauses) > 1 or len(words) > 28
 
 
 def initial_pass(requested_mode: str) -> str:
@@ -78,8 +43,10 @@ def initial_pass(requested_mode: str) -> str:
 def _tokens(text: str) -> set[str]:
     return {
         token
-        for token in re.findall(r"[^\W_]+", text.casefold(), flags=re.UNICODE)
-        if len(token) > 2 and token not in QUESTION_STOPWORDS
+        for token in "".join(
+            character.lower() if character.isalnum() else " " for character in text
+        ).split()
+        if len(token) > 2
     }
 
 

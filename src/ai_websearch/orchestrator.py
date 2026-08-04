@@ -14,7 +14,7 @@ from .context_budget import calculate_context_budget
 from .context_packer import pack_context, select_chunks
 from .embeddings import embedder
 from .errors import SearchUnavailableError
-from .freshness import freshness_window, query_needs_freshness
+from .freshness import freshness_score
 from .llama_discovery import runtime
 from .logging_utils import log_extra
 from .models import ContextChunk, IngestResult, PackedContext, SearchResult
@@ -88,17 +88,7 @@ class ResearchRunState:
 def plan_queries(query: str, count: int, freshness: str | None = None) -> list[str]:
     base = query.strip()
     variants = [base]
-    if freshness in {"day", "month", "year"} and not query_needs_freshness(base, "auto"):
-        variants.append(f"{base} latest")
-    if re.search(r"\b(compare|comparison|versus|vs\.?|difference between)\b", base, re.I):
-        variants.append(f"{base} comparison")
-    clauses = [item.strip(" ?") for item in re.split(r"[;?]+", base) if len(item.split()) >= 3]
-    if len(clauses) < 2 and " and " in base.casefold():
-        clauses = [
-            item.strip(" ?")
-            for item in re.split(r"\band\b", base, flags=re.I)
-            if len(item.split()) >= 3
-        ]
+    clauses = [item.strip(" ?") for item in re.split(r"[;?]+", base) if len(item.split()) >= 2]
     if len(clauses) > 1:
         variants.extend(clauses)
     return list(dict.fromkeys(item for item in variants if item))[:count]
@@ -422,7 +412,7 @@ async def _run_research_pass(
 async def research(
     query: str,
     topic: str | None = None,
-    freshness: str | None = "auto",
+    freshness: str | None = None,
     language: str = "en",
     context_mode: str | None = None,
     context_budget_tokens: int | None = None,
@@ -444,7 +434,7 @@ async def research(
     )
     current_pass = initial_pass(requested_mode)
     chosen_topic = topic or query[:80]
-    effective_freshness = freshness_window(query, freshness)
+    effective_freshness = freshness
     started = time.monotonic()
     deadline_seconds = (
         settings.rapid_research_max_seconds

@@ -257,7 +257,7 @@
     },
     {
       "id": "complex-single-source",
-      "query": "Compare alpha versus beta and evaluate their trade-offs",
+      "query": "What is alpha? Explain beta; Evaluate trade-offs",
       "expected_sufficient": false,
       "candidates": [
         {

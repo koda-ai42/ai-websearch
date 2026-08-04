@@ -1,6 +1,6 @@
 {
   "latency": {
-    "cases_evaluated": 9,
+    "cases_evaluated": 5,
     "measured": false
   },
   "limitations": [
@@ -10,8 +10,7 @@
   "policies": {
     "meta_time_year": {
       "accuracy": {
-        "date_provenance_accuracy": 0.8,
-        "freshness_window_accuracy": 0.5
+        "date_provenance_accuracy": 0.8
       },
       "date_cases": [
         {
@@ -48,38 +47,11 @@
       "reliability": {
         "future_dates_rejected": false,
         "search_hints_distinguishable": false
-      },
-      "window_cases": [
-        {
-          "correct": false,
-          "expected": "day",
-          "id": "window-0",
-          "observed": "year"
-        },
-        {
-          "correct": false,
-          "expected": "month",
-          "id": "window-1",
-          "observed": "year"
-        },
-        {
-          "correct": true,
-          "expected": "year",
-          "id": "window-2",
-          "observed": "year"
-        },
-        {
-          "correct": true,
-          "expected": null,
-          "id": "window-3",
-          "observed": null
-        }
-      ]
+      }
     },
     "provenance_aware": {
       "accuracy": {
-        "date_provenance_accuracy": 1.0,
-        "freshness_window_accuracy": 1.0
+        "date_provenance_accuracy": 1.0
       },
       "date_cases": [
         {
@@ -116,33 +88,7 @@
       "reliability": {
         "future_dates_rejected": true,
         "search_hints_distinguishable": true
-      },
-      "window_cases": [
-        {
-          "correct": true,
-          "expected": "day",
-          "id": "window-0",
-          "observed": "day"
-        },
-        {
-          "correct": true,
-          "expected": "month",
-          "id": "window-1",
-          "observed": "month"
-        },
-        {
-          "correct": true,
-          "expected": "year",
-          "id": "window-2",
-          "observed": "year"
-        },
-        {
-          "correct": true,
-          "expected": null,
-          "id": "window-3",
-          "observed": null
-        }
-      ]
+      }
     }
   },
   "run_mode": "offline_freshness_metadata_policy",
