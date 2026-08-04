@@ -7,7 +7,7 @@
     "retained_candidate_precision": 1.0,
     "wall_rejection_rate": 1.0
   },
-  "corpus_version": "2026-08-02.v2",
+  "corpus_version": "2026-08-02.v3",
   "crawl_cases": [
     {
       "correct": true,
@@ -188,6 +188,60 @@
       "expected": "success",
       "id": "public-software-documentation",
       "observed": "success"
+    },
+    {
+      "correct": true,
+      "expected": "cookie_consent",
+      "id": "vendor-onetrust-consent",
+      "observed": "cookie_consent"
+    },
+    {
+      "correct": true,
+      "expected": "cookie_consent",
+      "id": "vendor-cookiebot-consent",
+      "observed": "cookie_consent"
+    },
+    {
+      "correct": true,
+      "expected": "captcha",
+      "id": "vendor-recaptcha-captcha",
+      "observed": "captcha"
+    },
+    {
+      "correct": true,
+      "expected": "captcha",
+      "id": "vendor-cloudflare-turnstile",
+      "observed": "captcha"
+    },
+    {
+      "correct": true,
+      "expected": "authentication",
+      "id": "structural-auth-form",
+      "observed": "authentication"
+    },
+    {
+      "correct": true,
+      "expected": "subscription",
+      "id": "structural-paywall-overlay",
+      "observed": "subscription"
+    },
+    {
+      "correct": true,
+      "expected": "access_denied",
+      "id": "structural-waf-block",
+      "observed": "access_denied"
+    },
+    {
+      "correct": true,
+      "expected": "access_denied",
+      "id": "statistical-navigation-shell",
+      "observed": "access_denied"
+    },
+    {
+      "correct": true,
+      "expected": "cookie_consent",
+      "id": "vendor-consent-but-substantive-article",
+      "observed": "cookie_consent"
     }
   ],
   "evidence_cases": [
@@ -257,7 +311,7 @@
     }
   ],
   "latency": {
-    "crawl_cases_evaluated": 30,
+    "crawl_cases_evaluated": 39,
     "evidence_cases_evaluated": 4,
     "measured": false
   },

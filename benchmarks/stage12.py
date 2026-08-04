@@ -45,7 +45,8 @@ def run_stage12_benchmark(path: Path | None = None) -> dict[str, Any]:
     legitimate_total = legitimate_accepted = 0
     for case in corpus["crawl_cases"]:
         expected = str(case["expected_outcome"])
-        observed = classify_access_outcome(str(case["title"]), None, _materialize(case))
+        html = str(case.get("html") or "") or None
+        observed = classify_access_outcome(str(case["title"]), html, _materialize(case))
         is_wall = expected != "success"
         wall_total += int(is_wall)
         wall_rejected += int(is_wall and observed != "success")

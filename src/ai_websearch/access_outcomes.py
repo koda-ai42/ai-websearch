@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+from urllib.parse import urlsplit
 
 from bs4 import BeautifulSoup
 
@@ -54,10 +55,132 @@ _PATTERNS = {
 }
 
 _STRUCTURAL_MARKERS = {
-    "captcha": ("captcha", "challenge-form", "cf-challenge", "turnstile"),
-    "authentication": ("login-form", "signin-form", "auth-form"),
-    "subscription": ("paywall", "subscription-wall", "subscriber-gate"),
-    "access_denied": ("access-denied", "forbidden", "request-blocked"),
+    "cookie_consent": (
+        # Existing
+        # Cookiebot / default CMP
+        "cc-window",
+        "cookieconsent",
+        # OneTrust
+        "onetrust-banner-sdk",
+        "onetrust",
+        # Osano
+        "osano-cm",
+        # Usercentrics
+        "usercentrics-root",
+        # CookieLawInfo
+        "cookielawinfo",
+        # Privacy-related banners
+        "privacy-notice",
+        "privacy-banner",
+        "gdpr-banner",
+        # TCF / consent
+        "tcfelement",
+        "cookie-policy",
+        # Cloudflare
+        "cf-cookie-alert",
+        # Generic
+        "cookie-banner",
+        "cookie-notice",
+    ),
+    "captcha": (
+        # Existing
+        "captcha",
+        "challenge-form",
+        "cf-challenge",
+        "turnstile",
+        # Google reCAPTCHA
+        "g-recaptcha",
+        "recaptcha-checkbox",
+        "recaptcha-widget",
+        # Cloudflare Turnstile
+        "cf-turnstile-widget",
+        "cf-turnstile",
+        "cf-challenge-running",
+        "cf-browser-verification",
+        # hCaptcha
+        "h-captcha",
+        "hcaptcha-widget",
+        # BrowserStack / BrowserStack captcha
+        "brcaptcha",
+        "challenge-container",
+    ),
+    "authentication": (
+        # Existing
+        "login-form",
+        "signin-form",
+        "auth-form",
+        # Additional field markers
+        "password-input",
+        "username-field",
+        "email-field",
+        "auth-container",
+        "sign-in-btn",
+        "signin-btn",
+        "login-btn",
+        "auth-form-container",
+        "credentials-form",
+    ),
+    "subscription": (
+        # Existing
+        "paywall",
+        "subscription-wall",
+        "subscriber-gate",
+        # Additional
+        "paywall-overlay",
+        "subscription-modal",
+        "subscriber-only",
+        "premium-content",
+        "gated-content",
+        "register-wall",
+        "paywall-gate",
+        "locked-content",
+        "members-only",
+        "vip-content",
+    ),
+    "access_denied": (
+        # Existing
+        "access-denied",
+        "forbidden",
+        "request-blocked",
+        # Additional
+        "error-page",
+        "blocked-page",
+        "waf-block",
+        "security-block",
+        "access-restricted",
+        "ip-blocked",
+        "rate-limited",
+    ),
+}
+
+_VENDOR_DOMAINS = {
+    "cookie_consent": (
+        "cookiebot.com",
+        "cookielaw.org",
+        "onetrust.com",
+        "usercentrics.eu",
+        "osano.com",
+        "didomi.io",
+        "consentmanager.net",
+        "privacy-center.org",
+        "cybercookielist.com",
+        "consentip.com",
+        "consentframework.com",
+        "cmp.consensu.org",
+    ),
+    "captcha": (
+        "google.com/recaptcha",
+        "recaptcha.net",
+        "challenges.cloudflare.com",
+        "hcaptcha.com",
+        "brcdn.com",
+        "brecaptcha.net",
+    ),
+    "subscription": (
+        "paywall",
+        "subscribe",
+        "premium",
+    ),
 }
 
 
@@ -80,6 +203,27 @@ def _structural_outcome(soup: BeautifulSoup | None) -> str | None:
     return None
 
 
+def _vendor_outcome(soup: BeautifulSoup | None) -> str | None:
+    if soup is None:
+        return None
+    for element in soup.find_all(["iframe", "script", "link"]):
+        src = str(element.get("src") or element.get("href") or "").casefold()
+        if not src or src.startswith("#"):
+            continue
+        parsed = urlsplit(src)
+        hostname = (parsed.hostname or "").casefold()
+        path = (parsed.path or "").casefold()
+        full = hostname + path
+        for outcome, domains in _VENDOR_DOMAINS.items():
+            if outcome == "subscription":
+                if any(keyword in path for keyword in domains):
+                    return outcome
+            else:
+                if any(domain in hostname or domain in full for domain in domains):
+                    return outcome
+    return None
+
+
 def classify_access_outcome(title: str, html: str | None, markdown: str) -> str:
     soup = BeautifulSoup(html, "html.parser") if html else None
     html_text = soup.get_text(" ", strip=True) if soup else ""
@@ -87,6 +231,9 @@ def classify_access_outcome(title: str, html: str | None, markdown: str) -> str:
     structural = _structural_outcome(soup)
     if structural is not None:
         return structural
+    vendor = _vendor_outcome(soup)
+    if vendor is not None:
+        return vendor
     body_word_count = len((html_text + " " + markdown).split())
     if "captcha" in title.casefold() and body_word_count < 400:
         return "captcha"

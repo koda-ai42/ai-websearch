@@ -3,7 +3,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
-QUALITY_POLICY_VERSION = 2
+QUALITY_POLICY_VERSION = 3
 
 _WORD = re.compile(r"[^\W_]+", re.UNICODE)
 _CONSENT_PATTERNS = tuple(
@@ -28,30 +28,22 @@ _CONSENT_PATTERNS = tuple(
         r"\badvertising (?:partners?|purposes?|preferences?)\b",
         r"\bconsent (?:purposes?|settings|choices)\b",
         r"\bvendors? purposes?\b",
+        # IAB / vendor-specific identifiers (language-neutral)
+        r"\biab vendors?\b",
+        r"\biab vendor list\b",
+        r"\btc string\b",
+        r"\bglobal string\b",
+        r"\bconsent string\b",
+        r"\bpurpose ids?\b",
+        r"\bvendor ids?\b",
+        r"\bconsent management platform\b",
+        r"\bcmp id\b",
     )
 )
-_GENERIC_TITLES = {
-    "back button",
-    "home",
-    "menu",
-    "privacy choices",
-    "untitled",
-}
-_NAVIGATION_WORDS = {
-    "account",
-    "back",
-    "button",
-    "close",
-    "home",
-    "language",
-    "menu",
-    "more",
-    "next",
-    "open",
-    "previous",
-    "search",
-    "select",
-}
+
+
+def _has_sentence_ending(text: str) -> bool:
+    return bool(re.search(r"[.!?:]", text))
 
 
 @dataclass(frozen=True)
@@ -70,7 +62,6 @@ def _consent_signal_count(text: str) -> int:
 def assess_content_quality(title: str, text: str) -> ContentQualityAssessment:
     """Reject high-confidence access boilerplate without inspecting cookie data."""
 
-    normalized_title = " ".join(title.casefold().split())
     words = _WORD.findall(text.casefold())
     word_count = len(words)
     if not words:
@@ -87,14 +78,12 @@ def assess_content_quality(title: str, text: str) -> ContentQualityAssessment:
             consent_signals,
         )
 
-    navigation_words = sum(word in _NAVIGATION_WORDS for word in words)
     unique_ratio = len(set(words)) / word_count
-    navigation_ratio = navigation_words / word_count
     if (
-        normalized_title in _GENERIC_TITLES
-        and word_count >= 20
+        word_count >= 20
+        and word_count <= 500
         and unique_ratio < 0.12
-        and navigation_ratio >= 0.50
+        and not _has_sentence_ending(text)
     ):
         return ContentQualityAssessment(
             False,

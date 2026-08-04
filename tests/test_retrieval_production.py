@@ -267,7 +267,7 @@ def _candidate(
 
 def test_pre_reranker_filter_never_forces_an_ineligible_minimum_pool() -> None:
     candidates = [_candidate(index, f"short {index}", index, None) for index in range(1, 10)]
-    candidates.append(_candidate(10, "long unrelated material " * 10, 10, 10))
+    candidates.append(_candidate(10, "long unrelated material. " * 10, 10, 10))
     selected, metadata = _filter_for_reranking("answer terms", candidates, 10)
     assert [item.chunk_id for item in selected] == [10]
     assert metadata["candidates_before_filter"] == 10

@@ -1,5 +1,12 @@
 from ai_websearch.clean import strip_page_boilerplate
-from ai_websearch.content_quality import assess_content_quality
+from ai_websearch.content_quality import (
+    QUALITY_POLICY_VERSION,
+    assess_content_quality,
+)
+
+
+def test_policy_version_is_current() -> None:
+    assert QUALITY_POLICY_VERSION == 3
 
 
 def test_long_consent_content_is_rejected_regardless_of_length() -> None:
@@ -34,11 +41,36 @@ def test_article_with_small_cookie_footer_remains_usable() -> None:
 
 def test_repeated_generic_navigation_shell_is_rejected() -> None:
     text = " ".join(
-        ["Back Button Menu Search Home Account Language Select Close Open More Previous Next"] * 60
+        ["Back Button Menu Search Home Account Language Select Close Open More Previous Next"] * 30
     )
     result = assess_content_quality("Back Button", text)
     assert not result.usable
     assert result.reason == "navigation_shell"
+
+
+def test_statistical_navigation_shell_rejects_any_language() -> None:
+    text = " ".join(
+        [
+            "Home Menu Suche Konto Zuruck Schliessen Offnen Mehr Weiter Vorherig Sprache Auswahlen"
+        ]
+        * 30
+    )
+    result = assess_content_quality("Home", text)
+    assert not result.usable
+    assert result.reason == "navigation_shell"
+
+
+def test_navigation_with_punctuation_is_not_rejected() -> None:
+    text = " ".join(
+        [
+            "Back Button Menu Search Home Account. Close Open More. Previous Next. "
+            "Language Select. Page load complete. Navigation loaded."
+        ]
+        * 60
+    )
+    result = assess_content_quality("Navigation", text)
+    assert result.usable
+    assert result.reason == "substantive_content"
 
 
 def test_realistic_consent_language_is_rejected_per_chunk() -> None:
@@ -49,6 +81,17 @@ def test_realistic_consent_language_is_rejected_per_chunk() -> None:
         "personalised advertising may be used."
     )
     result = assess_content_quality("Public article", text)
+    assert not result.usable
+    assert result.outcome == "cookie_consent"
+
+
+def test_iab_consent_identifiers_are_rejected() -> None:
+    text = (
+        "IAB vendors list: TC String aBcDeFgH. "
+        "Purpose IDs: 1, 2, 3. Vendor IDs: 4, 5, 6. "
+        "Consent management platform with CMP ID 123."
+    )
+    result = assess_content_quality("Cookie settings", text)
     assert not result.usable
     assert result.outcome == "cookie_consent"
 

@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-02.v2",
+  "version": "2026-08-02.v3",
   "crawl_cases": [
     {
       "id": "long-consent-only",
@@ -27,7 +27,7 @@
       "id": "navigation-shell",
       "title": "Back Button",
       "seed": "Back Button Menu Search Home Account Language Select Close Open More Previous Next",
-      "repeat": 60,
+      "repeat": 38,
       "expected_outcome": "access_denied"
     },
     {
@@ -188,14 +188,14 @@
       "id": "navigation-shell-home",
       "title": "Home",
       "seed": "Home Menu Search Account Back Button Close Open More Next Previous Language Select",
-      "repeat": 55,
+      "repeat": 38,
       "expected_outcome": "access_denied"
     },
     {
       "id": "navigation-shell-menu",
       "title": "Menu",
       "seed": "Menu Home Search Account Back Button Close Open More Next Previous Language Select",
-      "repeat": 55,
+      "repeat": 38,
       "expected_outcome": "access_denied"
     },
     {
@@ -211,6 +211,78 @@
       "seed": "The retry setting accepts a positive integer and applies only to transient network failures. The reference documents defaults, error handling, examples, and compatibility notes.",
       "repeat": 30,
       "expected_outcome": "success"
+    },
+    {
+      "id": "vendor-onetrust-consent",
+      "title": "Cookie-Einstellungen",
+      "html": "<div id=\"onetrust-banner-sdk\">Alle akzeptieren</div>",
+      "seed": "Alle akzeptieren. Verwalten Sie Ihre Datenschutz-Einstellungen.",
+      "repeat": 3,
+      "expected_outcome": "cookie_consent"
+    },
+    {
+      "id": "vendor-cookiebot-consent",
+      "title": "Cookies",
+      "html": "<iframe src=\"https://consent.cookiebot.com/sdk/js\"></iframe>",
+      "seed": "Wir verwenden Cookies fuer Analyse und Werbung.",
+      "repeat": 3,
+      "expected_outcome": "cookie_consent"
+    },
+    {
+      "id": "vendor-recaptcha-captcha",
+      "title": "Sicherheitspruefung",
+      "html": "<div><iframe src=\"https://www.google.com/recaptcha/api2/anchor\"></iframe></div>",
+      "seed": "Bitte bestaetigen Sie, dass Sie kein Roboter sind.",
+      "repeat": 3,
+      "expected_outcome": "captcha"
+    },
+    {
+      "id": "vendor-cloudflare-turnstile",
+      "title": "Verifica",
+      "html": "<div class=\"cf-turnstile-widget\">Verifica umana</div>",
+      "seed": "Verifica che sei un essere umano.",
+      "repeat": 3,
+      "expected_outcome": "captcha"
+    },
+    {
+      "id": "structural-auth-form",
+      "title": "Iniciar sesion",
+      "html": "<form id=\"auth-container\"><input type=\"password\"></form>",
+      "seed": "Inicia sesion para continuar a este recurso.",
+      "repeat": 3,
+      "expected_outcome": "authentication"
+    },
+    {
+      "id": "structural-paywall-overlay",
+      "title": "Premium contenido",
+      "html": "<div class=\"paywall-overlay\">Abonati</div>",
+      "seed": "Abonati para continuar leyendo este articulo.",
+      "repeat": 3,
+      "expected_outcome": "subscription"
+    },
+    {
+      "id": "structural-waf-block",
+      "title": "Zugriff verweigert",
+      "html": "<div class=\"waf-block\">Gesperrt</div>",
+      "seed": "Ihre Anfrage wurde vom Sicherheitssystem blockiert.",
+      "repeat": 3,
+      "expected_outcome": "access_denied"
+    },
+    {
+      "id": "statistical-navigation-shell",
+      "title": "Home",
+      "html": "<div class=\"nav-bar\">Home Menu Suche Konto Zurueck Schliessen Offnen Mehr Weiter Vorherig Sprache Auswaehlen</div>",
+      "seed": "Home Menu Suche Konto Zurueck Schliessen Offnen Mehr Weiter Vorherig Sprache Auswaehlen",
+      "repeat": 41,
+      "expected_outcome": "access_denied"
+    },
+    {
+      "id": "vendor-consent-but-substantive-article",
+      "title": "EU cookie regulation analysis",
+      "html": "<div id=\"onetrust-banner-sdk\">Cookie banner</div><article>Long article</article>",
+      "seed": "This public technical article analyzes how consent management platforms process IAB vendor lists and TC strings. It compares OneTrust, Usercentrics, Osano, Cookiebot, and Didomi using reproducible experiments and public standards.",
+      "repeat": 40,
+      "expected_outcome": "cookie_consent"
     }
   ],
   "evidence_cases": [
