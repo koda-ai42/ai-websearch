@@ -39,7 +39,7 @@ class Settings(BaseSettings):
     reranking_cache_folder: str = ""
 
     scrape_timeout_seconds: float = 35.0
-    max_chars_per_page: int = 60000
+    max_chars_per_page: int = 120_000
     user_agent: str = "Mozilla/5.0 (X11; Linux x86_64) ai-websearch/0.1.0b1"
     chunk_size_chars: int = 1200
     chunk_overlap_chars: int = 180

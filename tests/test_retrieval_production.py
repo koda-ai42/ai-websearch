@@ -274,6 +274,101 @@ def test_pre_reranker_filter_never_forces_an_ineligible_minimum_pool() -> None:
     assert metadata["filter_rejections"]["too_short"] == 9
 
 
+def test_single_vector_channel_survives_low_query_coverage() -> None:
+    candidate = _candidate(1, "Substantive material with completely different vocabulary.", 1, None)
+    selected, metadata = _filter_for_reranking("orbital transfer window", [candidate], 1)
+    assert [item.chunk_id for item in selected] == [1]
+    assert metadata["filter_rejections"]["low_query_coverage"] == 0
+
+
+def test_single_keyword_channel_survives_low_query_coverage() -> None:
+    candidate = _candidate(1, "Substantive material with completely different vocabulary.", None, 1)
+    selected, metadata = _filter_for_reranking("orbital transfer window", [candidate], 1)
+    assert [item.chunk_id for item in selected] == [1]
+    assert metadata["filter_rejections"]["low_query_coverage"] == 0
+
+
+def test_no_channel_and_no_token_overlap_is_rejected() -> None:
+    candidate = _candidate(1, "Substantive material with completely different vocabulary.", None, None)
+    selected, metadata = _filter_for_reranking("orbital transfer window", [candidate], 1)
+    assert selected == []
+    assert metadata["filter_rejections"]["low_query_coverage"] == 1
+
+
+def test_per_source_chunk_limit_is_increased() -> None:
+    from ai_websearch.retrieval_policy import DEEP_PASS_LIMITS, RAPID_PASS_LIMITS
+    assert RAPID_PASS_LIMITS.max_chunks_per_source == 4
+    assert DEEP_PASS_LIMITS.max_chunks_per_source == 8
+
+
+def test_markdown_fallback_prefers_raw_over_fit() -> None:
+    from ai_websearch.scrape import _markdown_from_result
+
+    class MockMarkdown:
+        fit_markdown = "fit content"
+        raw_markdown = "raw content"
+        markdown_with_citations = None
+
+    class MockResult:
+        markdown = MockMarkdown()
+
+    assert _markdown_from_result(MockResult()) == "raw content"
+
+
+def test_markdown_fallback_uses_fit_when_raw_is_empty() -> None:
+    from ai_websearch.scrape import _markdown_from_result
+
+    class MockMarkdown:
+        fit_markdown = "fit content"
+        raw_markdown = ""
+        markdown_with_citations = None
+
+    class MockResult:
+        markdown = MockMarkdown()
+
+    assert _markdown_from_result(MockResult()) == "fit content"
+
+
+def test_markdown_fallback_plain_string_returns_directly() -> None:
+    from ai_websearch.scrape import _markdown_from_result
+
+    class MockResult:
+        markdown = "plain markdown string"
+        fit_markdown = "fit"
+        raw_markdown = "raw"
+        markdown_with_citations = None
+
+    assert _markdown_from_result(MockResult()) == "plain markdown string"
+
+
+def test_max_chars_default_is_120k() -> None:
+    assert settings.max_chars_per_page == 120_000
+
+
+def test_soft_truncation_skips_when_limit_is_zero() -> None:
+    long_text = "word " * 200_000
+    from ai_websearch.scrape import _apply_truncation_limit
+    result = _apply_truncation_limit(long_text, 0)
+    assert len(result) == len(long_text)
+
+
+def test_soft_truncation_applies_positive_limit() -> None:
+    long_text = "word " * 200_000
+    from ai_websearch.scrape import _apply_truncation_limit
+    result = _apply_truncation_limit(long_text, 100)
+    assert len(result) <= 100
+    assert result == long_text[:100]
+
+
+def test_soft_truncation_logs_warning_on_truncation(caplog) -> None:
+    import logging
+    long_text = "word " * 200_000
+    from ai_websearch.scrape import _apply_truncation_limit
+    with caplog.at_level(logging.WARNING):
+        _apply_truncation_limit(long_text, 500)
+    assert any("exceeds" in record.message and "truncating" in record.message for record in caplog.records)
+
+
 def test_pre_reranker_filter_rejects_consent_dominant_chunks() -> None:
     consent = " ".join(
         [

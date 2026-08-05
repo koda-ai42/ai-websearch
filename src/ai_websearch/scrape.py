@@ -20,6 +20,14 @@ from .network_policy import DomainRateLimiter
 from .url_policy import check_url, check_url_network
 
 logger = logging.getLogger(__name__)
+
+
+def _apply_truncation_limit(markdown: str, max_chars: int) -> str:
+    """Apply soft truncation limit.  value of 0 means no limit."""
+    if max_chars > 0 and len(markdown) > max_chars:
+        logger.warning("page exceeds %d chars, truncating", max_chars)
+        return markdown[:max_chars]
+    return markdown
 _crawl_limiter = DomainRateLimiter(
     settings.crawl_domain_concurrency,
     settings.crawl_min_interval_seconds,
@@ -102,7 +110,7 @@ def _markdown_from_result(result: object) -> str:
     if isinstance(value, str):
         return value
     if value is not None:
-        for attribute in ("fit_markdown", "raw_markdown", "markdown_with_citations"):
+        for attribute in ("raw_markdown", "markdown_with_citations", "fit_markdown"):
             candidate = getattr(value, attribute, None)
             if isinstance(candidate, str) and candidate.strip():
                 return candidate
@@ -265,7 +273,7 @@ async def _scrape_once(url: str, max_chars: int) -> ScrapedPage:
     final_policy = await check_url_network(final_url)
     if not final_policy.allowed:
         raise RuntimeError("Crawler redirect was blocked by URL policy")
-    markdown = strip_page_boilerplate(raw_markdown)[:max_chars]
+    markdown = _apply_truncation_limit(strip_page_boilerplate(raw_markdown), max_chars)
     if not markdown:
         raise RuntimeError("Scrape succeeded but produced empty Markdown")
     quality = assess_content_quality(title, markdown)

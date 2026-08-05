@@ -194,8 +194,8 @@ def test_evidence_assessment_uses_packable_chunk_selection(monkeypatch) -> None:
     monkeypatch.setattr(orchestrator, "retrieve_and_rerank", candidates)
     monkeypatch.setattr(orchestrator, "pack_context", fake_pack)
     result = asyncio.run(orchestrator.research("simple question", mode="rapid"))
-    assert result["evidence_assessment"]["chunk_count"] == 2
-    assert result["passes"][0]["evidence"]["chunk_count"] == 2
+    assert result["evidence_assessment"]["chunk_count"] == 3
+    assert result["passes"][0]["evidence"]["chunk_count"] == 3
     assert result["answerability"] == {
         "answerable": True,
         "required_action": "answer_with_citations",

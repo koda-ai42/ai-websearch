@@ -240,8 +240,8 @@ def _filter_for_reranking(
             rejected["too_short"] += 1
             continue
         passage_tokens = _tokens(candidate.title + " " + candidate.text)
-        both_channels = candidate.vector_rank is not None and candidate.keyword_rank is not None
-        if query_tokens and not (query_tokens & passage_tokens) and not both_channels:
+        has_any_channel = candidate.vector_rank is not None or candidate.keyword_rank is not None
+        if query_tokens and not (query_tokens & passage_tokens) and not has_any_channel:
             rejected["low_query_coverage"] += 1
             continue
         selected.append(candidate)

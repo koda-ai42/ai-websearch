@@ -17,8 +17,8 @@ class ResearchPassLimits:
     max_chunks_per_source: int
 
 
-RAPID_PASS_LIMITS = ResearchPassLimits("rapid", 1, 5, 2, 48, 2)
-DEEP_PASS_LIMITS = ResearchPassLimits("deep", 5, 20, 10, 300, 4)
+RAPID_PASS_LIMITS = ResearchPassLimits("rapid", 1, 5, 2, 48, 4)
+DEEP_PASS_LIMITS = ResearchPassLimits("deep", 5, 20, 10, 300, 8)
 
 
 @dataclass(frozen=True)
