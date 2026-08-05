@@ -1,13 +1,13 @@
-# ai-websearch
+# AI Websearch
 
 > 0.1.0 beta: interfaces and storage migrations may still change before 1.0.
 
-ai-websearch is a local-first web RAG and research MCP server for llama.cpp and
+AI Websearch is a local-first web RAG and research MCP server for llama.cpp and
 local LLM frontends. It searches through a loopback SearXNG instance, crawls
 public pages in an ephemeral browser, retrieves and reranks evidence locally,
 and supplies citation-ready context to the calling LLM.
 
-ai-websearch performs retrieval and context preparation; it does not host or
+AI Websearch performs retrieval and context preparation; it does not host or
 invoke the answer-generating model. llama.cpp provides context discovery and
 exact tokenization, while the connected LLM produces the final answer.
 
@@ -52,7 +52,7 @@ frontend as a Streamable HTTP MCP server. Tool-capable llama.cpp templates may
 also require `llama-server --jinja`; use the flags appropriate for the selected
 model and frontend.
 
-ai-websearch detects visible `llama-server` processes and verifies candidates
+AI Websearch detects visible `llama-server` processes and verifies candidates
 through `/props`; it never scans arbitrary ports. `/props` is the only source
 of effective `n_ctx`, and `/tokenize` validates the complete final result. For
 a server that cannot be discovered safely, configure it explicitly:
@@ -63,7 +63,7 @@ AI_WEBSEARCH_LLAMA_CPP_BASE_URL=http://127.0.0.1:8080
 ```
 
 Port 8080 is llama-server's conventional combined API/WebUI endpoint. The
-ai-websearch MCP endpoint remains separate on port 8050.
+AI Websearch MCP endpoint remains separate on port 8050.
 
 Useful commands:
 
@@ -150,13 +150,13 @@ measured by the benchmark suite rather than inferred from character length.
 
 Changing the reranker mode, model, or revision does not invalidate the embedding
 database. Changing the embedding model, revision, or stored chunk representation
-requires rebuilding it; ai-websearch refuses to mix incompatible stored vectors.
+requires rebuilding it; AI Websearch refuses to mix incompatible stored vectors.
 Section-aware chunks use input version `clean_sections_v3`. The default database
 `data/ai_websearch.sqlite3`.
 
 ## Security and access boundaries
 
-ai-websearch is designed for one trusted local user:
+AI Websearch is designed for one trusted local user:
 
 - MCP, SearXNG, and llama.cpp endpoints are loopback-only by default.
 - Only public HTTP(S) pages are crawled; private-network and credential-bearing
