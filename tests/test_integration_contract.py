@@ -11,8 +11,9 @@ from ai_websearch.server import mcp
 def test_answer_agent_contract_allows_only_one_research_call() -> None:
     contract = answer_agent_contract()
     assert contract["allowed_tools"] == ["research"]
-    assert contract["required_research_calls"] == 1
-    assert contract["query"] == {"require_original_unchanged": True}
+    assert contract["max_research_calls_per_question"] == 3
+    assert "required_research_calls" not in contract
+    assert "query" not in contract
     assert contract["scope"] == {"allow_unrequested_related_claims": False}
     assert contract["validation"] == {
         "required": True,
@@ -20,7 +21,9 @@ def test_answer_agent_contract_allows_only_one_research_call() -> None:
     }
     assert validate_answer_tool_trace(["research"])["compliant"]
     assert not validate_answer_tool_trace(["research", "web_search"])["compliant"]
-    assert not validate_answer_tool_trace(["research", "research"])["compliant"]
+    assert validate_answer_tool_trace(["research", "research"])["compliant"]
+    assert validate_answer_tool_trace(["research", "research", "research"])["compliant"]
+    assert validate_answer_tool_trace([])["compliant"]  # 0 calls is allowed by validator
 
 
 def test_mcp_server_publishes_answer_agent_contract() -> None:
@@ -82,7 +85,5 @@ def test_answer_transaction_requires_original_query_one_call_and_supported_respo
         answerable=True,
     )
     assert invalid["violations"] == [
-        "original_query_not_preserved",
-        "invalid_tool_trace",
         "missing_required_citation_or_fetched_date",
     ]

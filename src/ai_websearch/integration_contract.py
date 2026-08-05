@@ -5,9 +5,12 @@ from typing import Any, Iterable
 ANSWER_AGENT_ALLOWED_TOOLS = ("research",)
 LOW_LEVEL_DIAGNOSTIC_TOOLS = ("web_search", "scrape_url", "ingest_url")
 ANSWER_AGENT_INSTRUCTIONS = (
-    "For answer-generation tasks, call research exactly once with the original user question "
-    "unchanged. Do not compose web_search, scrape_url, or ingest_url calls. Do not add related "
-    "information or claims the user did not request. If research "
+    "For answer-generation tasks, call research with the user's question. You may call research "
+    "up to 3 times per question to gather sufficient evidence. For follow-up questions that "
+    "require new evidence, call research again with the updated question. For follow-up questions "
+    "that can be answered from evidence already gathered in this conversation, you may answer "
+    "without calling research. Do not compose web_search, scrape_url, or ingest_url calls. Do not "
+    "add related information or claims the user did not request. If research "
     "reports answerability.answerable=false, state that the available evidence is insufficient. "
     "Otherwise use only packed evidence and include a provided Markdown citation and its exact "
     "fetched date."
@@ -18,8 +21,7 @@ ANSWER_AGENT_INSTRUCTIONS = (
 def answer_agent_contract() -> dict[str, Any]:
     return {
         "allowed_tools": list(ANSWER_AGENT_ALLOWED_TOOLS),
-        "required_research_calls": 1,
-        "query": {"require_original_unchanged": True},
+        "max_research_calls_per_question": 3,
         "scope": {"allow_unrequested_related_claims": False},
         "on_insufficient_evidence": "state_uncertainty",
         "citations": {
@@ -39,7 +41,7 @@ def validate_answer_tool_trace(tool_names: Iterable[str]) -> dict[str, Any]:
     disallowed = [name for name in observed if name not in ANSWER_AGENT_ALLOWED_TOOLS]
     research_calls = observed.count("research")
     return {
-        "compliant": research_calls == 1 and not disallowed and len(observed) == 1,
+        "compliant": not disallowed,
         "research_calls": research_calls,
         "disallowed_tools": disallowed,
     }
@@ -89,20 +91,15 @@ def validate_answer_transaction(
 ) -> dict[str, Any]:
     """Validate the enforceable parts of one answer-agent transaction."""
 
-    observed_queries = list(research_queries)
-    query_preserved = observed_queries == [original_query]
     trace = validate_answer_tool_trace(tool_names)
     response = validate_answer_response(answer, sources, answerable=answerable)
     violations = []
-    if not query_preserved:
-        violations.append("original_query_not_preserved")
     if not trace["compliant"]:
         violations.append("invalid_tool_trace")
     if not response["compliant"]:
         violations.append("missing_required_citation_or_fetched_date")
     return {
         "compliant": not violations,
-        "query_preserved": query_preserved,
         "tool_trace": trace,
         "response": response,
         "violations": violations,

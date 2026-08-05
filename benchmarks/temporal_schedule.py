@@ -26,7 +26,7 @@ def _boilerplate_cleaner() -> Callable[[str], str]:
 def _contract_behavior_controls(validator: Any) -> dict[str, bool]:
     controls = {
         "citation_and_fetch_required": False,
-        "original_query_enforced": False,
+        "multi_research_permitted": False,
     }
     if not callable(validator):
         return controls
@@ -42,10 +42,10 @@ def _contract_behavior_controls(validator: Any) -> dict[str, bool]:
         "answerable": True,
     }
     missing_reference = validator(answer="The release improves retrieval.", **common)
-    changed_query = validator(
+    multi_call = validator(
         original_query=query,
-        research_queries=["latest release notes"],
-        tool_names=["research"],
+        research_queries=["latest release notes", "current stable version"],
+        tool_names=["research", "research"],
         answer=f"The release improves retrieval. {citation} fetched {fetched_at}.",
         sources=sources,
         answerable=True,
@@ -53,8 +53,8 @@ def _contract_behavior_controls(validator: Any) -> dict[str, bool]:
     controls["citation_and_fetch_required"] = (
         "missing_required_citation_or_fetched_date" in missing_reference["violations"]
     )
-    controls["original_query_enforced"] = (
-        "original_query_not_preserved" in changed_query["violations"]
+    controls["multi_research_permitted"] = (
+        "invalid_tool_trace" not in multi_call["violations"]
     )
     return controls
 
@@ -95,7 +95,7 @@ def run_temporal_schedule_benchmark(path: Path | None = None) -> dict[str, Any]:
         None,
     )
     contract_controls = {
-        "original_query_required": "original user question unchanged"
+        "follow_up_search_permitted": "follow-up questions"
         in ANSWER_AGENT_INSTRUCTIONS.casefold(),
         "scope_instruction_present": "do not add related" in ANSWER_AGENT_INSTRUCTIONS.casefold(),
         "transaction_validator_available": callable(transaction_validator),

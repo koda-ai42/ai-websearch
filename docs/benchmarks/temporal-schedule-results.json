@@ -27,8 +27,8 @@
   "reliability": {
     "answer_contract_controls": {
       "citation_and_fetch_required": true,
-      "original_query_enforced": true,
-      "original_query_required": true,
+      "follow_up_search_permitted": true,
+      "multi_research_permitted": true,
       "scope_instruction_present": true,
       "transaction_validator_available": true
     },
