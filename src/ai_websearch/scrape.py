@@ -110,7 +110,7 @@ def _markdown_from_result(result: object) -> str:
     if isinstance(value, str):
         return value
     if value is not None:
-        for attribute in ("raw_markdown", "markdown_with_citations", "fit_markdown"):
+        for attribute in ("fit_markdown", "raw_markdown", "markdown_with_citations"):
             candidate = getattr(value, attribute, None)
             if isinstance(candidate, str) and candidate.strip():
                 return candidate

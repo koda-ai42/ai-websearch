@@ -301,7 +301,7 @@ def test_per_source_chunk_limit_is_increased() -> None:
     assert DEEP_PASS_LIMITS.max_chunks_per_source == 8
 
 
-def test_markdown_fallback_prefers_raw_over_fit() -> None:
+def test_markdown_fallback_prefers_fit_over_raw() -> None:
     from ai_websearch.scrape import _markdown_from_result
 
     class MockMarkdown:
@@ -312,21 +312,21 @@ def test_markdown_fallback_prefers_raw_over_fit() -> None:
     class MockResult:
         markdown = MockMarkdown()
 
-    assert _markdown_from_result(MockResult()) == "raw content"
+    assert _markdown_from_result(MockResult()) == "fit content"
 
 
-def test_markdown_fallback_uses_fit_when_raw_is_empty() -> None:
+def test_markdown_fallback_uses_raw_when_fit_is_empty() -> None:
     from ai_websearch.scrape import _markdown_from_result
 
     class MockMarkdown:
-        fit_markdown = "fit content"
-        raw_markdown = ""
+        fit_markdown = ""
+        raw_markdown = "raw content"
         markdown_with_citations = None
 
     class MockResult:
         markdown = MockMarkdown()
 
-    assert _markdown_from_result(MockResult()) == "fit content"
+    assert _markdown_from_result(MockResult()) == "raw content"
 
 
 def test_markdown_fallback_plain_string_returns_directly() -> None:
