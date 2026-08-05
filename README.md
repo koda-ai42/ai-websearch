@@ -8,8 +8,10 @@ local LLM frontends.
 It bridges the gap between your offline models and real-time information by 
 querying a loopback SearXNG instance, securely crawling public web pages via 
 an ephemeral browser, and locally retrieving and reranking the most relevant 
-evidence. **The result? High-quality, citation-ready context delivered straight 
-to your LLM—with zero data leaks to external APIs.**
+evidence. 
+
+**The result? High-quality, citation-ready context delivered straight 
+to your LLM with zero data leaks to external APIs.**
 
 AI Websearch performs retrieval and context preparation; it does not host or
 invoke the answer-generating model. llama.cpp provides context discovery and
